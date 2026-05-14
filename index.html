@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Short History of Nearly Everything — AP Chemistry</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ── SIDEBAR ─────────────────────────────────────────────── -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-brand">
+    <div class="brand-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22">
+        <circle cx="12" cy="12" r="2.5"/>
+        <ellipse cx="12" cy="12" rx="10" ry="3.8"/>
+        <ellipse cx="12" cy="12" rx="10" ry="3.8" transform="rotate(60 12 12)"/>
+        <ellipse cx="12" cy="12" rx="10" ry="3.8" transform="rotate(120 12 12)"/>
+      </svg>
+    </div>
+    <div class="brand-text">
+      <span class="brand-name">ChemCosmos</span>
+      <span class="brand-sub">AP Chemistry · 2025</span>
+    </div>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sn-item active" data-page="home" href="#">
+      <span class="sn-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg></span>
+      <span class="sn-label">Home</span>
+      <span class="sn-bar"></span>
+    </a>
+    <a class="sn-item" data-page="bigbang" href="#">
+      <span class="sn-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="2"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/></svg></span>
+      <span class="sn-label">The Big Bang</span>
+      <span class="sn-bar"></span>
+    </a>
+    <a class="sn-item" data-page="stars" href="#">
+      <span class="sn-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg></span>
+      <span class="sn-label">Stars as Reactors</span>
+      <span class="sn-bar"></span>
+    </a>
+    <a class="sn-item" data-page="atomic" href="#">
+      <span class="sn-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="2.5"/><ellipse cx="12" cy="12" rx="10" ry="4"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(120 12 12)"/></svg></span>
+      <span class="sn-label">Atomic Models</span>
+      <span class="sn-bar"></span>
+    </a>
+    <a class="sn-item" data-page="decay" href="#">
+      <span class="sn-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 6v6l4 2"/><circle cx="19" cy="5" r="3"/></svg></span>
+      <span class="sn-label">Radioactive Decay</span>
+      <span class="sn-bar"></span>
+    </a>
+    <a class="sn-item" data-page="matter" href="#">
+      <span class="sn-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h18M3 12h18M3 18h18"/><circle cx="7" cy="6" r="1.5" fill="currentColor"/><circle cx="17" cy="12" r="1.5" fill="currentColor"/><circle cx="12" cy="18" r="1.5" fill="currentColor"/></svg></span>
+      <span class="sn-label">Matter at Scale</span>
+      <span class="sn-bar"></span>
+    </a>
+    <a class="sn-item" data-page="hub" href="#">
+      <span class="sn-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></span>
+      <span class="sn-label">AP Chem Hub</span>
+      <span class="sn-bar"></span>
+    </a>
+    <a class="sn-item" data-page="citations" href="#">
+      <span class="sn-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>
+      <span class="sn-label">Citations</span>
+      <span class="sn-bar"></span>
+    </a>
+  </nav>
+
+  <div class="sidebar-footer">
+    <p>Based on <em>A Short History of Nearly Everything</em></p>
+    <p>Bill Bryson · Broadway Books, 2003</p>
+  </div>
+</aside>
+
+<!-- ── MOBILE HEADER ─────────────────────────────────────────── -->
+<header class="mobile-header">
+  <button class="mob-menu" id="mobMenu" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <span class="mob-title">ChemCosmos</span>
+  <span class="mob-page-indicator" id="mobPageIndicator">Home</span>
+</header>
+<div class="mob-overlay" id="mobOverlay"></div>
+
+<!-- ── MAIN ──────────────────────────────────────────────────── -->
+<main class="main" id="main">
+
+<!-- HOME -->
+<section class="page active" id="page-home">
+  <p>Home page content goes here.</p>
+</section>
+
+<!-- BIG BANG -->
+<section class="page" id="page-bigbang">
+  <p>Big Bang page content goes here.</p>
+</section>
+
+<!-- STARS -->
+<section class="page" id="page-stars">
+  <p>Stars page content goes here.</p>
+</section>
+
+<!-- ATOMIC MODELS -->
+<section class="page" id="page-atomic">
+  <p>Atomic models page content goes here.</p>
+</section>
+
+<!-- DECAY -->
+<section class="page" id="page-decay">
+  <p>Radioactive decay page content goes here.</p>
+</section>
+
+<!-- MATTER -->
+<section class="page" id="page-matter">
+  <p>Matter at scale page content goes here.</p>
+</section>
+
+<!-- HUB -->
+<section class="page" id="page-hub">
+  <p>AP Chem Hub page content goes here.</p>
+</section>
+
+<!-- CITATIONS -->
+<section class="page" id="page-citations">
+  <p>Citations page content goes here.</p>
+</section>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
