@@ -92,42 +92,229 @@
 
 <!-- HOME -->
 <section class="page active" id="page-home">
-  <p>Home page content goes here.</p>
+  <div class="hero">
+    <div class="hero-eyebrow">AP Chemistry Final Project — Bill Bryson</div>
+    <h1 class="hero-title">
+      <span class="ht-line">The Universe</span>
+      <span class="ht-line accent">Through a</span>
+      <span class="ht-line">Chemist's Eyes</span>
+    </h1>
+    <p class="hero-sub">An interactive journey through cosmic history — from the Big Bang to molecular bonds — anchored in AP Chemistry's core concepts of energy, structure, and transformation.</p>
+
+    <div class="hero-tags">
+      <div class="htag">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="3"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2"/></svg>
+        Big Idea: Energy
+      </div>
+      <div class="htag">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="5" height="5" rx="1"/><rect x="9" y="2" width="5" height="5" rx="1"/><rect x="2" y="9" width="5" height="5" rx="1"/><rect x="9" y="9" width="5" height="5" rx="1"/></svg>
+        SP-1: Models &amp; Representations
+      </div>
+      <div class="htag">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="1,13 5,7 9,10 15,3"/></svg>
+        SP-3: Representing Data
+      </div>
+    </div>
+
+    <div class="hero-cta-row">
+      <button class="btn-primary" data-page="bigbang">
+        Begin the Journey
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10h12M12 5l5 5-5 5"/></svg>
+      </button>
+      <button class="btn-ghost" data-page="atomic">
+        Jump to Atomic Models
+      </button>
+    </div>
+
+    <div class="hero-atom-wrap">
+      <div class="hero-atom">
+        <div class="ha-nucleus">
+          <div class="ha-nucleus-inner"></div>
+        </div>
+        <div class="ha-ring ha-r1"><div class="ha-e"></div></div>
+        <div class="ha-ring ha-r2"><div class="ha-e"></div></div>
+        <div class="ha-ring ha-r3"><div class="ha-e"></div></div>
+        <div class="ha-glow"></div>
+      </div>
+    </div>
+
+    <div class="hero-scroll-hint">
+      <span>Navigate using the sidebar</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    </div>
+  </div>
+
+  <div class="stat-strip">
+    <div class="stat">
+      <span class="stat-num">13.8</span>
+      <span class="stat-unit">billion years</span>
+      <span class="stat-label">Age of the Universe</span>
+    </div>
+    <div class="stat-div"></div>
+    <div class="stat">
+      <span class="stat-num">92</span>
+      <span class="stat-unit">elements</span>
+      <span class="stat-label">Occur naturally on Earth</span>
+    </div>
+    <div class="stat-div"></div>
+    <div class="stat">
+      <span class="stat-num">E=mc²</span>
+      <span class="stat-unit">mass-energy</span>
+      <span class="stat-label">Equivalence (Einstein, 1905)</span>
+    </div>
+    <div class="stat-div"></div>
+    <div class="stat">
+      <span class="stat-num">5</span>
+      <span class="stat-unit">atomic models</span>
+      <span class="stat-label">Dalton → Quantum (1803–1926)</span>
+    </div>
+  </div>
 </section>
+
 
 <!-- BIG BANG -->
 <section class="page" id="page-bigbang">
-  <p>Big Bang page content goes here.</p>
+  <div class="page-wrap">
+    <div class="page-header">
+      <div class="ph-num">01</div>
+      <div class="ph-text">
+        <div class="ph-eyebrow">Chapter 1 — Origin</div>
+        <h1 class="ph-title">The Big Bang &amp; Matter Formation</h1>
+        <p class="ph-sub">How pure energy became the building blocks of all chemistry — Unit 1: Atomic Structure, Big Idea: Energy</p>
+      </div>
+    </div>
+
+    <div class="timeline-h">
+      <div class="tlh-track">
+        <div class="tlh-node">
+          <div class="tlh-dot gold"></div>
+          <div class="tlh-time">T = 0</div>
+          <div class="tlh-event">The Singularity<br><small>Infinite density, infinite temperature — pure energy</small></div>
+        </div>
+        <div class="tlh-line"></div>
+        <div class="tlh-node">
+          <div class="tlh-dot cyan"></div>
+          <div class="tlh-time">10⁻³² s</div>
+          <div class="tlh-event">Inflation<br><small>Universe expands by factor of 10²⁶</small></div>
+        </div>
+        <div class="tlh-line"></div>
+        <div class="tlh-node">
+          <div class="tlh-dot cyan"></div>
+          <div class="tlh-time">10⁻⁶ s</div>
+          <div class="tlh-event">Quarks → Hadrons<br><small>Quarks combine into protons and neutrons</small></div>
+        </div>
+        <div class="tlh-line"></div>
+        <div class="tlh-node">
+          <div class="tlh-dot gold"></div>
+          <div class="tlh-time">3 min</div>
+          <div class="tlh-event">Nucleosynthesis<br><small>H and He nuclei form; ¹H, ²H, ³He, ⁴He, ⁷Li</small></div>
+        </div>
+        <div class="tlh-line"></div>
+        <div class="tlh-node">
+          <div class="tlh-dot gold"></div>
+          <div class="tlh-time">380,000 yr</div>
+          <div class="tlh-event">Recombination<br><small>Electrons bind to nuclei → neutral atoms</small></div>
+        </div>
+        <div class="tlh-line"></div>
+        <div class="tlh-node">
+          <div class="tlh-dot cyan"></div>
+          <div class="tlh-time">200M yr</div>
+          <div class="tlh-event">First Stars<br><small>Gravity collapses hydrogen clouds</small></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-grid cg-3">
+      <div class="card card-gold">
+        <div class="card-icon ci-gold">E=mc²</div>
+        <h3>Energy to Matter</h3>
+        <p>In the first fractions of a second, the universe was so energetic that energy itself condensed into matter. Einstein's equation — <strong>E = mc²</strong> — describes this: energy and mass are interconvertible.</p>
+        <div class="formula-block">E = mc²</div>
+        <p class="card-note">A single kilogram of matter contains ~9×10¹⁶ joules — equivalent to a 21-megaton nuclear explosion.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon ci-cyan">🔥</div>
+        <h3>The Plasma State</h3>
+        <p>For the first 380,000 years, the universe was too hot for atoms to exist. Matter existed as <strong>plasma</strong> — a state where electrons are stripped from nuclei by thermal energy exceeding ionization energies.</p>
+        <p>In plasma, <em>kT ≫ IE</em>, so electrons roam freely. The universe was opaque because free electrons scattered all light.</p>
+        <div class="plasma-vis">
+          <div class="pv-particle pv-p"></div>
+          <div class="pv-particle pv-e"></div>
+          <div class="pv-particle pv-p"></div>
+          <div class="pv-particle pv-e"></div>
+          <div class="pv-particle pv-p"></div>
+          <div class="pv-particle pv-e"></div>
+          <div class="pv-label">Free protons and electrons in plasma</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-icon ci-cyan">⚗️</div>
+        <h3>Big Bang Nucleosynthesis</h3>
+        <p>The Big Bang produced only the lightest elements. Heavier elements required stellar interiors.</p>
+        <div class="abundance-chart">
+          <div class="ab-row">
+            <span class="ab-el">¹H</span>
+            <div class="ab-bar"><div class="ab-fill" style="width:75%" data-color="cyan"></div></div>
+            <span class="ab-pct">~75%</span>
+          </div>
+          <div class="ab-row">
+            <span class="ab-el">⁴He</span>
+            <div class="ab-bar"><div class="ab-fill" style="width:25%" data-color="gold"></div></div>
+            <span class="ab-pct">~25%</span>
+          </div>
+          <div class="ab-row">
+            <span class="ab-el">²H</span>
+            <div class="ab-bar"><div class="ab-fill" style="width:0.5%" data-color="dim"></div></div>
+            <span class="ab-pct">0.01%</span>
+          </div>
+          <div class="ab-row">
+            <span class="ab-el">⁷Li</span>
+            <div class="ab-bar"><div class="ab-fill" style="width:0.1%" data-color="dim"></div></div>
+            <span class="ab-pct">trace</span>
+          </div>
+        </div>
+        <p class="card-note">All elements heavier than lithium were forged in stars — we are literally made of stellar ash.</p>
+      </div>
+    </div>
+
+    <div class="ap-box">
+      <div class="apb-header">AP Chemistry Connection — Unit 1: Atomic Structure &amp; Big Idea: Energy</div>
+      <p>The Recombination event is a direct physical demonstration of <strong>ionization energy</strong>. As the universe cooled below ~3,000 K, thermal energy (kT) dropped below the ionization energies of hydrogen (~13.6 eV) and helium (~24.6 eV). Electrons could then occupy stable ground-state orbitals — the first electron configurations in cosmic history.</p>
+    </div>
+  </div>
 </section>
+
 
 <!-- STARS -->
 <section class="page" id="page-stars">
-  <p>Stars page content goes here.</p>
+  <p>Stars page content coming soon.</p>
 </section>
 
 <!-- ATOMIC MODELS -->
 <section class="page" id="page-atomic">
-  <p>Atomic models page content goes here.</p>
+  <p>Atomic models page content coming soon.</p>
 </section>
 
 <!-- DECAY -->
 <section class="page" id="page-decay">
-  <p>Radioactive decay page content goes here.</p>
+  <p>Radioactive decay page content coming soon.</p>
 </section>
 
 <!-- MATTER -->
 <section class="page" id="page-matter">
-  <p>Matter at scale page content goes here.</p>
+  <p>Matter at scale content coming soon.</p>
 </section>
 
 <!-- HUB -->
 <section class="page" id="page-hub">
-  <p>AP Chem Hub page content goes here.</p>
+  <p>AP Chem Hub content coming soon.</p>
 </section>
 
 <!-- CITATIONS -->
 <section class="page" id="page-citations">
-  <p>Citations page content goes here.</p>
+  <p>Citations coming soon.</p>
 </section>
 
 </main>
