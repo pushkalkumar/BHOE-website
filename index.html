@@ -289,12 +289,178 @@
 
 <!-- STARS -->
 <section class="page" id="page-stars">
-  <p>Stars page content coming soon.</p>
+  <div class="page-wrap">
+    <div class="page-header">
+      <div class="ph-num">02</div>
+      <div class="ph-text">
+        <div class="ph-eyebrow">Chapter 2 — Stellar Nucleosynthesis</div>
+        <h1 class="ph-title">Stars as Nuclear Reactors</h1>
+        <p class="ph-sub">How stellar fusion creates every element heavier than lithium — Unit 1: Nuclear Chemistry, Big Idea: Energy &amp; Transformations</p>
+      </div>
+    </div>
+
+    <div class="card-grid cg-2">
+      <div class="card card-featured">
+        <h3>The Proton-Proton Chain</h3>
+        <p>In stars like our Sun, hydrogen fuses to helium through the proton-proton chain. The driving force: the strong nuclear force overcomes electrostatic repulsion at temperatures above ~10 million K.</p>
+        <div class="fusion-chain">
+          <div class="fc-step">
+            <div class="fc-eq">
+              <span class="nuc">¹H</span><span class="op">+</span><span class="nuc">¹H</span>
+              <span class="op">→</span><span class="nuc">²H</span><span class="op">+</span>
+              <span class="nuc nuc-e">e⁺</span><span class="op">+</span><span class="nuc nuc-n">ν</span>
+            </div>
+            <span class="fc-label">Step 1: Deuterium forms</span>
+          </div>
+          <div class="fc-arrow">↓</div>
+          <div class="fc-step">
+            <div class="fc-eq">
+              <span class="nuc">²H</span><span class="op">+</span><span class="nuc">¹H</span>
+              <span class="op">→</span><span class="nuc">³He</span><span class="op">+</span><span class="nuc nuc-g">γ</span>
+            </div>
+            <span class="fc-label">Step 2: Helium-3 forms</span>
+          </div>
+          <div class="fc-arrow">↓</div>
+          <div class="fc-step">
+            <div class="fc-eq">
+              <span class="nuc">³He</span><span class="op">+</span><span class="nuc">³He</span>
+              <span class="op">→</span><span class="nuc nuc-gold">⁴He</span><span class="op">+</span><span class="nuc">2¹H</span>
+            </div>
+            <span class="fc-label">Step 3: Helium-4 + energy released</span>
+          </div>
+        </div>
+        <p class="card-note">Net result: 4 protons → 1 helium-4 nucleus + 2 positrons + 2 neutrinos + 2 gamma rays + <strong>26.7 MeV of energy</strong></p>
+      </div>
+
+      <div class="card">
+        <h3>Binding Energy &amp; the Iron Peak</h3>
+        <p>Each fusion step releases energy because the product nucleus has <strong>less mass</strong> than its reactants. This "mass defect" converts to energy via E = mc². The binding energy per nucleon peaks at iron-56 — after iron, fusion consumes energy rather than releasing it.</p>
+        <div class="binding-chart" id="bindingChart">
+          <canvas id="bindingCanvas" width="340" height="200"></canvas>
+          <p class="chart-label">Binding energy per nucleon (MeV) vs. Mass number — Iron-56 is the most stable nucleus in the universe</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="synthesis-grid">
+      <div class="syn-header">How stars produce different elements</div>
+      <div class="syn-row">
+        <div class="syn-star small"><div class="syn-star-icon">☀</div><span>Low-mass Stars<br><small>0.1–8 M☉</small></span></div>
+        <div class="syn-arrow">→</div>
+        <div class="syn-elements">
+          <span class="el-badge el-h">H</span><span class="el-badge el-he">He</span><span class="el-badge el-c">C</span><span class="el-badge el-o">O</span><span class="el-badge el-n">N</span>
+        </div>
+        <div class="syn-note">Produce carbon and oxygen via the triple-alpha process; end as white dwarfs</div>
+      </div>
+      <div class="syn-row">
+        <div class="syn-star massive"><div class="syn-star-icon">★</div><span>Massive Stars<br><small>&gt;8 M☉</small></span></div>
+        <div class="syn-arrow">→</div>
+        <div class="syn-elements">
+          <span class="el-badge el-c">C</span><span class="el-badge el-ne">Ne</span><span class="el-badge el-si">Si</span><span class="el-badge el-fe">Fe</span><span class="el-badge el-ni">Ni</span>
+        </div>
+        <div class="syn-note">Produce elements up to iron-56; shell burning in concentric layers; end as neutron stars or black holes</div>
+      </div>
+      <div class="syn-row">
+        <div class="syn-star sn"><div class="syn-star-icon">💥</div><span>Supernovae &amp; <br>Neutron Star Mergers</span></div>
+        <div class="syn-arrow">→</div>
+        <div class="syn-elements">
+          <span class="el-badge el-au">Au</span><span class="el-badge el-pt">Pt</span><span class="el-badge el-u">U</span><span class="el-badge el-pb">Pb</span><span class="el-badge el-sr">Sr</span>
+        </div>
+        <div class="syn-note">R-process neutron capture creates all elements heavier than iron. Gold and uranium are products of violent stellar death.</div>
+      </div>
+    </div>
+
+    <div class="ap-box">
+      <div class="apb-header">AP Chemistry Connection — Nuclear Chemistry &amp; Big Idea: Energy</div>
+      <p>Fusion and fission are mirror processes on the binding energy curve. <strong>Fusion of light nuclei</strong> (below iron) releases energy because the product has higher binding energy per nucleon. <strong>Fission of heavy nuclei</strong> (above iron) also releases energy for the same reason. Both involve mass defect: ΔE = Δmc².</p>
+    </div>
+  </div>
 </section>
+
 
 <!-- ATOMIC MODELS -->
 <section class="page" id="page-atomic">
-  <p>Atomic models page content coming soon.</p>
+  <div class="page-wrap">
+    <div class="page-header">
+      <div class="ph-num">03</div>
+      <div class="ph-text">
+        <div class="ph-eyebrow">Scientific Practice 1 — Models &amp; Representations</div>
+        <h1 class="ph-title">The Atomic Model Timeline</h1>
+        <p class="ph-sub">How evidence forced scientists to revise their understanding of the atom — five models across 123 years</p>
+      </div>
+    </div>
+
+    <div class="model-timeline">
+      <div class="mt-nav">
+        <button class="mt-btn active" data-model="dalton"><span class="mt-year">1803</span><span class="mt-name">Dalton</span></button>
+        <div class="mt-connector"></div>
+        <button class="mt-btn" data-model="thomson"><span class="mt-year">1897</span><span class="mt-name">Thomson</span></button>
+        <div class="mt-connector"></div>
+        <button class="mt-btn" data-model="rutherford"><span class="mt-year">1911</span><span class="mt-name">Rutherford</span></button>
+        <div class="mt-connector"></div>
+        <button class="mt-btn" data-model="bohr"><span class="mt-year">1913</span><span class="mt-name">Bohr</span></button>
+        <div class="mt-connector"></div>
+        <button class="mt-btn" data-model="quantum"><span class="mt-year">1926</span><span class="mt-name">Quantum</span></button>
+      </div>
+
+      <div class="mt-display">
+        <div class="mt-panel active" id="model-dalton">
+          <div class="mt-visual mv-dalton"><div class="mv-dalton-sphere"><div class="mv-dalton-shine"></div></div><div class="mv-label">Solid Sphere</div></div>
+          <div class="mt-info">
+            <div class="mt-info-header"><span class="mt-model-name">Dalton's Atomic Theory</span><span class="mt-model-year">1803</span></div>
+            <p class="mt-desc">John Dalton proposed that all matter is composed of indivisible, indestructible particles called atoms. Each element has atoms of a unique, characteristic mass. Atoms combine in simple, whole-number ratios to form compounds.</p>
+            <div class="mt-evidence"><h4>Key Evidence</h4><ul><li>Law of Conservation of Mass (Lavoisier, 1774)</li><li>Law of Definite Proportions (Proust, 1799)</li><li>Law of Multiple Proportions</li></ul></div>
+            <div class="mt-limitation"><h4>Limitation</h4><p>Could not explain electrical phenomena or why solutions conduct electricity. The atom was treated as truly indivisible — which turned out to be wrong.</p></div>
+          </div>
+        </div>
+
+        <div class="mt-panel" id="model-thomson">
+          <div class="mt-visual mv-thomson"><div class="mv-thomson-pudding"><div class="mv-thomson-pos"></div><div class="mv-e te1"></div><div class="mv-e te2"></div><div class="mv-e te3"></div><div class="mv-e te4"></div><div class="mv-e te5"></div></div><div class="mv-label">Plum Pudding</div></div>
+          <div class="mt-info">
+            <div class="mt-info-header"><span class="mt-model-name">Thomson's Plum Pudding Model</span><span class="mt-model-year">1897</span></div>
+            <p class="mt-desc">J.J. Thomson's cathode ray experiments demonstrated that all atoms contain negatively charged particles — electrons — far lighter than the lightest atom. He proposed the atom as a diffuse, positively charged sphere with electrons embedded throughout.</p>
+            <div class="mt-evidence"><h4>Key Evidence</h4><ul><li>Cathode ray tubes deflected identically regardless of electrode material</li><li>e/m ratio measured: electrons have mass ~1/1837 of hydrogen</li><li>Atoms are electrically neutral → positive charge must exist somewhere</li></ul></div>
+            <div class="mt-limitation"><h4>Limitation</h4><p>Predicted that alpha particles would pass through with only minimal deflection — dramatically disproved by Rutherford's gold foil experiment.</p></div>
+          </div>
+        </div>
+
+        <div class="mt-panel" id="model-rutherford">
+          <div class="mt-visual mv-rutherford"><div class="mv-nucleus gold-nuc"></div><div class="mv-orbit mvo1"><div class="mv-e"></div></div><div class="mv-orbit mvo2"><div class="mv-e"></div></div><div class="mv-orbit mvo3"><div class="mv-e"></div></div><div class="mv-label">Nuclear Model</div></div>
+          <div class="mt-info">
+            <div class="mt-info-header"><span class="mt-model-name">Rutherford's Nuclear Model</span><span class="mt-model-year">1911</span></div>
+            <p class="mt-desc">Geiger and Marsden fired alpha particles at gold foil. Most passed through — but roughly 1 in 8,000 bounced straight back. Rutherford concluded: the atom is mostly empty space, with a tiny, dense, positively charged nucleus.</p>
+            <div class="mt-evidence"><h4>Key Evidence</h4><ul><li>~99.98% of alpha particles passed through undeflected</li><li>~1 in 8,000 deflected at large angles → tiny, dense, positive nucleus</li><li>Nuclear radius ~10⁻¹⁵ m vs. atomic radius ~10⁻¹⁰ m</li></ul></div>
+            <div class="mt-limitation"><h4>Limitation</h4><p>Classical physics predicts orbiting electrons emit radiation continuously, lose energy, and spiral into the nucleus. Rutherford's model had no explanation for stable atoms.</p></div>
+          </div>
+        </div>
+
+        <div class="mt-panel" id="model-bohr">
+          <div class="mt-visual mv-bohr"><div class="mv-nucleus gold-nuc"></div><div class="mv-bohr-orbit bvo1"><div class="mv-e bohr-e1"></div></div><div class="mv-bohr-orbit bvo2"><div class="mv-e bohr-e2"></div></div><div class="mv-bohr-orbit bvo3"><div class="mv-e bohr-e3"></div></div><div class="mv-energy-label el1">n=1</div><div class="mv-energy-label el2">n=2</div><div class="mv-energy-label el3">n=3</div><div class="mv-label">Planetary/Bohr Model</div></div>
+          <div class="mt-info">
+            <div class="mt-info-header"><span class="mt-model-name">Bohr's Planetary Model</span><span class="mt-model-year">1913</span></div>
+            <p class="mt-desc">Niels Bohr applied quantum theory to Rutherford's nuclear atom. Electrons occupy specific, allowed energy levels and do not radiate energy while in them. When an electron transitions between levels, it absorbs or emits a photon: <strong>ΔE = hν</strong>. This explained hydrogen's emission spectrum exactly.</p>
+            <div class="mt-evidence"><h4>Key Evidence</h4><ul><li>Hydrogen emission spectrum: discrete lines at 656nm, 486nm, 434nm, 410nm</li><li>Bohr's formula predicted spectral line frequencies for hydrogen with perfect accuracy</li><li>Explained why atoms don't collapse</li></ul></div>
+            <div class="mt-limitation"><h4>Limitation</h4><p>Only worked for hydrogen (one electron). Failed completely for multi-electron atoms. Could not explain spectral line splitting in magnetic fields.</p></div>
+          </div>
+        </div>
+
+        <div class="mt-panel" id="model-quantum">
+          <div class="mt-visual mv-quantum"><div class="mv-nucleus gold-nuc"></div><div class="mv-cloud qc1"></div><div class="mv-cloud qc2"></div><div class="mv-cloud qc3"></div><div class="mv-cloud qc4"></div><div class="mv-label">Quantum Mechanical Model</div></div>
+          <div class="mt-info">
+            <div class="mt-info-header"><span class="mt-model-name">Quantum Mechanical Model</span><span class="mt-model-year">1926</span></div>
+            <p class="mt-desc">Schrödinger's wave equation describes electrons as probability distributions (wave functions ψ) rather than particles in defined orbits. The square of the wave function |ψ|² gives the probability of finding an electron at a given location. Heisenberg's Uncertainty Principle: <strong>Δx · Δp ≥ ℏ/2</strong>.</p>
+            <div class="mt-evidence"><h4>Key Evidence</h4><ul><li>De Broglie (1924): electrons exhibit wave behavior — electron diffraction confirmed</li><li>Heisenberg Uncertainty Principle: Δx·Δp ≥ ℏ/2</li><li>Quantum numbers (n, l, mₗ, mₛ) describe all observable electron properties</li></ul></div>
+            <div class="mt-limitation"><h4>Current Understanding</h4><p>This remains our most accurate model of atomic structure. It successfully explains all atomic phenomena, chemical bonding, and periodic trends.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ap-box">
+      <div class="apb-header">AP Chemistry Connection — Scientific Practice 1: Models &amp; Representations</div>
+      <p>This timeline directly demonstrates Scientific Practice 1: how scientific models evolve in response to new experimental evidence. <strong>Each revision was forced by data that the previous model could not explain</strong> — not by philosophical preference. This iterative process is how science actually works.</p>
+    </div>
+  </div>
 </section>
 
 <!-- DECAY -->
