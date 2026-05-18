@@ -465,22 +465,400 @@
 
 <!-- DECAY -->
 <section class="page" id="page-decay">
-  <p>Radioactive decay page content coming soon.</p>
+  <div class="page-wrap">
+    <div class="page-header">
+      <div class="ph-num">04</div>
+      <div class="ph-text">
+        <div class="ph-eyebrow">Scientific Practice 3 — Representing Data &amp; Phenomena</div>
+        <h1 class="ph-title">Radioactive Decay</h1>
+        <p class="ph-sub">Nuclear instability, exponential decay, and the mathematics of half-life — Unit 1: Nuclear Chemistry</p>
+      </div>
+    </div>
+
+    <div class="decay-types-grid">
+      <div class="dt-card dt-alpha">
+        <div class="dt-badge">α</div>
+        <h3>Alpha Decay</h3>
+        <div class="dt-eq">
+          <span class="dt-iso">²³⁸₉₂U</span><span class="dt-arr">→</span>
+          <span class="dt-iso">²³⁴₉₀Th</span><span class="dt-plus">+</span><span class="dt-particle dt-a">⁴₂He</span>
+        </div>
+        <ul>
+          <li><strong>Emitted:</strong> Helium-4 nucleus (2p + 2n)</li>
+          <li><strong>Mass number:</strong> decreases by 4</li>
+          <li><strong>Atomic number:</strong> decreases by 2</li>
+          <li><strong>Penetrating power:</strong> Low — stopped by paper</li>
+          <li><strong>Ionizing power:</strong> Very high</li>
+        </ul>
+        <p class="dt-note">Alpha decay is the primary decay mode for heavy nuclei (Z &gt; 82). Common in uranium and radium decay chains.</p>
+      </div>
+
+      <div class="dt-card dt-beta">
+        <div class="dt-badge">β</div>
+        <h3>Beta Decay (β⁻)</h3>
+        <div class="dt-eq">
+          <span class="dt-iso">¹⁴₆C</span><span class="dt-arr">→</span>
+          <span class="dt-iso">¹⁴₇N</span><span class="dt-plus">+</span>
+          <span class="dt-particle dt-b">e⁻</span><span class="dt-plus">+</span><span class="dt-particle dt-n">v̄ₑ</span>
+        </div>
+        <ul>
+          <li><strong>Process:</strong> Neutron → Proton + electron + antineutrino</li>
+          <li><strong>Mass number:</strong> unchanged</li>
+          <li><strong>Atomic number:</strong> increases by 1</li>
+          <li><strong>Penetrating power:</strong> Medium — stopped by aluminum foil</li>
+          <li><strong>Ionizing power:</strong> Moderate</li>
+        </ul>
+        <p class="dt-note">Carbon-14 beta decay is the basis of radiocarbon dating — used to date organic materials up to ~50,000 years old.</p>
+      </div>
+
+      <div class="dt-card dt-gamma">
+        <div class="dt-badge">γ</div>
+        <h3>Gamma Emission</h3>
+        <div class="dt-eq">
+          <span class="dt-iso">⁶⁰₂₇Co*</span><span class="dt-arr">→</span>
+          <span class="dt-iso">⁶⁰₂₇Co</span><span class="dt-plus">+</span><span class="dt-particle dt-g">γ</span>
+        </div>
+        <ul>
+          <li><strong>Emitted:</strong> High-energy photon</li>
+          <li><strong>Mass number:</strong> unchanged</li>
+          <li><strong>Atomic number:</strong> unchanged</li>
+          <li><strong>Penetrating power:</strong> Extreme — requires lead or concrete</li>
+          <li><strong>Ionizing power:</strong> Low (indirect)</li>
+        </ul>
+        <p class="dt-note">Often accompanies alpha or beta decay. Used in medical imaging (PET/SPECT) and cancer radiotherapy.</p>
+      </div>
+    </div>
+
+    <div class="calc-section">
+      <div class="calc-header">
+        <h3>Half-Life Decay Calculator</h3>
+        <p>Enter any radioactive isotope's parameters to calculate remaining quantity and visualize the decay curve</p>
+      </div>
+      <div class="calc-body">
+        <div class="calc-inputs">
+          <div class="calc-presets">
+            <span class="presets-label">Quick presets:</span>
+            <button class="preset-btn" data-n="100" data-h="5730" data-t="11460">¹⁴C Dating</button>
+            <button class="preset-btn" data-n="1000" data-h="1600" data-t="4800">²²⁶Ra</button>
+            <button class="preset-btn" data-n="500" data-h="4.5e9" data-t="9e9">²³⁸U</button>
+            <button class="preset-btn" data-n="200" data-h="8.02" data-t="24.06">¹³¹I (medical)</button>
+          </div>
+          <div class="ci-grid">
+            <div class="ci-field">
+              <label for="ci-n0">Initial Amount (g)</label>
+              <input type="number" id="ci-n0" value="100" min="0.001" step="any">
+            </div>
+            <div class="ci-field">
+              <label for="ci-hl">Half-Life (years)</label>
+              <input type="number" id="ci-hl" value="5730" min="0.0001" step="any">
+            </div>
+            <div class="ci-field">
+              <label for="ci-t">Time Elapsed (years)</label>
+              <input type="number" id="ci-t" value="11460" min="0" step="any">
+            </div>
+            <button class="calc-go" id="calcGo">Calculate</button>
+          </div>
+          <div class="calc-results" id="calcResults">
+            <div class="cr-grid">
+              <div class="cr-stat"><span class="cr-val" id="cr-remaining">—</span><span class="cr-label">Remaining (g)</span></div>
+              <div class="cr-stat"><span class="cr-val" id="cr-pct">—</span><span class="cr-label">% Remaining</span></div>
+              <div class="cr-stat"><span class="cr-val" id="cr-halflives">—</span><span class="cr-label">Half-Lives Elapsed</span></div>
+              <div class="cr-stat"><span class="cr-val" id="cr-decayed">—</span><span class="cr-label">Amount Decayed (g)</span></div>
+            </div>
+            <div class="cr-formula">N(t) = N₀ × (½)^(t/t½)</div>
+          </div>
+        </div>
+        <div class="calc-chart">
+          <canvas id="decayCanvas" width="580" height="300"></canvas>
+          <div class="chart-axis-x">Time (years)</div>
+          <div class="chart-axis-y">Amount (g)</div>
+        </div>
+      </div>
+      <div class="decay-table-wrap">
+        <h4>Decay Table</h4>
+        <div class="decay-table" id="decayTable"></div>
+      </div>
+    </div>
+
+    <div class="ap-box">
+      <div class="apb-header">AP Chemistry Connection — Scientific Practice 3: Representing Data &amp; Phenomena</div>
+      <p>The exponential decay equation <strong>N(t) = N₀ × (½)^(t/t½)</strong> is a mathematical model of a physical phenomenon. Notice that half-life is independent of the initial amount — this is a consequence of first-order kinetics, directly connecting to Unit 5: Chemical Kinetics.</p>
+    </div>
+  </div>
 </section>
+
 
 <!-- MATTER -->
 <section class="page" id="page-matter">
-  <p>Matter at scale content coming soon.</p>
+  <div class="page-wrap">
+    <div class="page-header">
+      <div class="ph-num">05</div>
+      <div class="ph-text">
+        <div class="ph-eyebrow">Chapter 5 — Structure &amp; Properties</div>
+        <h1 class="ph-title">Matter at Every Scale</h1>
+        <p class="ph-sub">Intermolecular forces, states of matter, and phase transitions from cosmic to molecular scale — Units 3 &amp; 5</p>
+      </div>
+    </div>
+
+    <div class="card-grid cg-3">
+      <div class="card">
+        <div class="card-icon ci-cyan">🌌</div>
+        <h3>States of Matter in Space</h3>
+        <p>Space contains matter in every state of aggregation, determined by temperature and pressure:</p>
+        <div class="matter-states">
+          <div class="ms-row"><span class="ms-badge ms-plasma">PLASMA</span><div class="ms-info"><strong>Stellar interiors, solar wind</strong><br><small>Temperatures &gt;10⁶ K; electrons stripped from nuclei</small></div></div>
+          <div class="ms-row"><span class="ms-badge ms-gas">GAS</span><div class="ms-info"><strong>Nebulae, planetary atmospheres</strong><br><small>H, He, CO, H₂O vapor in interstellar space</small></div></div>
+          <div class="ms-row"><span class="ms-badge ms-liquid">LIQUID</span><div class="ms-info"><strong>Subsurface oceans (Europa, Enceladus)</strong><br><small>Liquid water may exist under ice shells</small></div></div>
+          <div class="ms-row"><span class="ms-badge ms-solid">SOLID</span><div class="ms-info"><strong>Planets, asteroids, neutron stars</strong><br><small>Silicate and metallic solids; neutron stars are quantum-mechanical solids</small></div></div>
+        </div>
+      </div>
+
+      <div class="card card-gold">
+        <div class="card-icon ci-gold">⚡</div>
+        <h3>Intermolecular Forces</h3>
+        <p>The forces between molecules determine all bulk physical properties — melting point, boiling point, solubility, viscosity.</p>
+        <div class="imf-list">
+          <div class="imf-item imf-ld"><div class="imf-header"><span class="imf-name">London Dispersion</span><span class="imf-strength">Weakest</span></div><p>Temporary, instantaneous dipoles in all molecules. Strength scales with polarizability. Present in all substances.</p><div class="imf-formula">All molecules; ↑ with molar mass</div></div>
+          <div class="imf-item imf-dd"><div class="imf-header"><span class="imf-name">Dipole-Dipole</span><span class="imf-strength">Moderate</span></div><p>Between polar molecules with permanent partial charges (δ+/δ−).</p><div class="imf-formula">Polar molecules (e.g., HCl, SO₂)</div></div>
+          <div class="imf-item imf-hb"><div class="imf-header"><span class="imf-name">Hydrogen Bonding</span><span class="imf-strength">Strongest IMF</span></div><p>H bonded to <strong>N, O, or F</strong>. ~10× stronger than typical dipole-dipole. Responsible for water's anomalously high boiling point.</p><div class="imf-formula">H−N, H−O, H−F bonds</div></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-icon ci-cyan">🔄</div>
+        <h3>Phase Changes &amp; Energy</h3>
+        <p>Phase transitions require energy input to overcome IMFs:</p>
+        <div class="phase-diagram">
+          <div class="pd-state pd-solid"><span class="pd-label">SOLID</span><p>Ordered lattice; particles vibrate in place</p></div>
+          <div class="pd-transition"><span class="pd-arrow">↑</span><span class="pd-energy">+ΔH_fus (endothermic)</span></div>
+          <div class="pd-state pd-liquid"><span class="pd-label">LIQUID</span><p>Particles flow; IMFs partially overcome</p></div>
+          <div class="pd-transition"><span class="pd-arrow">↑</span><span class="pd-energy">+ΔH_vap (endothermic)</span></div>
+          <div class="pd-state pd-gas"><span class="pd-label">GAS</span><p>IMFs largely overcome; random kinetic motion</p></div>
+          <div class="pd-transition"><span class="pd-arrow">↑</span><span class="pd-energy">+IE (ionization energy)</span></div>
+          <div class="pd-state pd-plasma"><span class="pd-label">PLASMA</span><p>Electrons completely stripped</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="water-callout">
+      <div class="wc-icon">💧</div>
+      <div class="wc-text">
+        <h3>Why Water is Extraordinary</h3>
+        <p>Hydrogen bonding makes water chemically unique. H₂O should boil at approximately <strong>−80°C</strong> based on its molar mass and London dispersion forces alone. Instead it boils at 100°C — a 180° difference due entirely to O–H···O hydrogen bonding. This anomaly is why liquid water exists on Earth's surface, why ice floats, and ultimately why life as we know it is possible.</p>
+      </div>
+    </div>
+
+    <div class="ap-box">
+      <div class="apb-header">AP Chemistry Connection — Units 3 &amp; 5: IMFs, Phase Changes, and Properties of Matter</div>
+      <p>The cosmic distribution of matter states is governed by the same thermodynamic principles as your AP Chem Phase Change unit. IMF type and strength determine melting/boiling points — this is why Europa (with liquid water) and Titan (with liquid methane) exist.</p>
+    </div>
+  </div>
 </section>
+
 
 <!-- HUB -->
 <section class="page" id="page-hub">
-  <p>AP Chem Hub content coming soon.</p>
+  <div class="page-wrap">
+    <div class="page-header">
+      <div class="ph-num">06</div>
+      <div class="ph-text">
+        <div class="ph-eyebrow">Curriculum Synthesis</div>
+        <h1 class="ph-title">AP Chemistry Connections Hub</h1>
+        <p class="ph-sub">Every section of this website mapped back to College Board AP Chemistry CED units, Big Ideas, and Scientific Practices</p>
+      </div>
+    </div>
+
+    <div class="hub-grid">
+      <div class="hub-card hc-energy">
+        <div class="hc-tag">Big Idea: Energy</div>
+        <h3>Energy as the Cosmic Thread</h3>
+        <p>Energy is the unifying theme from the Big Bang through stellar evolution to molecular bonds:</p>
+        <ul>
+          <li><strong>Big Bang:</strong> E = mc² converts pure energy to matter</li>
+          <li><strong>Fusion:</strong> Mass defect releases binding energy in stars</li>
+          <li><strong>Decay:</strong> Nuclear instability releases energy as radiation</li>
+          <li><strong>Phase Changes:</strong> ΔH_fus and ΔH_vap are energy barriers controlled by IMFs</li>
+          <li><strong>Emission Spectra:</strong> ΔE = hν when electrons transition between levels</li>
+        </ul>
+        <div class="hc-ced">CED: Big Idea 4 — Energy can be transferred and transformed</div>
+      </div>
+
+      <div class="hub-card hc-structure">
+        <div class="hc-tag">Big Idea: Structure &amp; Properties</div>
+        <h3>Structure Determines Properties</h3>
+        <p>From atomic structure to molecular geometry to bulk properties:</p>
+        <ul>
+          <li><strong>Quantum model:</strong> Electron configuration → periodic trends → reactivity</li>
+          <li><strong>IMFs:</strong> Molecular structure (polarity, H-bonding) → physical properties</li>
+          <li><strong>Nuclear structure:</strong> N/Z ratio → stability → decay mode</li>
+          <li><strong>Stellar structure:</strong> Mass → fusion pathway → elements produced</li>
+        </ul>
+        <div class="hc-ced">CED: Big Idea 2 — Chemical and physical properties of materials</div>
+      </div>
+
+      <div class="hub-card hc-sp1">
+        <div class="hc-tag">Scientific Practice 1</div>
+        <h3>Models &amp; Representations</h3>
+        <p>The Atomic Model Timeline is SP-1 made visible:</p>
+        <ul>
+          <li>Dalton's sphere → no electrical phenomena explained</li>
+          <li>Thomson's pudding → demolished by gold foil experiment</li>
+          <li>Rutherford's nucleus → atom unstable by classical physics</li>
+          <li>Bohr's orbits → only works for hydrogen</li>
+          <li>Quantum model → explains all atomic phenomena</li>
+        </ul>
+        <div class="hc-ced">CED: SP-1 — Represent chemical phenomena with models</div>
+      </div>
+
+      <div class="hub-card hc-sp3">
+        <div class="hc-tag">Scientific Practice 3</div>
+        <h3>Representing Data &amp; Phenomena</h3>
+        <ul>
+          <li><strong>Decay calculator:</strong> N(t) = N₀(½)^(t/t½)</li>
+          <li><strong>Binding energy curve:</strong> MeV/nucleon vs. mass number; iron peak</li>
+          <li><strong>Element abundance chart:</strong> 75% H, 25% He from Big Bang nucleosynthesis</li>
+        </ul>
+        <div class="hc-ced">CED: SP-3 — Represent and analyze data and phenomena</div>
+      </div>
+
+      <div class="hub-card hc-unit1">
+        <div class="hc-tag">Unit 1: Atomic Structure</div>
+        <h3>From Cosmic Discovery to Electron Configuration</h3>
+        <ul>
+          <li>Subatomic particle discovery (Thomson, Rutherford, Chadwick)</li>
+          <li>Quantum numbers: n, l, mₗ, mₛ — derived from Schrödinger's equation</li>
+          <li>Electron configuration and orbital shapes (s, p, d, f)</li>
+          <li>Periodic trends: atomic radius, ionization energy, electronegativity</li>
+        </ul>
+        <div class="hc-ced">CED: Unit 1, Topics 1.1–1.9</div>
+      </div>
+
+      <div class="hub-card hc-nuclear">
+        <div class="hc-tag">Unit 1: Nuclear Chemistry</div>
+        <h3>Decay, Half-Life, and Stellar Fusion</h3>
+        <ul>
+          <li>Alpha, beta, gamma decay — types, equations, nuclear notation</li>
+          <li>Half-life equation: N(t) = N₀(½)^(t/t½)</li>
+          <li>Binding energy and mass defect: ΔE = Δmc²</li>
+          <li>Nuclear fusion vs. fission on the binding energy curve</li>
+        </ul>
+        <div class="hc-ced">CED: Unit 1, Topics 1.10–1.12 + Big Idea 4</div>
+      </div>
+
+      <div class="hub-card hc-imf">
+        <div class="hc-tag">Units 3 &amp; 5: IMFs</div>
+        <h3>Intermolecular Forces &amp; Phase Changes</h3>
+        <ul>
+          <li>London dispersion, dipole-dipole, hydrogen bonding — relative strengths</li>
+          <li>IMFs → boiling/melting points, vapor pressure, solubility</li>
+          <li>Phase transitions: ΔH_fus, ΔH_vap, Clausius-Clapeyron equation</li>
+          <li>Water's anomalous properties from O–H···O hydrogen bonding</li>
+        </ul>
+        <div class="hc-ced">CED: Unit 3 Topics 3.1–3.4, Unit 5 Topics 5.1–5.5</div>
+      </div>
+
+      <div class="hub-card hc-scale">
+        <div class="hc-tag">Big Idea: Scale, Proportion &amp; Quantity</div>
+        <h3>Orders of Magnitude in Chemistry</h3>
+        <ul>
+          <li>Nuclear radius: ~10⁻¹⁵ m vs. atomic radius ~10⁻¹⁰ m (100,000× difference)</li>
+          <li>Age of universe: 13.8 × 10⁹ years vs. ¹⁴C half-life: 5,730 years</li>
+          <li>Avogadro's number: 6.022 × 10²³ — atoms per mole</li>
+          <li>Fusion energy: 26.7 MeV per He-4 formed vs. chemical bond: ~4 eV</li>
+        </ul>
+        <div class="hc-ced">CED: Big Idea 3 — Changes in matter involve breaking/forming bonds</div>
+      </div>
+    </div>
+  </div>
 </section>
+
 
 <!-- CITATIONS -->
 <section class="page" id="page-citations">
-  <p>Citations coming soon.</p>
+  <div class="page-wrap">
+    <div class="page-header">
+      <div class="ph-num">07</div>
+      <div class="ph-text">
+        <div class="ph-eyebrow">Sources &amp; References</div>
+        <h1 class="ph-title">Citations</h1>
+        <p class="ph-sub">All sources used in the production of this project, formatted in MLA style</p>
+      </div>
+    </div>
+
+    <div class="cit-section">
+      <div class="cit-group-label">Primary Source</div>
+      <div class="cit-card cit-primary">
+        <div class="cit-num">1</div>
+        <div class="cit-body">
+          <p>Bryson, Bill. <em>A Short History of Nearly Everything.</em> Broadway Books, 2003. ISBN 978-0-7679-0817-7.</p>
+          <p class="cit-note">500+ page popular science book covering the history of science from the Big Bang to human evolution. Primary source for all narrative content, historical context, and scientific anecdotes throughout this project.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cit-section">
+      <div class="cit-group-label">AP Chemistry Curriculum</div>
+      <div class="cit-card">
+        <div class="cit-num">2</div>
+        <div class="cit-body">
+          <p>College Board. <em>AP Chemistry Course and Exam Description (CED), Effective Fall 2019.</em> College Board, 2023. collegeboard.org/ap/chemistry.</p>
+          <p class="cit-note">Authoritative source for all AP Chemistry content standards, Big Ideas, Scientific Practices, and Learning Objectives referenced throughout this site.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cit-section">
+      <div class="cit-group-label">Scientific Papers &amp; Primary Literature</div>
+      <div class="cit-card">
+        <div class="cit-num">3</div>
+        <div class="cit-body"><p>Einstein, Albert. "Ist die Trägheit eines Körpers von seinem Energieinhalt abhängig?" <em>Annalen der Physik,</em> vol. 18, 1905, pp. 639–641.</p></div>
+      </div>
+      <div class="cit-card">
+        <div class="cit-num">4</div>
+        <div class="cit-body"><p>Rutherford, Ernest. "The Scattering of α and β Particles by Matter and the Structure of the Atom." <em>Philosophical Magazine,</em> Series 6, vol. 21, no. 125, 1911, pp. 669–688.</p></div>
+      </div>
+      <div class="cit-card">
+        <div class="cit-num">5</div>
+        <div class="cit-body"><p>Bohr, Niels. "On the Constitution of Atoms and Molecules." <em>Philosophical Magazine,</em> Series 6, vol. 26, no. 151, 1913, pp. 1–25.</p></div>
+      </div>
+      <div class="cit-card">
+        <div class="cit-num">6</div>
+        <div class="cit-body"><p>Schrödinger, Erwin. "Quantisierung als Eigenwertproblem." <em>Annalen der Physik,</em> vol. 384, no. 4, 1926, pp. 361–376.</p></div>
+      </div>
+    </div>
+
+    <div class="cit-section">
+      <div class="cit-group-label">Supplementary Reference Works</div>
+      <div class="cit-card">
+        <div class="cit-num">7</div>
+        <div class="cit-body">
+          <p>Atkins, Peter, and Loretta Jones. <em>Chemical Principles: The Quest for Insight.</em> 7th ed., W.H. Freeman, 2016.</p>
+          <p class="cit-note">Reference for accurate binding energy values, decay chain data, and IMF explanations used in visualizations.</p>
+        </div>
+      </div>
+      <div class="cit-card">
+        <div class="cit-num">8</div>
+        <div class="cit-body">
+          <p>National Nuclear Data Center. <em>Chart of Nuclides.</em> Brookhaven National Laboratory, 2023. nndc.bnl.gov/nudat3/.</p>
+          <p class="cit-note">Authoritative database for all half-life values and decay mode data used in the calculator presets.</p>
+        </div>
+      </div>
+      <div class="cit-card">
+        <div class="cit-num">9</div>
+        <div class="cit-body">
+          <p>Audi, G., et al. "The AME2020 Atomic Mass Evaluation." <em>Chinese Physics C,</em> vol. 45, no. 3, 2021, art. 030001.</p>
+          <p class="cit-note">Source for binding energy per nucleon values used in the stellar nucleosynthesis binding energy curve.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cit-footer">
+      <p><strong>Project Information:</strong> AP Chemistry Final Project · Artifact of Learning</p>
+      <p>Based on Bill Bryson's <em>A Short History of Nearly Everything</em> (2003)</p>
+      <p>Built entirely from scratch using HTML, CSS, and JavaScript — no frameworks or website builders</p>
+      <p>May 2025</p>
+    </div>
+  </div>
 </section>
 
 </main>
