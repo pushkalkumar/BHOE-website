@@ -169,3 +169,191 @@ function initBindingChart(force) {
   ctx.fillText('MeV / nucleon', 0, 0);
   ctx.restore();
 }
+
+
+/* ── HALF-LIFE DECAY CALCULATOR ──────────────────────────── */
+function initDecayCalc() {
+  const n0Input  = document.getElementById('ci-n0');
+  const hlInput  = document.getElementById('ci-hl');
+  const tInput   = document.getElementById('ci-t');
+  const goBtn    = document.getElementById('calcGo');
+  if (!goBtn) return;
+
+  document.querySelectorAll('.preset-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      n0Input.value = btn.dataset.n;
+      hlInput.value = btn.dataset.h;
+      tInput.value  = btn.dataset.t;
+      runCalc();
+    });
+  });
+
+  goBtn.addEventListener('click', runCalc);
+  runCalc();
+
+  function runCalc() {
+    const N0 = parseFloat(n0Input.value);
+    const HL = parseFloat(hlInput.value);
+    const T  = parseFloat(tInput.value);
+
+    if (isNaN(N0) || isNaN(HL) || isNaN(T) || HL <= 0 || N0 <= 0 || T < 0) {
+      ['cr-remaining','cr-pct','cr-halflives','cr-decayed'].forEach(id => {
+        document.getElementById(id).textContent = '—';
+      });
+      return;
+    }
+
+    const halflives = T / HL;
+    const remaining = N0 * Math.pow(0.5, halflives);
+    const pct = (remaining / N0) * 100;
+    const decayed = N0 - remaining;
+
+    document.getElementById('cr-remaining').textContent = fmt(remaining);
+    document.getElementById('cr-pct').textContent = pct.toFixed(2) + '%';
+    document.getElementById('cr-halflives').textContent = halflives.toFixed(3);
+    document.getElementById('cr-decayed').textContent = fmt(decayed);
+
+    drawDecayCurve(N0, HL, T);
+    buildDecayTable(N0, HL, halflives);
+  }
+}
+
+function fmt(n) {
+  if (n === 0) return '0';
+  if (n < 0.001) return n.toExponential(3);
+  if (n >= 1e9)  return n.toExponential(3);
+  return parseFloat(n.toPrecision(5)).toString();
+}
+
+function drawDecayCurve(N0, HL, T) {
+  const canvas = document.getElementById('decayCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  const maxT = Math.max(T * 1.25, HL * 4);
+  const pad = { l:54, r:24, t:20, b:44 };
+  const cx = (t) => pad.l + (t / maxT) * (W - pad.l - pad.r);
+  const cy = (n) => pad.t + (1 - n / N0) * (H - pad.t - pad.b);
+
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = 'rgba(2,5,9,0.8)';
+  ctx.fillRect(0, 0, W, H);
+
+  ctx.strokeStyle = 'rgba(255,255,255,0.04)'; ctx.lineWidth = 1;
+  [0.25, 0.5, 0.75, 1.0].forEach(f => {
+    const y = cy(f * N0);
+    ctx.beginPath(); ctx.moveTo(pad.l, y); ctx.lineTo(W-pad.r, y); ctx.stroke();
+  });
+
+  let numHL = Math.floor(maxT / HL);
+  for (let i = 1; i <= numHL; i++) {
+    const x = cx(i * HL);
+    if (x > W-pad.r) break;
+    ctx.strokeStyle = 'rgba(240,180,41,0.12)';
+    ctx.beginPath(); ctx.moveTo(x, pad.t); ctx.lineTo(x, H-pad.b); ctx.stroke();
+    ctx.fillStyle = 'rgba(240,180,41,0.35)';
+    ctx.font = '9px JetBrains Mono, monospace';
+    ctx.textAlign = 'center';
+    ctx.fillText(`t½×${i}`, x, pad.t-4);
+  }
+
+  ctx.strokeStyle = 'rgba(255,255,255,0.15)'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(pad.l, pad.t); ctx.lineTo(pad.l, H-pad.b); ctx.lineTo(W-pad.r, H-pad.b); ctx.stroke();
+
+  ctx.fillStyle = 'rgba(139,157,199,0.6)'; ctx.font = '10px JetBrains Mono, monospace'; ctx.textAlign = 'right';
+  [0.25, 0.5, 0.75, 1.0].forEach(f => { ctx.fillText(fmt(f * N0), pad.l-6, cy(f * N0)+4); });
+
+  const grad = ctx.createLinearGradient(0, pad.t, 0, H-pad.b);
+  grad.addColorStop(0, 'rgba(6,182,212,0.22)');
+  grad.addColorStop(1, 'rgba(6,182,212,0.02)');
+  ctx.beginPath();
+  const steps = 200;
+  for (let i = 0; i <= steps; i++) {
+    const ti = (i / steps) * maxT;
+    const ni = N0 * Math.pow(0.5, ti / HL);
+    i === 0 ? ctx.moveTo(cx(ti), cy(ni)) : ctx.lineTo(cx(ti), cy(ni));
+  }
+  ctx.lineTo(cx(maxT), H-pad.b); ctx.lineTo(cx(0), H-pad.b); ctx.closePath();
+  ctx.fillStyle = grad; ctx.fill();
+
+  ctx.beginPath(); ctx.strokeStyle = '#22d3ee'; ctx.lineWidth = 2.5;
+  for (let i = 0; i <= steps; i++) {
+    const ti = (i / steps) * maxT;
+    const ni = N0 * Math.pow(0.5, ti / HL);
+    i === 0 ? ctx.moveTo(cx(ti), cy(ni)) : ctx.lineTo(cx(ti), cy(ni));
+  }
+  ctx.stroke();
+
+  const rem = N0 * Math.pow(0.5, T / HL);
+  const markerX = cx(T); const markerY = cy(rem);
+  ctx.strokeStyle = 'rgba(240,180,41,0.3)'; ctx.lineWidth = 1; ctx.setLineDash([4, 4]);
+  ctx.beginPath(); ctx.moveTo(markerX, markerY); ctx.lineTo(markerX, H-pad.b); ctx.stroke();
+  ctx.moveTo(pad.l, markerY); ctx.lineTo(markerX, markerY); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.beginPath(); ctx.arc(markerX, markerY, 5, 0, Math.PI*2);
+  ctx.fillStyle = '#f0b429'; ctx.fill();
+
+  const pct = (rem / N0 * 100).toFixed(1);
+  const label = `${fmt(rem)} g (${pct}%)`;
+  const lx = markerX + 12 > W - 120 ? markerX - 120 : markerX + 12;
+  ctx.fillStyle = 'rgba(15,26,46,0.9)'; ctx.strokeStyle = 'rgba(240,180,41,0.4)'; ctx.lineWidth = 1;
+  const lw = ctx.measureText(label).width + 16;
+  ctx.beginPath(); ctx.roundRect(lx - 4, markerY - 16, lw, 22, 4); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#fcd34d'; ctx.font = 'bold 10px JetBrains Mono, monospace';
+  ctx.textAlign = 'left'; ctx.fillText(label, lx + 4, markerY - 1);
+}
+
+function buildDecayTable(N0, HL, totalHL) {
+  const container = document.getElementById('decayTable');
+  if (!container) return;
+  const rows = Math.min(Math.ceil(totalHL) + 3, 12);
+  let html = '<table><thead><tr><th>Half-Lives (n)</th><th>Time (years)</th><th>Remaining (g)</th><th>% Remaining</th></tr></thead><tbody>';
+  for (let i = 0; i <= rows; i++) {
+    const t = i * HL;
+    const n = N0 * Math.pow(0.5, i);
+    const pct = (n / N0 * 100).toFixed(2);
+    const isCurrent = i === Math.round(totalHL);
+    const style = isCurrent ? ' style="background:rgba(240,180,41,0.07);color:#fcd34d"' : '';
+    html += `<tr${style}><td>${i}</td><td>${fmt(t)}</td><td>${fmt(n)}</td><td>${pct}%</td></tr>`;
+  }
+  html += '</tbody></table>';
+  container.innerHTML = html;
+}
+
+
+/* ── SCROLL ANIMATIONS ───────────────────────────────────── */
+(function initScrollAnim() {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  function observeChildren(page) {
+    page.querySelectorAll('.card, .hub-card, .dt-card, .cit-card, .syn-row, .mt-btn, .tlh-node').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      obs.observe(el);
+    });
+  }
+
+  document.querySelectorAll('.sn-item[data-page]').forEach(a => {
+    a.addEventListener('click', () => {
+      const id = a.dataset.page;
+      setTimeout(() => {
+        const page = document.getElementById('page-' + id);
+        if (page) observeChildren(page);
+      }, 100);
+    });
+  });
+
+  setTimeout(() => {
+    const home = document.getElementById('page-home');
+    if (home) observeChildren(home);
+  }, 200);
+})();
