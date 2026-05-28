@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════════════════════
    CHEMCOSMOS · Stellar Codex
-   Fonts: Syne (display) · Source Serif 4 (body) · JetBrains Mono (data) · Inter (UI)
+   Fonts: Source Serif 4 (display + body) · JetBrains Mono (data) · Inter (UI)
 ═══════════════════════════════════════════════════════════ */
 
 /* ── TOKENS ─────────────────────────────────────────────── */
@@ -27,7 +27,7 @@
   --t3: #4a4238;
   --t4: #2c2620;
 
-  --fh: 'Syne', sans-serif;
+  --fh: 'Source Serif 4', serif;
   --fu: 'Inter', sans-serif;
   --fb: 'Source Serif 4', serif;
   --fm: 'JetBrains Mono', monospace;
@@ -83,10 +83,10 @@ canvas { display: block; }
 }
 .brand-name {
   display: block;
-  font-family: var(--fh);
+  font-family: var(--fu);
   font-size: 1.05rem;
-  font-weight: 700;
-  letter-spacing: -0.01em;
+  font-weight: 600;
+  letter-spacing: 0.01em;
   color: var(--t1);
   line-height: 1;
 }
@@ -169,7 +169,7 @@ canvas { display: block; }
   justify-content: center; gap: 5px; padding: 6px;
 }
 .mob-menu span { display: block; height: 1.5px; background: var(--t2); border-radius: 2px; }
-.mob-title { font-family: var(--fh); font-size: 0.95rem; font-weight: 700; color: var(--t1); flex: 1; }
+.mob-title { font-family: var(--fu); font-size: 0.95rem; font-weight: 600; color: var(--t1); flex: 1; }
 .mob-page-indicator { font-family: var(--fu); font-size: 0.65rem; font-weight: 500; color: var(--coral); }
 .mob-overlay {
   display: none;
@@ -203,7 +203,7 @@ canvas { display: block; }
   border-bottom: 1px solid var(--border);
 }
 .ph-num {
-  font-family: var(--fh); font-size: 3.8rem; font-weight: 800; line-height: 1;
+  font-family: var(--fu); font-size: 3.8rem; font-weight: 700; line-height: 1;
   color: rgba(255,220,180,0.05); letter-spacing: -0.04em; flex-shrink: 0; user-select: none;
 }
 .ph-eyebrow {
@@ -332,8 +332,8 @@ canvas { display: block; }
 .hero-title { display: flex; flex-direction: column; gap: 0; margin-bottom: 22px; }
 .ht-line {
   font-family: var(--fh);
-  font-size: clamp(3.2rem, 6.8vw, 5.8rem);
-  font-weight: 800; letter-spacing: -0.03em; line-height: 0.92; color: var(--t1);
+  font-size: clamp(3rem, 6.4vw, 5.4rem);
+  font-weight: 600; letter-spacing: -0.02em; line-height: 0.96; color: var(--t1);
 }
 .ht-line.accent { color: var(--coral-lt); }
 .hero-sub {
@@ -435,7 +435,7 @@ canvas { display: block; }
 .mt-btn.active { background: var(--elevated); border-color: var(--coral); color: var(--t1); }
 .mt-year { font-family: var(--fm); font-size: 0.6rem; color: var(--t3); }
 .mt-btn.active .mt-year { color: var(--coral); }
-.mt-name { font-family: var(--fh); font-size: 0.8rem; font-weight: 600; }
+.mt-name { font-family: var(--fu); font-size: 0.8rem; font-weight: 500; }
 .mt-display { position: relative; min-height: 400px; }
 .mt-panel { display: none; grid-template-columns: 260px 1fr; gap: 28px; animation: panel-in 0.32s var(--ease); }
 .mt-panel.active { display: grid; }
@@ -529,7 +529,7 @@ canvas { display: block; }
 .decay-types-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 36px; }
 .dt-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; }
 .dt-badge {
-  font-family: var(--fh); font-size: 1.6rem; font-weight: 800;
+  font-family: var(--fu); font-size: 1.5rem; font-weight: 600;
   color: var(--t3); margin-bottom: 14px; display: block; line-height: 1;
 }
 .dt-alpha .dt-badge { color: rgba(249,115,22,0.55); }
