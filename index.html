@@ -327,6 +327,33 @@
       </div>
     </div>
 
+    <div class="stellar-calc">
+      <div class="stc-header">
+        <h3>Stellar Lifecycle Calculator</h3>
+        <p>A star's mass determines everything — its spectral class, lifespan, which elements it can fuse, and how it dies. Drag the slider to explore.</p>
+      </div>
+      <div class="stc-body">
+        <div class="stc-left">
+          <canvas id="stellarCanvas" class="stc-star-canvas"></canvas>
+          <div class="stc-mass-wrap">
+            <div class="stc-mass-row">
+              <span class="stc-mass-label">Stellar Mass</span>
+              <div class="stc-mass-input-row">
+                <input type="number" id="stellarMassNum" value="1.00" min="0.08" max="60" step="0.01" aria-label="Mass in solar masses">
+                <span class="stc-msun">M<sub>☉</sub></span>
+              </div>
+            </div>
+            <input type="range" id="stellarMass" min="0.08" max="60" step="0.01" value="1" class="stc-slider">
+            <div class="stc-slider-ends">
+              <span>0.08 M<sub>☉</sub></span>
+              <span>60 M<sub>☉</sub></span>
+            </div>
+          </div>
+        </div>
+        <div class="stc-right" id="stcResult"></div>
+      </div>
+    </div>
+
     <div class="ap-box">
       <div class="apb-header">AP Chemistry Connection · Nuclear Chemistry</div>
       <p>Fusion below iron and fission above iron both release energy for the same reason: both sides of the iron-56 peak slide toward higher binding energy per nucleon. In both cases, mass disappears, and that mass becomes energy through ΔE = Δmc².</p>

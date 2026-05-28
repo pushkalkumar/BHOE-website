@@ -24,7 +24,7 @@
     if (pageId === 'home')   animateCounters();
     if (pageId === 'atomic') initAtomicTimeline();
     if (pageId === 'decay')  { initDecayCalc(); initBindingChart(false); }
-    if (pageId === 'stars')  initBindingChart(true);
+    if (pageId === 'stars')  { initBindingChart(true); initStellarFromNav(); }
   }
 
   document.querySelectorAll('.sn-item[data-page]').forEach(a => {
@@ -572,4 +572,224 @@ function buildDecayTable(N0, HL, totalHL) {
     const home = document.getElementById('page-home');
     if (home) observeChildren(home);
   }, 900);
+})();
+
+
+/* ── STELLAR LIFECYCLE CALCULATOR ────────────────────────── */
+(function initStellarCalc() {
+  const slider  = document.getElementById('stellarMass');
+  const numInp  = document.getElementById('stellarMassNum');
+  const canvas  = document.getElementById('stellarCanvas');
+  const result  = document.getElementById('stcResult');
+  if (!slider || !canvas || !result) return;
+
+  /* ── star data tables ── */
+  const CLASSES = [
+    { maxM: 0.08, type: 'L',  name: 'Brown Dwarf',       hex: '#6b3fa0' },
+    { maxM: 0.45, type: 'M',  name: 'Red Dwarf',         hex: '#ff4500' },
+    { maxM: 0.80, type: 'K',  name: 'Orange Dwarf',      hex: '#ff7700' },
+    { maxM: 1.04, type: 'G',  name: 'Yellow Dwarf',      hex: '#ffd040' },
+    { maxM: 1.40, type: 'F',  name: 'Yellow-White Star', hex: '#ffe8a0' },
+    { maxM: 2.10, type: 'A',  name: 'White Star',        hex: '#e8eeff' },
+    { maxM: 16,   type: 'B',  name: 'Blue-White Giant',  hex: '#aac8ff' },
+    { maxM: Infinity, type: 'O', name: 'Blue Supergiant',hex: '#88aaff' },
+  ];
+
+  const STAGES = [
+    { label: 'H → He',   minM: 0.08, color: '#60a5fa', desc: 'Hydrogen burning' },
+    { label: 'He → C, O',minM: 0.50, color: '#a78bfa', desc: 'Triple-alpha process' },
+    { label: 'C → Ne',   minM: 8.0,  color: '#34d399', desc: 'Carbon burning'   },
+    { label: 'Ne → O',   minM: 8.0,  color: '#fbbf24', desc: 'Neon burning'      },
+    { label: 'O → Si',   minM: 8.0,  color: '#f97316', desc: 'Oxygen burning'    },
+    { label: 'Si → Fe',  minM: 10.0, color: '#f43f5e', desc: 'Silicon burning → iron core' },
+  ];
+
+  /* ── helper functions ── */
+  function hexToRgb(h) {
+    const r = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(h);
+    return r ? [parseInt(r[1],16), parseInt(r[2],16), parseInt(r[3],16)] : [255,255,255];
+  }
+
+  function calcData(mass) {
+    const cls  = CLASSES.find(c => mass < c.maxM) || CLASSES[CLASSES.length - 1];
+    const life = mass < 0.08 ? null : 1e10 * Math.pow(mass, -2.5);
+    const Tc   = mass < 0.08 ? null : 1.5e7 * Math.pow(mass, 0.57);
+    const lum  = mass < 0.08 ? null : Math.pow(mass, 4);
+
+    let remnant, remnantHex;
+    if      (mass < 0.08) { remnant = 'Brown Dwarf';  remnantHex = '#6b3fa0'; }
+    else if (mass < 8)    { remnant = 'White Dwarf';  remnantHex = '#c4b5fd'; }
+    else if (mass < 20)   { remnant = 'Neutron Star'; remnantHex = '#60a5fa'; }
+    else                  { remnant = 'Black Hole';   remnantHex = '#444466'; }
+
+    return { cls, life, Tc, lum, remnant, remnantHex };
+  }
+
+  function fmtLife(y) {
+    if (!y) return '—';
+    if (y > 1e13) return '> 1 trillion yr';
+    if (y > 1e12) return (y/1e12).toFixed(1) + ' trillion yr';
+    if (y > 1e9)  return (y/1e9).toFixed(2) + ' billion yr';
+    if (y > 1e6)  return (y/1e6).toFixed(1) + ' million yr';
+    return y.toExponential(2) + ' yr';
+  }
+
+  function fmtTemp(T) {
+    if (!T) return '—';
+    return (T / 1e6).toFixed(1) + ' × 10⁶ K';
+  }
+
+  function fmtLum(L) {
+    if (!L) return '—';
+    if (L >= 1e6) return (L/1e6).toFixed(0) + 'M L☉';
+    if (L >= 1e3) return (L/1e3).toFixed(0) + 'k L☉';
+    return L.toFixed(1) + ' L☉';
+  }
+
+  /* ── animated star canvas ── */
+  let starPhase = 0, starRaf = null;
+
+  function drawStar(mass, hex) {
+    const dpr = window.devicePixelRatio || 1;
+    const S = 180;
+    canvas.width = S * dpr; canvas.height = S * dpr;
+    canvas.style.width = S + 'px'; canvas.style.height = S + 'px';
+    const ctx = canvas.getContext('2d');
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    const [r, g, b] = hexToRgb(hex);
+    const cx = S / 2, cy = S / 2;
+    const maxR = S * 0.34;
+    const minR = S * 0.06;
+    /* radius scale: log so going from 1→60 M☉ doesn't blow out */
+    const starR = mass < 0.08
+      ? minR
+      : Math.min(maxR, minR + (Math.log(mass / 0.08 + 1) / Math.log(61)) * (maxR - minR));
+
+    if (starRaf) cancelAnimationFrame(starRaf);
+
+    function tick() {
+      ctx.clearRect(0, 0, S, S);
+      starPhase += 0.018;
+      const pulse = 0.92 + 0.08 * Math.sin(starPhase);
+
+      if (mass < 0.08) {
+        /* brown dwarf — dim gaseous blob */
+        const g2 = ctx.createRadialGradient(cx, cy, 0, cx, cy, starR * 1.6);
+        g2.addColorStop(0, `rgba(${r},${g},${b},0.55)`);
+        g2.addColorStop(0.5, `rgba(${r},${g},${b},0.18)`);
+        g2.addColorStop(1, 'rgba(0,0,0,0)');
+        ctx.fillStyle = g2;
+        ctx.beginPath(); ctx.arc(cx, cy, starR * 1.6, 0, Math.PI*2); ctx.fill();
+        starRaf = requestAnimationFrame(tick);
+        return;
+      }
+
+      /* outer corona */
+      const corona = ctx.createRadialGradient(cx, cy, starR * 0.7, cx, cy, starR * 3);
+      corona.addColorStop(0, `rgba(${r},${g},${b},${0.13 * pulse})`);
+      corona.addColorStop(0.5, `rgba(${r},${g},${b},0.05)`);
+      corona.addColorStop(1, 'rgba(0,0,0,0)');
+      ctx.fillStyle = corona;
+      ctx.beginPath(); ctx.arc(cx, cy, starR * 3, 0, Math.PI*2); ctx.fill();
+
+      /* mid glow */
+      const mid = ctx.createRadialGradient(cx, cy, 0, cx, cy, starR * 1.5);
+      mid.addColorStop(0, `rgba(${r},${g},${b},${0.25 * pulse})`);
+      mid.addColorStop(1, 'rgba(0,0,0,0)');
+      ctx.fillStyle = mid;
+      ctx.beginPath(); ctx.arc(cx, cy, starR * 1.5, 0, Math.PI*2); ctx.fill();
+
+      /* star disc */
+      const disc = ctx.createRadialGradient(cx - starR*0.22, cy - starR*0.22, 0, cx, cy, starR);
+      disc.addColorStop(0, '#ffffff');
+      disc.addColorStop(0.25, hex);
+      disc.addColorStop(1, `rgba(${Math.max(0,r-60)},${Math.max(0,g-60)},${Math.max(0,b-60)},0.9)`);
+      ctx.fillStyle = disc;
+      ctx.beginPath(); ctx.arc(cx, cy, starR * pulse, 0, Math.PI*2); ctx.fill();
+
+      starRaf = requestAnimationFrame(tick);
+    }
+    tick();
+  }
+
+  /* ── result HTML ── */
+  function renderResult(mass, d) {
+    const { cls, life, Tc, lum, remnant, remnantHex } = d;
+    const [r,g,b] = hexToRgb(cls.hex);
+    const [rr,rg,rb] = hexToRgb(remnantHex);
+    const isSN = mass >= 8;
+
+    const stagesHTML = STAGES.map((s, i) => {
+      const on = mass >= s.minM;
+      const arrow = i < STAGES.length - 1 ? `<span class="stc-chain-arrow">→</span>` : '';
+      return `<div class="stc-stage ${on ? 'active' : 'inactive'}" title="${s.desc}">
+        <span class="stc-stage-dot" style="${on ? `background:${s.color}` : ''}"></span>
+        <span class="stc-stage-text">${s.label}</span>
+      </div>${arrow}`;
+    }).join('');
+
+    result.innerHTML = `
+      <div class="stc-class-row">
+        <span class="stc-class-badge"
+          style="color:${cls.hex};border-color:rgba(${r},${g},${b},0.35);background:rgba(${r},${g},${b},0.09)">
+          ${cls.type}-type
+        </span>
+        <span class="stc-class-name">${cls.name}</span>
+        ${isSN ? '<span class="stc-supernova-tag">Supernova candidate</span>' : ''}
+      </div>
+
+      <div class="stc-stats">
+        <div class="stc-stat">
+          <span class="stc-stat-label">Main-sequence life</span>
+          <span class="stc-stat-val">${fmtLife(life)}</span>
+        </div>
+        <div class="stc-stat">
+          <span class="stc-stat-label">Core temperature</span>
+          <span class="stc-stat-val">${fmtTemp(Tc)}</span>
+        </div>
+        <div class="stc-stat">
+          <span class="stc-stat-label">Luminosity</span>
+          <span class="stc-stat-val">${fmtLum(lum)}</span>
+        </div>
+      </div>
+
+      <div class="stc-fusion-section">
+        <div class="stc-chain-label">Fusion chain achieved</div>
+        <div class="stc-chain">${stagesHTML}</div>
+      </div>
+
+      <div class="stc-remnant-row">
+        <span class="stc-remnant-label">Stellar remnant</span>
+        <span class="stc-remnant-badge"
+          style="color:${remnantHex};border-color:rgba(${rr},${rg},${rb},0.35);background:rgba(${rr},${rg},${rb},0.09)">
+          ${remnant}
+        </span>
+        ${life ? `<span class="stc-lifespan-note">After ~${fmtLife(life)}</span>` : ''}
+      </div>`;
+  }
+
+  /* ── update on input ── */
+  function update() {
+    const mass = Math.max(0.08, Math.min(60, parseFloat(slider.value) || 1));
+    const d = calcData(mass);
+    drawStar(mass, d.cls.hex);
+    renderResult(mass, d);
+  }
+
+  slider.addEventListener('input', () => {
+    numInp.value = parseFloat(slider.value).toFixed(2);
+    update();
+  });
+  numInp.addEventListener('input', () => {
+    const v = Math.max(0.08, Math.min(60, parseFloat(numInp.value) || 1));
+    slider.value = v;
+    update();
+  });
+
+  /* expose for goTo router */
+  window.initStellarFromNav = () => setTimeout(update, 60);
+
+  /* also init if stars is active on load */
+  if (document.getElementById('page-stars')?.classList.contains('active')) update();
 })();
