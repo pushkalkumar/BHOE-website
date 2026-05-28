@@ -70,23 +70,19 @@
 
 <!-- MAIN -->
 <main class="main" id="main">
+<div class="reading-bar" id="readingBar" aria-hidden="true"></div>
 
 <!-- HOME -->
 <section class="page active" id="page-home">
   <div class="hero">
-    <div class="hero-eyebrow">AP Chemistry Final Project · Bill Bryson</div>
+    <canvas id="starCanvas" class="star-canvas" aria-hidden="true"></canvas>
+    <div class="hero-eyebrow">Bill Bryson · A Short History of Nearly Everything</div>
     <h1 class="hero-title">
       <span class="ht-line">The Universe</span>
       <span class="ht-line accent">Through a</span>
       <span class="ht-line">Chemist's Eyes</span>
     </h1>
-    <p class="hero-sub">Bryson spent six years talking to scientists to write this book. This project follows the same thread, from the first seconds of the universe to the molecules that make up everything around us.</p>
-
-    <div class="hero-tags">
-      <span class="htag">Big Idea: Energy</span>
-      <span class="htag">SP-1: Models &amp; Representations</span>
-      <span class="htag">SP-3: Representing Data</span>
-    </div>
+    <p class="hero-sub">Bryson spent six years talking to scientists to write this book. This site traces that same path — from the first seconds of the universe to the molecules that make up everything around us.</p>
 
     <div class="hero-cta-row">
       <button class="btn-primary" data-page="bigbang">
@@ -297,7 +293,10 @@
     <div class="synthesis-grid">
       <div class="syn-header">How stars produce different elements</div>
       <div class="syn-row">
-        <div class="syn-star small"><div class="syn-star-icon">☀</div><span>Low-mass Stars<br><small>0.1-8 M☉</small></span></div>
+        <div class="syn-type">
+          <span class="st-label st-low">Low-mass</span>
+          <span class="st-range">0.1–8 M☉</span>
+        </div>
         <div class="syn-arrow">→</div>
         <div class="syn-elements">
           <span class="el-badge el-h">H</span><span class="el-badge el-he">He</span><span class="el-badge el-c">C</span><span class="el-badge el-o">O</span><span class="el-badge el-n">N</span>
@@ -305,7 +304,10 @@
         <div class="syn-note">Produce C and O through the triple-alpha process. Leave behind a white dwarf.</div>
       </div>
       <div class="syn-row">
-        <div class="syn-star massive"><div class="syn-star-icon">★</div><span>Massive Stars<br><small>&gt;8 M☉</small></span></div>
+        <div class="syn-type">
+          <span class="st-label st-mass">Massive</span>
+          <span class="st-range">&gt;8 M☉</span>
+        </div>
         <div class="syn-arrow">→</div>
         <div class="syn-elements">
           <span class="el-badge el-c">C</span><span class="el-badge el-ne">Ne</span><span class="el-badge el-si">Si</span><span class="el-badge el-fe">Fe</span><span class="el-badge el-ni">Ni</span>
@@ -313,7 +315,10 @@
         <div class="syn-note">Run through shell-burning stages up to iron. End as neutron stars or black holes.</div>
       </div>
       <div class="syn-row">
-        <div class="syn-star sn"><div class="syn-star-icon">💥</div><span>Supernovae &amp;<br>Neutron Star Mergers</span></div>
+        <div class="syn-type">
+          <span class="st-label st-sn">Supernovae</span>
+          <span class="st-range">+ Neutron Star Mergers</span>
+        </div>
         <div class="syn-arrow">→</div>
         <div class="syn-elements">
           <span class="el-badge el-au">Au</span><span class="el-badge el-pt">Pt</span><span class="el-badge el-u">U</span><span class="el-badge el-pb">Pb</span><span class="el-badge el-sr">Sr</span>
@@ -343,16 +348,33 @@
     </div>
 
     <div class="model-timeline">
-      <div class="mt-nav">
-        <button class="mt-btn active" data-model="dalton"><span class="mt-year">1803</span><span class="mt-name">Dalton</span></button>
-        <div class="mt-connector"></div>
-        <button class="mt-btn" data-model="thomson"><span class="mt-year">1897</span><span class="mt-name">Thomson</span></button>
-        <div class="mt-connector"></div>
-        <button class="mt-btn" data-model="rutherford"><span class="mt-year">1911</span><span class="mt-name">Rutherford</span></button>
-        <div class="mt-connector"></div>
-        <button class="mt-btn" data-model="bohr"><span class="mt-year">1913</span><span class="mt-name">Bohr</span></button>
-        <div class="mt-connector"></div>
-        <button class="mt-btn" data-model="quantum"><span class="mt-year">1926</span><span class="mt-name">Quantum</span></button>
+      <div class="mt-timeline-nav">
+        <div class="mtn-track"></div>
+        <button class="mt-btn active" data-model="dalton">
+          <span class="mtn-year">1803</span>
+          <span class="mtn-dot"></span>
+          <span class="mtn-name">Dalton</span>
+        </button>
+        <button class="mt-btn" data-model="thomson">
+          <span class="mtn-year">1897</span>
+          <span class="mtn-dot"></span>
+          <span class="mtn-name">Thomson</span>
+        </button>
+        <button class="mt-btn" data-model="rutherford">
+          <span class="mtn-year">1911</span>
+          <span class="mtn-dot"></span>
+          <span class="mtn-name">Rutherford</span>
+        </button>
+        <button class="mt-btn" data-model="bohr">
+          <span class="mtn-year">1913</span>
+          <span class="mtn-dot"></span>
+          <span class="mtn-name">Bohr</span>
+        </button>
+        <button class="mt-btn" data-model="quantum">
+          <span class="mtn-year">1926</span>
+          <span class="mtn-dot"></span>
+          <span class="mtn-name">Quantum</span>
+        </button>
       </div>
 
       <div class="mt-display">
@@ -589,7 +611,6 @@
     </div>
 
     <div class="water-callout">
-      <div class="wc-icon">💧</div>
       <div class="wc-text">
         <h3>Why Water is Strange</h3>
         <p>Based on molar mass alone, water should boil around -80°C. H₂S, the next compound in the same group, boils at -60°C. Water boils 160 degrees higher than the trend predicts. Every organism on Earth exists partly because of that gap, which comes entirely from the O-H hydrogen bonds water forms with itself. It also explains why ice floats, which turns out to matter a great deal for aquatic life.</p>
@@ -801,10 +822,10 @@
     </div>
 
     <div class="cit-footer">
-      <p><strong>Project:</strong> AP Chemistry Final Project, Artifact of Learning</p>
+      <p><strong>AP Chemistry</strong> · Artifact of Learning</p>
       <p>Based on Bill Bryson's <em>A Short History of Nearly Everything</em> (2003)</p>
-      <p>Built from scratch: HTML, CSS, and JavaScript. No frameworks or libraries.</p>
-      <p>May 2025</p>
+      <p>HTML, CSS, and JavaScript — no external libraries.</p>
+      <p>May 2026</p>
     </div>
   </div>
 </section>
