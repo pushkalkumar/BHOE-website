@@ -107,7 +107,7 @@ function initBindingChart(force) {
 
   ctx.clearRect(0, 0, W, H);
 
-  ctx.strokeStyle = 'rgba(255,255,255,0.05)';
+  ctx.strokeStyle = 'rgba(255,240,215,0.04)';
   ctx.lineWidth = 1;
   [2,4,6,8].forEach(be => {
     ctx.beginPath(); ctx.moveTo(pad.l, cy(be)); ctx.lineTo(W-pad.r, cy(be)); ctx.stroke();
@@ -116,10 +116,10 @@ function initBindingChart(force) {
     ctx.beginPath(); ctx.moveTo(cx(A), pad.t); ctx.lineTo(cx(A), H-pad.b); ctx.stroke();
   });
 
-  ctx.strokeStyle = 'rgba(255,255,255,0.2)'; ctx.lineWidth = 1;
+  ctx.strokeStyle = 'rgba(255,240,215,0.18)'; ctx.lineWidth = 1;
   ctx.beginPath(); ctx.moveTo(pad.l, pad.t); ctx.lineTo(pad.l, H-pad.b); ctx.lineTo(W-pad.r, H-pad.b); ctx.stroke();
 
-  ctx.fillStyle = 'rgba(139,157,199,0.7)';
+  ctx.fillStyle = 'rgba(200,185,165,0.65)';
   ctx.font = '10px JetBrains Mono, monospace';
   ctx.textAlign = 'right';
   [2,4,6,8].forEach(be => { ctx.fillText(be, pad.l-6, cy(be)+4); });
@@ -127,8 +127,8 @@ function initBindingChart(force) {
   [50,100,150,200].forEach(A => { ctx.fillText(A, cx(A), H-pad.b+14); });
 
   const grad = ctx.createLinearGradient(0, 0, 0, H);
-  grad.addColorStop(0, 'rgba(6,182,212,0.15)');
-  grad.addColorStop(1, 'rgba(6,182,212,0)');
+  grad.addColorStop(0, 'rgba(191,142,58,0.15)');
+  grad.addColorStop(1, 'rgba(191,142,58,0.0)');
   ctx.beginPath();
   data.forEach((d, i) => { i === 0 ? ctx.moveTo(cx(d.A), cy(d.BE)) : ctx.lineTo(cx(d.A), cy(d.BE)); });
   ctx.lineTo(cx(data[data.length-1].A), H-pad.b);
@@ -138,7 +138,7 @@ function initBindingChart(force) {
   ctx.fill();
 
   ctx.beginPath();
-  ctx.strokeStyle = '#22d3ee';
+  ctx.strokeStyle = '#d4a858';
   ctx.lineWidth = 2.5;
   ctx.lineJoin = 'round';
   data.forEach((d, i) => { i === 0 ? ctx.moveTo(cx(d.A), cy(d.BE)) : ctx.lineTo(cx(d.A), cy(d.BE)); });
@@ -148,18 +148,18 @@ function initBindingChart(force) {
   if (fe) {
     ctx.beginPath();
     ctx.arc(cx(fe.A), cy(fe.BE), 7, 0, Math.PI*2);
-    ctx.fillStyle = '#f0b429';
+    ctx.fillStyle = '#cc583a';
     ctx.fill();
-    ctx.fillStyle = '#fcd34d';
+    ctx.fillStyle = '#d4a858';
     ctx.font = 'bold 11px JetBrains Mono, monospace';
     ctx.textAlign = 'center';
     ctx.fillText('⁵⁶Fe', cx(fe.A), cy(fe.BE) - 14);
-    ctx.fillStyle = 'rgba(240,180,41,0.6)';
+    ctx.fillStyle = 'rgba(212,168,88,0.7)';
     ctx.font = '9px JetBrains Mono, monospace';
     ctx.fillText('8.79 MeV', cx(fe.A), cy(fe.BE) - 3);
   }
 
-  ctx.fillStyle = 'rgba(74,90,122,0.9)';
+  ctx.fillStyle = 'rgba(200,185,165,0.5)';
   ctx.font = '10px JetBrains Mono, monospace';
   ctx.textAlign = 'center';
   ctx.fillText('Mass Number (A)', W/2, H-2);
@@ -236,10 +236,10 @@ function drawDecayCurve(N0, HL, T) {
   const cy = (n) => pad.t + (1 - n / N0) * (H - pad.t - pad.b);
 
   ctx.clearRect(0, 0, W, H);
-  ctx.fillStyle = 'rgba(2,5,9,0.8)';
+  ctx.fillStyle = 'rgba(10,8,7,0.92)';
   ctx.fillRect(0, 0, W, H);
 
-  ctx.strokeStyle = 'rgba(255,255,255,0.04)'; ctx.lineWidth = 1;
+  ctx.strokeStyle = 'rgba(255,240,215,0.04)'; ctx.lineWidth = 1;
   [0.25, 0.5, 0.75, 1.0].forEach(f => {
     const y = cy(f * N0);
     ctx.beginPath(); ctx.moveTo(pad.l, y); ctx.lineTo(W-pad.r, y); ctx.stroke();
@@ -249,23 +249,23 @@ function drawDecayCurve(N0, HL, T) {
   for (let i = 1; i <= numHL; i++) {
     const x = cx(i * HL);
     if (x > W-pad.r) break;
-    ctx.strokeStyle = 'rgba(240,180,41,0.12)';
+    ctx.strokeStyle = 'rgba(204,88,58,0.12)';
     ctx.beginPath(); ctx.moveTo(x, pad.t); ctx.lineTo(x, H-pad.b); ctx.stroke();
-    ctx.fillStyle = 'rgba(240,180,41,0.35)';
+    ctx.fillStyle = 'rgba(204,88,58,0.45)';
     ctx.font = '9px JetBrains Mono, monospace';
     ctx.textAlign = 'center';
     ctx.fillText(`t½×${i}`, x, pad.t-4);
   }
 
-  ctx.strokeStyle = 'rgba(255,255,255,0.15)'; ctx.lineWidth = 1;
+  ctx.strokeStyle = 'rgba(255,240,215,0.12)'; ctx.lineWidth = 1;
   ctx.beginPath(); ctx.moveTo(pad.l, pad.t); ctx.lineTo(pad.l, H-pad.b); ctx.lineTo(W-pad.r, H-pad.b); ctx.stroke();
 
-  ctx.fillStyle = 'rgba(139,157,199,0.6)'; ctx.font = '10px JetBrains Mono, monospace'; ctx.textAlign = 'right';
+  ctx.fillStyle = 'rgba(200,185,165,0.60)'; ctx.font = '10px JetBrains Mono, monospace'; ctx.textAlign = 'right';
   [0.25, 0.5, 0.75, 1.0].forEach(f => { ctx.fillText(fmt(f * N0), pad.l-6, cy(f * N0)+4); });
 
   const grad = ctx.createLinearGradient(0, pad.t, 0, H-pad.b);
-  grad.addColorStop(0, 'rgba(6,182,212,0.22)');
-  grad.addColorStop(1, 'rgba(6,182,212,0.02)');
+  grad.addColorStop(0, 'rgba(191,142,58,0.20)');
+  grad.addColorStop(1, 'rgba(191,142,58,0.02)');
   ctx.beginPath();
   const steps = 200;
   for (let i = 0; i <= steps; i++) {
@@ -276,7 +276,7 @@ function drawDecayCurve(N0, HL, T) {
   ctx.lineTo(cx(maxT), H-pad.b); ctx.lineTo(cx(0), H-pad.b); ctx.closePath();
   ctx.fillStyle = grad; ctx.fill();
 
-  ctx.beginPath(); ctx.strokeStyle = '#22d3ee'; ctx.lineWidth = 2.5;
+  ctx.beginPath(); ctx.strokeStyle = '#d4a858'; ctx.lineWidth = 2.5;
   for (let i = 0; i <= steps; i++) {
     const ti = (i / steps) * maxT;
     const ni = N0 * Math.pow(0.5, ti / HL);
@@ -286,20 +286,20 @@ function drawDecayCurve(N0, HL, T) {
 
   const rem = N0 * Math.pow(0.5, T / HL);
   const markerX = cx(T); const markerY = cy(rem);
-  ctx.strokeStyle = 'rgba(240,180,41,0.3)'; ctx.lineWidth = 1; ctx.setLineDash([4, 4]);
+  ctx.strokeStyle = 'rgba(204,88,58,0.45)'; ctx.lineWidth = 1; ctx.setLineDash([4, 4]);
   ctx.beginPath(); ctx.moveTo(markerX, markerY); ctx.lineTo(markerX, H-pad.b); ctx.stroke();
   ctx.moveTo(pad.l, markerY); ctx.lineTo(markerX, markerY); ctx.stroke();
   ctx.setLineDash([]);
   ctx.beginPath(); ctx.arc(markerX, markerY, 5, 0, Math.PI*2);
-  ctx.fillStyle = '#f0b429'; ctx.fill();
+  ctx.fillStyle = '#cc583a'; ctx.fill();
 
   const pct = (rem / N0 * 100).toFixed(1);
   const label = `${fmt(rem)} g (${pct}%)`;
   const lx = markerX + 12 > W - 120 ? markerX - 120 : markerX + 12;
-  ctx.fillStyle = 'rgba(15,26,46,0.9)'; ctx.strokeStyle = 'rgba(240,180,41,0.4)'; ctx.lineWidth = 1;
+  ctx.fillStyle = 'rgba(10,8,7,0.95)'; ctx.strokeStyle = 'rgba(204,88,58,0.45)'; ctx.lineWidth = 1;
   const lw = ctx.measureText(label).width + 16;
-  ctx.beginPath(); ctx.roundRect(lx - 4, markerY - 16, lw, 22, 4); ctx.fill(); ctx.stroke();
-  ctx.fillStyle = '#fcd34d'; ctx.font = 'bold 10px JetBrains Mono, monospace';
+  ctx.beginPath(); ctx.roundRect(lx - 4, markerY - 16, lw, 22, 3); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#d4a858'; ctx.font = 'bold 10px JetBrains Mono, monospace';
   ctx.textAlign = 'left'; ctx.fillText(label, lx + 4, markerY - 1);
 }
 
@@ -313,7 +313,7 @@ function buildDecayTable(N0, HL, totalHL) {
     const n = N0 * Math.pow(0.5, i);
     const pct = (n / N0 * 100).toFixed(2);
     const isCurrent = i === Math.round(totalHL);
-    const style = isCurrent ? ' style="background:rgba(240,180,41,0.07);color:#fcd34d"' : '';
+    const style = isCurrent ? ' style="background:rgba(204,88,58,0.07);color:#d4a858"' : '';
     html += `<tr${style}><td>${i}</td><td>${fmt(t)}</td><td>${fmt(n)}</td><td>${pct}%</td></tr>`;
   }
   html += '</tbody></table>';
