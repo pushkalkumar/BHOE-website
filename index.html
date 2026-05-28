@@ -3,71 +3,53 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A Short History of Nearly Everything — AP Chemistry</title>
+<title>A Short History of Nearly Everything · AP Chemistry</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<!-- ── SIDEBAR ─────────────────────────────────────────────── -->
+<!-- SIDEBAR -->
 <aside class="sidebar" id="sidebar">
   <div class="sidebar-brand">
-    <div class="brand-icon">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22">
-        <circle cx="12" cy="12" r="2.5"/>
-        <ellipse cx="12" cy="12" rx="10" ry="3.8"/>
-        <ellipse cx="12" cy="12" rx="10" ry="3.8" transform="rotate(60 12 12)"/>
-        <ellipse cx="12" cy="12" rx="10" ry="3.8" transform="rotate(120 12 12)"/>
-      </svg>
-    </div>
-    <div class="brand-text">
-      <span class="brand-name">ChemCosmos</span>
-      <span class="brand-sub">AP Chemistry · 2025</span>
-    </div>
+    <span class="brand-name">ChemCosmos</span>
+    <span class="brand-sub">AP Chemistry · 2025</span>
   </div>
 
   <nav class="sidebar-nav">
     <a class="sn-item active" data-page="home" href="#">
-      <span class="sn-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg></span>
+      <span class="sn-num">00</span>
       <span class="sn-label">Home</span>
-      <span class="sn-bar"></span>
     </a>
     <a class="sn-item" data-page="bigbang" href="#">
-      <span class="sn-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="2"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/></svg></span>
+      <span class="sn-num">01</span>
       <span class="sn-label">The Big Bang</span>
-      <span class="sn-bar"></span>
     </a>
     <a class="sn-item" data-page="stars" href="#">
-      <span class="sn-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg></span>
+      <span class="sn-num">02</span>
       <span class="sn-label">Stars as Reactors</span>
-      <span class="sn-bar"></span>
     </a>
     <a class="sn-item" data-page="atomic" href="#">
-      <span class="sn-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="2.5"/><ellipse cx="12" cy="12" rx="10" ry="4"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(120 12 12)"/></svg></span>
+      <span class="sn-num">03</span>
       <span class="sn-label">Atomic Models</span>
-      <span class="sn-bar"></span>
     </a>
     <a class="sn-item" data-page="decay" href="#">
-      <span class="sn-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 6v6l4 2"/><circle cx="19" cy="5" r="3"/></svg></span>
+      <span class="sn-num">04</span>
       <span class="sn-label">Radioactive Decay</span>
-      <span class="sn-bar"></span>
     </a>
     <a class="sn-item" data-page="matter" href="#">
-      <span class="sn-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h18M3 12h18M3 18h18"/><circle cx="7" cy="6" r="1.5" fill="currentColor"/><circle cx="17" cy="12" r="1.5" fill="currentColor"/><circle cx="12" cy="18" r="1.5" fill="currentColor"/></svg></span>
+      <span class="sn-num">05</span>
       <span class="sn-label">Matter at Scale</span>
-      <span class="sn-bar"></span>
     </a>
     <a class="sn-item" data-page="hub" href="#">
-      <span class="sn-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></span>
+      <span class="sn-num">06</span>
       <span class="sn-label">AP Chem Hub</span>
-      <span class="sn-bar"></span>
     </a>
     <a class="sn-item" data-page="citations" href="#">
-      <span class="sn-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>
+      <span class="sn-num">07</span>
       <span class="sn-label">Citations</span>
-      <span class="sn-bar"></span>
     </a>
   </nav>
 
@@ -77,7 +59,7 @@
   </div>
 </aside>
 
-<!-- ── MOBILE HEADER ─────────────────────────────────────────── -->
+<!-- MOBILE HEADER -->
 <header class="mobile-header">
   <button class="mob-menu" id="mobMenu" aria-label="Menu">
     <span></span><span></span><span></span>
@@ -87,33 +69,24 @@
 </header>
 <div class="mob-overlay" id="mobOverlay"></div>
 
-<!-- ── MAIN ──────────────────────────────────────────────────── -->
+<!-- MAIN -->
 <main class="main" id="main">
 
 <!-- HOME -->
 <section class="page active" id="page-home">
   <div class="hero">
-    <div class="hero-eyebrow">AP Chemistry Final Project — Bill Bryson</div>
+    <div class="hero-eyebrow">AP Chemistry Final Project · Bill Bryson</div>
     <h1 class="hero-title">
       <span class="ht-line">The Universe</span>
       <span class="ht-line accent">Through a</span>
       <span class="ht-line">Chemist's Eyes</span>
     </h1>
-    <p class="hero-sub">An interactive journey through cosmic history — from the Big Bang to molecular bonds — anchored in AP Chemistry's core concepts of energy, structure, and transformation.</p>
+    <p class="hero-sub">From the Big Bang to molecular bonds. Bill Bryson's cosmic history mapped through AP Chemistry's core concepts of energy, structure, and transformation.</p>
 
     <div class="hero-tags">
-      <div class="htag">
-        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="3"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2"/></svg>
-        Big Idea: Energy
-      </div>
-      <div class="htag">
-        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="5" height="5" rx="1"/><rect x="9" y="2" width="5" height="5" rx="1"/><rect x="2" y="9" width="5" height="5" rx="1"/><rect x="9" y="9" width="5" height="5" rx="1"/></svg>
-        SP-1: Models &amp; Representations
-      </div>
-      <div class="htag">
-        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="1,13 5,7 9,10 15,3"/></svg>
-        SP-3: Representing Data
-      </div>
+      <span class="htag">Big Idea: Energy</span>
+      <span class="htag">SP-1: Models &amp; Representations</span>
+      <span class="htag">SP-3: Representing Data</span>
     </div>
 
     <div class="hero-cta-row">
@@ -124,23 +97,6 @@
       <button class="btn-ghost" data-page="atomic">
         Jump to Atomic Models
       </button>
-    </div>
-
-    <div class="hero-atom-wrap">
-      <div class="hero-atom">
-        <div class="ha-nucleus">
-          <div class="ha-nucleus-inner"></div>
-        </div>
-        <div class="ha-ring ha-r1"><div class="ha-e"></div></div>
-        <div class="ha-ring ha-r2"><div class="ha-e"></div></div>
-        <div class="ha-ring ha-r3"><div class="ha-e"></div></div>
-        <div class="ha-glow"></div>
-      </div>
-    </div>
-
-    <div class="hero-scroll-hint">
-      <span>Navigate using the sidebar</span>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
     </div>
   </div>
 
@@ -166,7 +122,7 @@
     <div class="stat">
       <span class="stat-num">5</span>
       <span class="stat-unit">atomic models</span>
-      <span class="stat-label">Dalton → Quantum (1803–1926)</span>
+      <span class="stat-label">Dalton to Quantum (1803–1926)</span>
     </div>
   </div>
 </section>
@@ -178,9 +134,9 @@
     <div class="page-header">
       <div class="ph-num">01</div>
       <div class="ph-text">
-        <div class="ph-eyebrow">Chapter 1 — Origin</div>
+        <div class="ph-eyebrow">Chapter 1 · Origin</div>
         <h1 class="ph-title">The Big Bang &amp; Matter Formation</h1>
-        <p class="ph-sub">How pure energy became the building blocks of all chemistry — Unit 1: Atomic Structure, Big Idea: Energy</p>
+        <p class="ph-sub">How pure energy became the building blocks of chemistry. Unit 1: Atomic Structure · Big Idea: Energy</p>
       </div>
     </div>
 
@@ -189,7 +145,7 @@
         <div class="tlh-node">
           <div class="tlh-dot gold"></div>
           <div class="tlh-time">T = 0</div>
-          <div class="tlh-event">The Singularity<br><small>Infinite density, infinite temperature — pure energy</small></div>
+          <div class="tlh-event">The Singularity<br><small>Infinite density, infinite temperature, pure energy</small></div>
         </div>
         <div class="tlh-line"></div>
         <div class="tlh-node">
@@ -201,7 +157,7 @@
         <div class="tlh-node">
           <div class="tlh-dot cyan"></div>
           <div class="tlh-time">10⁻⁶ s</div>
-          <div class="tlh-event">Quarks → Hadrons<br><small>Quarks combine into protons and neutrons</small></div>
+          <div class="tlh-event">Quarks to Hadrons<br><small>Quarks combine into protons and neutrons</small></div>
         </div>
         <div class="tlh-line"></div>
         <div class="tlh-node">
@@ -213,7 +169,7 @@
         <div class="tlh-node">
           <div class="tlh-dot gold"></div>
           <div class="tlh-time">380,000 yr</div>
-          <div class="tlh-event">Recombination<br><small>Electrons bind to nuclei → neutral atoms</small></div>
+          <div class="tlh-event">Recombination<br><small>Electrons bind to nuclei, neutral atoms form</small></div>
         </div>
         <div class="tlh-line"></div>
         <div class="tlh-node">
@@ -228,15 +184,15 @@
       <div class="card card-gold">
         <div class="card-icon ci-gold">E=mc²</div>
         <h3>Energy to Matter</h3>
-        <p>In the first fractions of a second, the universe was so energetic that energy itself condensed into matter. Einstein's equation — <strong>E = mc²</strong> — describes this: energy and mass are interconvertible.</p>
+        <p>In the first fractions of a second, the universe was hot enough that energy condensed directly into matter. Einstein's equation, <strong>E = mc²</strong>, describes this: energy and mass are interconvertible.</p>
         <div class="formula-block">E = mc²</div>
-        <p class="card-note">A single kilogram of matter contains ~9×10¹⁶ joules — equivalent to a 21-megaton nuclear explosion.</p>
+        <p class="card-note">A single kilogram of matter contains ~9×10¹⁶ joules, equivalent to a 21-megaton nuclear explosion.</p>
       </div>
 
       <div class="card">
         <div class="card-icon ci-cyan">🔥</div>
         <h3>The Plasma State</h3>
-        <p>For the first 380,000 years, the universe was too hot for atoms to exist. Matter existed as <strong>plasma</strong> — a state where electrons are stripped from nuclei by thermal energy exceeding ionization energies.</p>
+        <p>For the first 380,000 years, the universe was too hot for atoms to exist. Matter existed as <strong>plasma</strong>: a state where electrons are stripped from nuclei by thermal energy exceeding ionization energies.</p>
         <p>In plasma, <em>kT ≫ IE</em>, so electrons roam freely. The universe was opaque because free electrons scattered all light.</p>
         <div class="plasma-vis">
           <div class="pv-particle pv-p"></div>
@@ -275,13 +231,13 @@
             <span class="ab-pct">trace</span>
           </div>
         </div>
-        <p class="card-note">All elements heavier than lithium were forged in stars — we are literally made of stellar ash.</p>
+        <p class="card-note">All elements heavier than lithium were forged in stars. We are literally made of stellar ash.</p>
       </div>
     </div>
 
     <div class="ap-box">
-      <div class="apb-header">AP Chemistry Connection — Unit 1: Atomic Structure &amp; Big Idea: Energy</div>
-      <p>The Recombination event is a direct physical demonstration of <strong>ionization energy</strong>. As the universe cooled below ~3,000 K, thermal energy (kT) dropped below the ionization energies of hydrogen (~13.6 eV) and helium (~24.6 eV). Electrons could then occupy stable ground-state orbitals — the first electron configurations in cosmic history.</p>
+      <div class="apb-header">AP Chemistry Connection · Unit 1: Atomic Structure</div>
+      <p>The Recombination event is a direct physical demonstration of <strong>ionization energy</strong>. As the universe cooled below ~3,000 K, thermal energy (kT) dropped below the ionization energies of hydrogen (~13.6 eV) and helium (~24.6 eV). Electrons could then occupy stable ground-state orbitals, the first electron configurations in cosmic history.</p>
     </div>
   </div>
 </section>
@@ -293,9 +249,9 @@
     <div class="page-header">
       <div class="ph-num">02</div>
       <div class="ph-text">
-        <div class="ph-eyebrow">Chapter 2 — Stellar Nucleosynthesis</div>
+        <div class="ph-eyebrow">Chapter 2 · Stellar Nucleosynthesis</div>
         <h1 class="ph-title">Stars as Nuclear Reactors</h1>
-        <p class="ph-sub">How stellar fusion creates every element heavier than lithium — Unit 1: Nuclear Chemistry, Big Idea: Energy &amp; Transformations</p>
+        <p class="ph-sub">How stellar fusion creates every element heavier than lithium. Unit 1: Nuclear Chemistry · Big Idea: Energy and Transformations</p>
       </div>
     </div>
 
@@ -329,15 +285,15 @@
             <span class="fc-label">Step 3: Helium-4 + energy released</span>
           </div>
         </div>
-        <p class="card-note">Net result: 4 protons → 1 helium-4 nucleus + 2 positrons + 2 neutrinos + 2 gamma rays + <strong>26.7 MeV of energy</strong></p>
+        <p class="card-note">Net result: 4 protons to 1 helium-4 nucleus + 2 positrons + 2 neutrinos + 2 gamma rays + <strong>26.7 MeV of energy</strong></p>
       </div>
 
       <div class="card">
         <h3>Binding Energy &amp; the Iron Peak</h3>
-        <p>Each fusion step releases energy because the product nucleus has <strong>less mass</strong> than its reactants. This "mass defect" converts to energy via E = mc². The binding energy per nucleon peaks at iron-56 — after iron, fusion consumes energy rather than releasing it.</p>
+        <p>Each fusion step releases energy because the product nucleus has <strong>less mass</strong> than its reactants. This "mass defect" converts to energy via E = mc². The binding energy per nucleon peaks at iron-56. After iron, fusion consumes energy rather than releasing it.</p>
         <div class="binding-chart" id="bindingChart">
           <canvas id="bindingCanvas" width="340" height="200"></canvas>
-          <p class="chart-label">Binding energy per nucleon (MeV) vs. Mass number — Iron-56 is the most stable nucleus in the universe</p>
+          <p class="chart-label">Binding energy per nucleon (MeV) vs. mass number. Iron-56 is the most stable nucleus in the universe.</p>
         </div>
       </div>
     </div>
@@ -371,7 +327,7 @@
     </div>
 
     <div class="ap-box">
-      <div class="apb-header">AP Chemistry Connection — Nuclear Chemistry &amp; Big Idea: Energy</div>
+      <div class="apb-header">AP Chemistry Connection · Nuclear Chemistry</div>
       <p>Fusion and fission are mirror processes on the binding energy curve. <strong>Fusion of light nuclei</strong> (below iron) releases energy because the product has higher binding energy per nucleon. <strong>Fission of heavy nuclei</strong> (above iron) also releases energy for the same reason. Both involve mass defect: ΔE = Δmc².</p>
     </div>
   </div>
@@ -384,9 +340,9 @@
     <div class="page-header">
       <div class="ph-num">03</div>
       <div class="ph-text">
-        <div class="ph-eyebrow">Scientific Practice 1 — Models &amp; Representations</div>
+        <div class="ph-eyebrow">Scientific Practice 1 · Models and Representations</div>
         <h1 class="ph-title">The Atomic Model Timeline</h1>
-        <p class="ph-sub">How evidence forced scientists to revise their understanding of the atom — five models across 123 years</p>
+        <p class="ph-sub">How experimental evidence forced five revisions of the atomic model across 123 years</p>
       </div>
     </div>
 
@@ -410,7 +366,7 @@
             <div class="mt-info-header"><span class="mt-model-name">Dalton's Atomic Theory</span><span class="mt-model-year">1803</span></div>
             <p class="mt-desc">John Dalton proposed that all matter is composed of indivisible, indestructible particles called atoms. Each element has atoms of a unique, characteristic mass. Atoms combine in simple, whole-number ratios to form compounds.</p>
             <div class="mt-evidence"><h4>Key Evidence</h4><ul><li>Law of Conservation of Mass (Lavoisier, 1774)</li><li>Law of Definite Proportions (Proust, 1799)</li><li>Law of Multiple Proportions</li></ul></div>
-            <div class="mt-limitation"><h4>Limitation</h4><p>Could not explain electrical phenomena or why solutions conduct electricity. The atom was treated as truly indivisible — which turned out to be wrong.</p></div>
+            <div class="mt-limitation"><h4>Limitation</h4><p>Could not explain electrical phenomena or why solutions conduct electricity. The atom was treated as truly indivisible, which turned out to be wrong.</p></div>
           </div>
         </div>
 
@@ -418,9 +374,9 @@
           <div class="mt-visual mv-thomson"><div class="mv-thomson-pudding"><div class="mv-thomson-pos"></div><div class="mv-e te1"></div><div class="mv-e te2"></div><div class="mv-e te3"></div><div class="mv-e te4"></div><div class="mv-e te5"></div></div><div class="mv-label">Plum Pudding</div></div>
           <div class="mt-info">
             <div class="mt-info-header"><span class="mt-model-name">Thomson's Plum Pudding Model</span><span class="mt-model-year">1897</span></div>
-            <p class="mt-desc">J.J. Thomson's cathode ray experiments demonstrated that all atoms contain negatively charged particles — electrons — far lighter than the lightest atom. He proposed the atom as a diffuse, positively charged sphere with electrons embedded throughout.</p>
-            <div class="mt-evidence"><h4>Key Evidence</h4><ul><li>Cathode ray tubes deflected identically regardless of electrode material</li><li>e/m ratio measured: electrons have mass ~1/1837 of hydrogen</li><li>Atoms are electrically neutral → positive charge must exist somewhere</li></ul></div>
-            <div class="mt-limitation"><h4>Limitation</h4><p>Predicted that alpha particles would pass through with only minimal deflection — dramatically disproved by Rutherford's gold foil experiment.</p></div>
+            <p class="mt-desc">J.J. Thomson's cathode ray experiments demonstrated that all atoms contain negatively charged particles (electrons) far lighter than the lightest atom. He proposed the atom as a diffuse, positively charged sphere with electrons embedded throughout.</p>
+            <div class="mt-evidence"><h4>Key Evidence</h4><ul><li>Cathode ray tubes deflected identically regardless of electrode material</li><li>e/m ratio measured: electrons have mass ~1/1837 of hydrogen</li><li>Atoms are electrically neutral, so positive charge must exist somewhere</li></ul></div>
+            <div class="mt-limitation"><h4>Limitation</h4><p>Predicted that alpha particles would pass through with only minimal deflection, dramatically disproved by Rutherford's gold foil experiment.</p></div>
           </div>
         </div>
 
@@ -428,8 +384,8 @@
           <div class="mt-visual mv-rutherford"><div class="mv-nucleus gold-nuc"></div><div class="mv-orbit mvo1"><div class="mv-e"></div></div><div class="mv-orbit mvo2"><div class="mv-e"></div></div><div class="mv-orbit mvo3"><div class="mv-e"></div></div><div class="mv-label">Nuclear Model</div></div>
           <div class="mt-info">
             <div class="mt-info-header"><span class="mt-model-name">Rutherford's Nuclear Model</span><span class="mt-model-year">1911</span></div>
-            <p class="mt-desc">Geiger and Marsden fired alpha particles at gold foil. Most passed through — but roughly 1 in 8,000 bounced straight back. Rutherford concluded: the atom is mostly empty space, with a tiny, dense, positively charged nucleus.</p>
-            <div class="mt-evidence"><h4>Key Evidence</h4><ul><li>~99.98% of alpha particles passed through undeflected</li><li>~1 in 8,000 deflected at large angles → tiny, dense, positive nucleus</li><li>Nuclear radius ~10⁻¹⁵ m vs. atomic radius ~10⁻¹⁰ m</li></ul></div>
+            <p class="mt-desc">Geiger and Marsden fired alpha particles at gold foil. Most passed through, but roughly 1 in 8,000 bounced straight back. Rutherford concluded: the atom is mostly empty space, with a tiny, dense, positively charged nucleus.</p>
+            <div class="mt-evidence"><h4>Key Evidence</h4><ul><li>~99.98% of alpha particles passed through undeflected</li><li>~1 in 8,000 deflected at large angles, indicating a tiny, dense, positive nucleus</li><li>Nuclear radius ~10⁻¹⁵ m vs. atomic radius ~10⁻¹⁰ m</li></ul></div>
             <div class="mt-limitation"><h4>Limitation</h4><p>Classical physics predicts orbiting electrons emit radiation continuously, lose energy, and spiral into the nucleus. Rutherford's model had no explanation for stable atoms.</p></div>
           </div>
         </div>
@@ -449,7 +405,7 @@
           <div class="mt-info">
             <div class="mt-info-header"><span class="mt-model-name">Quantum Mechanical Model</span><span class="mt-model-year">1926</span></div>
             <p class="mt-desc">Schrödinger's wave equation describes electrons as probability distributions (wave functions ψ) rather than particles in defined orbits. The square of the wave function |ψ|² gives the probability of finding an electron at a given location. Heisenberg's Uncertainty Principle: <strong>Δx · Δp ≥ ℏ/2</strong>.</p>
-            <div class="mt-evidence"><h4>Key Evidence</h4><ul><li>De Broglie (1924): electrons exhibit wave behavior — electron diffraction confirmed</li><li>Heisenberg Uncertainty Principle: Δx·Δp ≥ ℏ/2</li><li>Quantum numbers (n, l, mₗ, mₛ) describe all observable electron properties</li></ul></div>
+            <div class="mt-evidence"><h4>Key Evidence</h4><ul><li>De Broglie (1924): electrons exhibit wave behavior (electron diffraction confirmed)</li><li>Heisenberg Uncertainty Principle: Δx·Δp ≥ ℏ/2</li><li>Quantum numbers (n, l, mₗ, mₛ) describe all observable electron properties</li></ul></div>
             <div class="mt-limitation"><h4>Current Understanding</h4><p>This remains our most accurate model of atomic structure. It successfully explains all atomic phenomena, chemical bonding, and periodic trends.</p></div>
           </div>
         </div>
@@ -457,8 +413,8 @@
     </div>
 
     <div class="ap-box">
-      <div class="apb-header">AP Chemistry Connection — Scientific Practice 1: Models &amp; Representations</div>
-      <p>This timeline directly demonstrates Scientific Practice 1: how scientific models evolve in response to new experimental evidence. <strong>Each revision was forced by data that the previous model could not explain</strong> — not by philosophical preference. This iterative process is how science actually works.</p>
+      <div class="apb-header">AP Chemistry Connection · Scientific Practice 1</div>
+      <p>This timeline directly demonstrates Scientific Practice 1: how scientific models evolve in response to new experimental evidence. <strong>Each revision was forced by data that the previous model could not explain.</strong> Not philosophical preference. That is how science works.</p>
     </div>
   </div>
 </section>
@@ -469,9 +425,9 @@
     <div class="page-header">
       <div class="ph-num">04</div>
       <div class="ph-text">
-        <div class="ph-eyebrow">Scientific Practice 3 — Representing Data &amp; Phenomena</div>
+        <div class="ph-eyebrow">Scientific Practice 3 · Representing Data</div>
         <h1 class="ph-title">Radioactive Decay</h1>
-        <p class="ph-sub">Nuclear instability, exponential decay, and the mathematics of half-life — Unit 1: Nuclear Chemistry</p>
+        <p class="ph-sub">Nuclear instability, exponential decay, and the mathematics of half-life. Unit 1: Nuclear Chemistry</p>
       </div>
     </div>
 
@@ -487,7 +443,7 @@
           <li><strong>Emitted:</strong> Helium-4 nucleus (2p + 2n)</li>
           <li><strong>Mass number:</strong> decreases by 4</li>
           <li><strong>Atomic number:</strong> decreases by 2</li>
-          <li><strong>Penetrating power:</strong> Low — stopped by paper</li>
+          <li><strong>Penetrating power:</strong> Low (stopped by paper)</li>
           <li><strong>Ionizing power:</strong> Very high</li>
         </ul>
         <p class="dt-note">Alpha decay is the primary decay mode for heavy nuclei (Z &gt; 82). Common in uranium and radium decay chains.</p>
@@ -502,13 +458,13 @@
           <span class="dt-particle dt-b">e⁻</span><span class="dt-plus">+</span><span class="dt-particle dt-n">v̄ₑ</span>
         </div>
         <ul>
-          <li><strong>Process:</strong> Neutron → Proton + electron + antineutrino</li>
+          <li><strong>Process:</strong> Neutron to Proton + electron + antineutrino</li>
           <li><strong>Mass number:</strong> unchanged</li>
           <li><strong>Atomic number:</strong> increases by 1</li>
-          <li><strong>Penetrating power:</strong> Medium — stopped by aluminum foil</li>
+          <li><strong>Penetrating power:</strong> Medium (stopped by aluminum foil)</li>
           <li><strong>Ionizing power:</strong> Moderate</li>
         </ul>
-        <p class="dt-note">Carbon-14 beta decay is the basis of radiocarbon dating — used to date organic materials up to ~50,000 years old.</p>
+        <p class="dt-note">Carbon-14 beta decay is the basis of radiocarbon dating, used to date organic materials up to ~50,000 years old.</p>
       </div>
 
       <div class="dt-card dt-gamma">
@@ -522,7 +478,7 @@
           <li><strong>Emitted:</strong> High-energy photon</li>
           <li><strong>Mass number:</strong> unchanged</li>
           <li><strong>Atomic number:</strong> unchanged</li>
-          <li><strong>Penetrating power:</strong> Extreme — requires lead or concrete</li>
+          <li><strong>Penetrating power:</strong> Extreme (requires lead or concrete)</li>
           <li><strong>Ionizing power:</strong> Low (indirect)</li>
         </ul>
         <p class="dt-note">Often accompanies alpha or beta decay. Used in medical imaging (PET/SPECT) and cancer radiotherapy.</p>
@@ -581,8 +537,8 @@
     </div>
 
     <div class="ap-box">
-      <div class="apb-header">AP Chemistry Connection — Scientific Practice 3: Representing Data &amp; Phenomena</div>
-      <p>The exponential decay equation <strong>N(t) = N₀ × (½)^(t/t½)</strong> is a mathematical model of a physical phenomenon. Notice that half-life is independent of the initial amount — this is a consequence of first-order kinetics, directly connecting to Unit 5: Chemical Kinetics.</p>
+      <div class="apb-header">AP Chemistry Connection · Scientific Practice 3</div>
+      <p>The exponential decay equation <strong>N(t) = N₀ × (½)^(t/t½)</strong> is a mathematical model of a physical phenomenon. Notice that half-life is independent of the initial amount; this is a consequence of first-order kinetics, directly connecting to Unit 5: Chemical Kinetics.</p>
     </div>
   </div>
 </section>
@@ -594,9 +550,9 @@
     <div class="page-header">
       <div class="ph-num">05</div>
       <div class="ph-text">
-        <div class="ph-eyebrow">Chapter 5 — Structure &amp; Properties</div>
+        <div class="ph-eyebrow">Chapter 5 · Structure and Properties</div>
         <h1 class="ph-title">Matter at Every Scale</h1>
-        <p class="ph-sub">Intermolecular forces, states of matter, and phase transitions from cosmic to molecular scale — Units 3 &amp; 5</p>
+        <p class="ph-sub">Intermolecular forces, states of matter, and phase transitions from cosmic to molecular scale. Units 3 and 5</p>
       </div>
     </div>
 
@@ -616,9 +572,9 @@
       <div class="card card-gold">
         <div class="card-icon ci-gold">⚡</div>
         <h3>Intermolecular Forces</h3>
-        <p>The forces between molecules determine all bulk physical properties — melting point, boiling point, solubility, viscosity.</p>
+        <p>The forces between molecules determine all bulk physical properties: melting point, boiling point, solubility, and viscosity.</p>
         <div class="imf-list">
-          <div class="imf-item imf-ld"><div class="imf-header"><span class="imf-name">London Dispersion</span><span class="imf-strength">Weakest</span></div><p>Temporary, instantaneous dipoles in all molecules. Strength scales with polarizability. Present in all substances.</p><div class="imf-formula">All molecules; ↑ with molar mass</div></div>
+          <div class="imf-item imf-ld"><div class="imf-header"><span class="imf-name">London Dispersion</span><span class="imf-strength">Weakest</span></div><p>Temporary, instantaneous dipoles in all molecules. Strength scales with polarizability. Present in all substances.</p><div class="imf-formula">All molecules; strength increases with molar mass</div></div>
           <div class="imf-item imf-dd"><div class="imf-header"><span class="imf-name">Dipole-Dipole</span><span class="imf-strength">Moderate</span></div><p>Between polar molecules with permanent partial charges (δ+/δ−).</p><div class="imf-formula">Polar molecules (e.g., HCl, SO₂)</div></div>
           <div class="imf-item imf-hb"><div class="imf-header"><span class="imf-name">Hydrogen Bonding</span><span class="imf-strength">Strongest IMF</span></div><p>H bonded to <strong>N, O, or F</strong>. ~10× stronger than typical dipole-dipole. Responsible for water's anomalously high boiling point.</p><div class="imf-formula">H−N, H−O, H−F bonds</div></div>
         </div>
@@ -644,13 +600,13 @@
       <div class="wc-icon">💧</div>
       <div class="wc-text">
         <h3>Why Water is Extraordinary</h3>
-        <p>Hydrogen bonding makes water chemically unique. H₂O should boil at approximately <strong>−80°C</strong> based on its molar mass and London dispersion forces alone. Instead it boils at 100°C — a 180° difference due entirely to O–H···O hydrogen bonding. This anomaly is why liquid water exists on Earth's surface, why ice floats, and ultimately why life as we know it is possible.</p>
+        <p>Hydrogen bonding makes water chemically unique. H₂O should boil at approximately <strong>−80°C</strong> based on its molar mass and London dispersion forces alone. Instead it boils at 100°C, a difference of 180°, due entirely to O–H···O hydrogen bonding. This anomaly is why liquid water exists on Earth's surface, why ice floats, and ultimately why life as we know it is possible.</p>
       </div>
     </div>
 
     <div class="ap-box">
-      <div class="apb-header">AP Chemistry Connection — Units 3 &amp; 5: IMFs, Phase Changes, and Properties of Matter</div>
-      <p>The cosmic distribution of matter states is governed by the same thermodynamic principles as your AP Chem Phase Change unit. IMF type and strength determine melting/boiling points — this is why Europa (with liquid water) and Titan (with liquid methane) exist.</p>
+      <div class="apb-header">AP Chemistry Connection · Units 3 and 5</div>
+      <p>The cosmic distribution of matter states is governed by the same thermodynamic principles as your AP Chem Phase Change unit. IMF type and strength determine melting/boiling points. This is why Europa (with liquid water) and Titan (with liquid methane) exist.</p>
     </div>
   </div>
 </section>
@@ -680,7 +636,7 @@
           <li><strong>Phase Changes:</strong> ΔH_fus and ΔH_vap are energy barriers controlled by IMFs</li>
           <li><strong>Emission Spectra:</strong> ΔE = hν when electrons transition between levels</li>
         </ul>
-        <div class="hc-ced">CED: Big Idea 4 — Energy can be transferred and transformed</div>
+        <div class="hc-ced">CED: Big Idea 4 · Energy can be transferred and transformed</div>
       </div>
 
       <div class="hub-card hc-structure">
@@ -688,12 +644,12 @@
         <h3>Structure Determines Properties</h3>
         <p>From atomic structure to molecular geometry to bulk properties:</p>
         <ul>
-          <li><strong>Quantum model:</strong> Electron configuration → periodic trends → reactivity</li>
-          <li><strong>IMFs:</strong> Molecular structure (polarity, H-bonding) → physical properties</li>
-          <li><strong>Nuclear structure:</strong> N/Z ratio → stability → decay mode</li>
-          <li><strong>Stellar structure:</strong> Mass → fusion pathway → elements produced</li>
+          <li><strong>Quantum model:</strong> Electron configuration to periodic trends to reactivity</li>
+          <li><strong>IMFs:</strong> Molecular structure (polarity, H-bonding) to physical properties</li>
+          <li><strong>Nuclear structure:</strong> N/Z ratio to stability to decay mode</li>
+          <li><strong>Stellar structure:</strong> Mass to fusion pathway to elements produced</li>
         </ul>
-        <div class="hc-ced">CED: Big Idea 2 — Chemical and physical properties of materials</div>
+        <div class="hc-ced">CED: Big Idea 2 · Chemical and physical properties of materials</div>
       </div>
 
       <div class="hub-card hc-sp1">
@@ -701,13 +657,13 @@
         <h3>Models &amp; Representations</h3>
         <p>The Atomic Model Timeline is SP-1 made visible:</p>
         <ul>
-          <li>Dalton's sphere → no electrical phenomena explained</li>
-          <li>Thomson's pudding → demolished by gold foil experiment</li>
-          <li>Rutherford's nucleus → atom unstable by classical physics</li>
-          <li>Bohr's orbits → only works for hydrogen</li>
-          <li>Quantum model → explains all atomic phenomena</li>
+          <li>Dalton's sphere: no electrical phenomena explained</li>
+          <li>Thomson's pudding: demolished by gold foil experiment</li>
+          <li>Rutherford's nucleus: atom unstable by classical physics</li>
+          <li>Bohr's orbits: only works for hydrogen</li>
+          <li>Quantum model: explains all atomic phenomena</li>
         </ul>
-        <div class="hc-ced">CED: SP-1 — Represent chemical phenomena with models</div>
+        <div class="hc-ced">CED: SP-1 · Represent chemical phenomena with models</div>
       </div>
 
       <div class="hub-card hc-sp3">
@@ -718,7 +674,7 @@
           <li><strong>Binding energy curve:</strong> MeV/nucleon vs. mass number; iron peak</li>
           <li><strong>Element abundance chart:</strong> 75% H, 25% He from Big Bang nucleosynthesis</li>
         </ul>
-        <div class="hc-ced">CED: SP-3 — Represent and analyze data and phenomena</div>
+        <div class="hc-ced">CED: SP-3 · Represent and analyze data and phenomena</div>
       </div>
 
       <div class="hub-card hc-unit1">
@@ -726,7 +682,7 @@
         <h3>From Cosmic Discovery to Electron Configuration</h3>
         <ul>
           <li>Subatomic particle discovery (Thomson, Rutherford, Chadwick)</li>
-          <li>Quantum numbers: n, l, mₗ, mₛ — derived from Schrödinger's equation</li>
+          <li>Quantum numbers: n, l, mₗ, mₛ (derived from Schrödinger's equation)</li>
           <li>Electron configuration and orbital shapes (s, p, d, f)</li>
           <li>Periodic trends: atomic radius, ionization energy, electronegativity</li>
         </ul>
@@ -737,7 +693,7 @@
         <div class="hc-tag">Unit 1: Nuclear Chemistry</div>
         <h3>Decay, Half-Life, and Stellar Fusion</h3>
         <ul>
-          <li>Alpha, beta, gamma decay — types, equations, nuclear notation</li>
+          <li>Alpha, beta, gamma decay: types, equations, nuclear notation</li>
           <li>Half-life equation: N(t) = N₀(½)^(t/t½)</li>
           <li>Binding energy and mass defect: ΔE = Δmc²</li>
           <li>Nuclear fusion vs. fission on the binding energy curve</li>
@@ -749,8 +705,8 @@
         <div class="hc-tag">Units 3 &amp; 5: IMFs</div>
         <h3>Intermolecular Forces &amp; Phase Changes</h3>
         <ul>
-          <li>London dispersion, dipole-dipole, hydrogen bonding — relative strengths</li>
-          <li>IMFs → boiling/melting points, vapor pressure, solubility</li>
+          <li>London dispersion, dipole-dipole, hydrogen bonding, by relative strength</li>
+          <li>IMFs to boiling/melting points, vapor pressure, solubility</li>
           <li>Phase transitions: ΔH_fus, ΔH_vap, Clausius-Clapeyron equation</li>
           <li>Water's anomalous properties from O–H···O hydrogen bonding</li>
         </ul>
@@ -763,10 +719,10 @@
         <ul>
           <li>Nuclear radius: ~10⁻¹⁵ m vs. atomic radius ~10⁻¹⁰ m (100,000× difference)</li>
           <li>Age of universe: 13.8 × 10⁹ years vs. ¹⁴C half-life: 5,730 years</li>
-          <li>Avogadro's number: 6.022 × 10²³ — atoms per mole</li>
+          <li>Avogadro's number: 6.022 × 10²³ (atoms per mole)</li>
           <li>Fusion energy: 26.7 MeV per He-4 formed vs. chemical bond: ~4 eV</li>
         </ul>
-        <div class="hc-ced">CED: Big Idea 3 — Changes in matter involve breaking/forming bonds</div>
+        <div class="hc-ced">CED: Big Idea 3 · Changes in matter involve breaking/forming bonds</div>
       </div>
     </div>
   </div>
@@ -855,7 +811,7 @@
     <div class="cit-footer">
       <p><strong>Project Information:</strong> AP Chemistry Final Project · Artifact of Learning</p>
       <p>Based on Bill Bryson's <em>A Short History of Nearly Everything</em> (2003)</p>
-      <p>Built entirely from scratch using HTML, CSS, and JavaScript — no frameworks or website builders</p>
+      <p>Built entirely from scratch using HTML, CSS, and JavaScript, no frameworks or external libraries</p>
       <p>May 2025</p>
     </div>
   </div>
