@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════
-   ChemCosmos — Interactive Layer
+   ChemCosmos · Interactive Layer
 ═══════════════════════════════════════════════════════════ */
 
 /* ── PAGE NAVIGATION ─────────────────────────────────────── */
@@ -405,7 +405,7 @@ function initDecayCalc() {
 
     if (isNaN(N0) || isNaN(HL) || isNaN(T) || HL <= 0 || N0 <= 0 || T < 0) {
       ['cr-remaining','cr-pct','cr-halflives','cr-decayed'].forEach(id => {
-        document.getElementById(id).textContent = '—';
+        document.getElementById(id).textContent = '--';
       });
       return;
     }
@@ -626,7 +626,7 @@ function buildDecayTable(N0, HL, totalHL) {
   }
 
   function fmtLife(y) {
-    if (!y) return '—';
+    if (!y) return '--';
     if (y > 1e13) return '> 1 trillion yr';
     if (y > 1e12) return (y/1e12).toFixed(1) + ' trillion yr';
     if (y > 1e9)  return (y/1e9).toFixed(2) + ' billion yr';
@@ -635,12 +635,12 @@ function buildDecayTable(N0, HL, totalHL) {
   }
 
   function fmtTemp(T) {
-    if (!T) return '—';
+    if (!T) return '--';
     return (T / 1e6).toFixed(1) + ' × 10⁶ K';
   }
 
   function fmtLum(L) {
-    if (!L) return '—';
+    if (!L) return '--';
     if (L >= 1e6) return (L/1e6).toFixed(0) + 'M L☉';
     if (L >= 1e3) return (L/1e3).toFixed(0) + 'k L☉';
     return L.toFixed(1) + ' L☉';
@@ -674,7 +674,7 @@ function buildDecayTable(N0, HL, totalHL) {
       const pulse = 0.92 + 0.08 * Math.sin(starPhase);
 
       if (mass < 0.08) {
-        /* brown dwarf — dim gaseous blob */
+        /* brown dwarf: dim gaseous blob */
         const g2 = ctx.createRadialGradient(cx, cy, 0, cx, cy, starR * 1.6);
         g2.addColorStop(0, `rgba(${r},${g},${b},0.55)`);
         g2.addColorStop(0.5, `rgba(${r},${g},${b},0.18)`);
