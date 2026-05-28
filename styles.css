@@ -64,8 +64,8 @@ canvas { display: block; }
   position: fixed;
   left: 0; top: 0; bottom: 0;
   width: var(--sidebar);
-  background: #05060e;
-  border-right: 1px solid var(--border);
+  background: linear-gradient(180deg, #0d1024 0%, #090c1c 100%);
+  border-right: 1px solid rgba(110,130,230,0.22);
   display: flex;
   flex-direction: column;
   z-index: 100;
@@ -73,23 +73,42 @@ canvas { display: block; }
 }
 
 .sidebar-brand {
-  padding: 28px 20px 22px;
-  border-bottom: 1px solid var(--border);
+  padding: 26px 20px 20px;
+  border-bottom: 1px solid rgba(110,130,230,0.15);
+  position: relative;
+}
+.sidebar-brand::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 20px; right: 20px;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(79,138,255,0.5) 0%, transparent 100%);
 }
 .brand-name {
   display: block;
   font-family: var(--fm);
-  font-size: 0.72rem;
+  font-size: 0.74rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--t1);
   line-height: 1;
 }
+.brand-dot {
+  display: inline-block;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--blue);
+  margin-right: 8px;
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
+  box-shadow: 0 0 8px rgba(79,138,255,0.7);
+}
 
 .sidebar-nav {
   flex: 1;
-  padding: 14px 0 10px;
+  padding: 10px 0 10px;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
@@ -97,47 +116,54 @@ canvas { display: block; }
 .sn-item {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 9px 20px;
+  gap: 11px;
+  padding: 10px 20px 10px 22px;
   font-family: var(--fu);
-  font-size: 0.79rem;
-  font-weight: 400;
-  color: var(--t3);
-  transition: color 0.15s, background 0.15s;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--t2);
+  transition: color 0.18s, background 0.18s, padding-left 0.2s;
   position: relative;
 }
-.sn-item:hover { color: var(--t2); background: rgba(170,185,230,0.03); }
+.sn-item:hover {
+  color: var(--t1);
+  background: rgba(79,138,255,0.06);
+}
 .sn-item.active {
   color: var(--t1);
-  background: rgba(79,138,255,0.07);
-  font-weight: 500;
+  background: rgba(79,138,255,0.12);
+  font-weight: 600;
+  padding-left: 26px;
 }
-.sn-item.active::after {
+.sn-item.active::before {
   content: '';
   position: absolute;
-  right: 0; top: 25%; bottom: 25%;
-  width: 2px;
+  left: 0; top: 18%; bottom: 18%;
+  width: 3px;
   background: var(--blue);
-  border-radius: 1px 0 0 1px;
+  border-radius: 0 2px 2px 0;
+  box-shadow: 0 0 8px rgba(79,138,255,0.55);
 }
 .sn-num {
   font-family: var(--fm);
-  font-size: 0.57rem;
-  color: var(--t4);
+  font-size: 0.58rem;
+  font-weight: 600;
+  color: var(--t3);
   letter-spacing: 0.04em;
   flex-shrink: 0;
-  width: 20px;
-  transition: color 0.15s;
+  width: 22px;
+  transition: color 0.18s;
 }
-.sn-item.active .sn-num { color: var(--blue); opacity: 0.65; }
+.sn-item:hover .sn-num { color: var(--t2); }
+.sn-item.active .sn-num { color: var(--blue); opacity: 1; }
 .sn-label { flex: 1; }
 
 .sidebar-footer {
-  padding: 14px 20px 20px;
-  border-top: 1px solid var(--border);
+  padding: 14px 20px 22px;
+  border-top: 1px solid rgba(110,130,230,0.12);
   font-family: var(--fu);
-  font-size: 0.57rem;
-  color: var(--t4);
+  font-size: 0.6rem;
+  color: var(--t3);
   line-height: 1.9;
 }
 
@@ -969,10 +995,6 @@ canvas { display: block; }
   animation: lineReveal 0.5s var(--ease) 0.85s forwards;
 }
 
-/* ── ACTIVE NAV ITEM ──────────────────────────────────── */
-.sn-item { transition: color 0.15s, background 0.15s, padding-left 0.2s; }
-.sn-item.active { padding-left: 24px; }
-
 /* ── SYN ROW HOVER ARROW ──────────────────────────────── */
 .syn-arrow { transition: transform 0.2s, opacity 0.2s; }
 .syn-row:hover .syn-arrow { transform: translateX(4px); opacity: 0.7; }
@@ -995,7 +1017,6 @@ canvas { display: block; }
 /* ── MOBILE READING BAR ───────────────────────────────── */
 @media (max-width: 900px) {
   .reading-bar { left: 0; }
-  .sn-item.active { padding-left: 20px; }
 }
 
 /* ═══════════════════════════════════════════════════════
