@@ -3,95 +3,95 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A Short History of Nearly Everything · AP Chemistry</title>
+<title>ChemCosmos · A Short History of Nearly Everything · AP Chemistry</title>
+<meta name="description" content="An interactive AP Chemistry companion to Bill Bryson's A Short History of Nearly Everything, tracing the universe from the Big Bang to quantum mechanics.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,300;1,8..60,400;1,8..60,600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,300;1,8..60,400;1,8..60,600;1,8..60,700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
 <!-- SIDEBAR -->
-<aside class="sidebar" id="sidebar">
+<aside class="sidebar" id="sidebar" aria-label="Site navigation">
   <div class="sidebar-brand">
-    <span class="brand-name"><span class="brand-dot"></span>ChemCosmos</span>
+    <div class="brand-top">
+      <span class="brand-name"><span class="brand-dot"></span>ChemCosmos</span>
+      <button class="sidebar-close" id="sidebarClose" aria-label="Close navigation">
+        <span></span><span></span>
+      </button>
+    </div>
+    <span class="brand-byline">A Short History of Nearly Everything</span>
   </div>
 
-  <nav class="sidebar-nav">
-    <a class="sn-item active" data-page="home" href="#">
-      <span class="sn-num">00</span>
-      <span class="sn-label">Home</span>
+  <nav class="sidebar-nav" aria-label="Page navigation">
+    <a class="sn-item active" data-page="home" href="#" aria-label="Home">
+      <span class="sn-num">00</span><span class="sn-label">Home</span>
     </a>
-    <a class="sn-item" data-page="bigbang" href="#">
-      <span class="sn-num">01</span>
-      <span class="sn-label">The Big Bang</span>
+    <a class="sn-item" data-page="bigbang" href="#" aria-label="The Big Bang">
+      <span class="sn-num">01</span><span class="sn-label">The Big Bang</span>
     </a>
-    <a class="sn-item" data-page="stars" href="#">
-      <span class="sn-num">02</span>
-      <span class="sn-label">Stars as Reactors</span>
+    <a class="sn-item" data-page="stars" href="#" aria-label="Stars as Reactors">
+      <span class="sn-num">02</span><span class="sn-label">Stars as Reactors</span>
     </a>
-    <a class="sn-item" data-page="atomic" href="#">
-      <span class="sn-num">03</span>
-      <span class="sn-label">Atomic Models</span>
+    <a class="sn-item" data-page="atomic" href="#" aria-label="Atomic Models">
+      <span class="sn-num">03</span><span class="sn-label">Atomic Models</span>
     </a>
-    <a class="sn-item" data-page="decay" href="#">
-      <span class="sn-num">04</span>
-      <span class="sn-label">Radioactive Decay</span>
+    <a class="sn-item" data-page="decay" href="#" aria-label="Radioactive Decay">
+      <span class="sn-num">04</span><span class="sn-label">Radioactive Decay</span>
     </a>
-    <a class="sn-item" data-page="matter" href="#">
-      <span class="sn-num">05</span>
-      <span class="sn-label">Matter at Scale</span>
+    <a class="sn-item" data-page="matter" href="#" aria-label="Matter at Scale">
+      <span class="sn-num">05</span><span class="sn-label">Matter at Scale</span>
     </a>
-    <a class="sn-item" data-page="hub" href="#">
-      <span class="sn-num">06</span>
-      <span class="sn-label">AP Chem Hub</span>
+    <a class="sn-item" data-page="hub" href="#" aria-label="AP Chem Hub">
+      <span class="sn-num">06</span><span class="sn-label">AP Chem Hub</span>
     </a>
-    <a class="sn-item" data-page="citations" href="#">
-      <span class="sn-num">07</span>
-      <span class="sn-label">Citations</span>
+    <a class="sn-item" data-page="citations" href="#" aria-label="Citations">
+      <span class="sn-num">07</span><span class="sn-label">Citations</span>
     </a>
   </nav>
 
-  <div class="sidebar-footer">
-    <p>Based on <em>A Short History of Nearly Everything</em></p>
-    <p>Bill Bryson · Broadway Books, 2003</p>
-  </div>
 </aside>
+
+<!-- NAV TOGGLE (desktop) -->
+<button class="nav-toggle" id="navToggle" aria-label="Open navigation" aria-expanded="false">
+  <span></span><span></span><span></span>
+</button>
 
 <!-- MOBILE HEADER -->
 <header class="mobile-header">
-  <button class="mob-menu" id="mobMenu" aria-label="Menu">
+  <button class="mob-menu" id="mobMenu" aria-label="Open menu">
     <span></span><span></span><span></span>
   </button>
   <span class="mob-title">ChemCosmos</span>
   <span class="mob-page-indicator" id="mobPageIndicator">Home</span>
 </header>
-<div class="mob-overlay" id="mobOverlay"></div>
+<div class="mob-overlay" id="mobOverlay" aria-hidden="true"></div>
 
 <!-- MAIN -->
 <main class="main" id="main">
 <div class="reading-bar" id="readingBar" aria-hidden="true"></div>
 
-<!-- HOME -->
+<!-- ═══════════════════════════════════════════════════════
+     HOME
+═══════════════════════════════════════════════════════ -->
 <section class="page active" id="page-home">
   <div class="hero">
     <canvas id="starCanvas" class="star-canvas" aria-hidden="true"></canvas>
-    <div class="hero-eyebrow">Bill Bryson · A Short History of Nearly Everything</div>
-    <h1 class="hero-title">
-      <span class="ht-line">The Universe</span>
-      <span class="ht-line accent">Through a</span>
-      <span class="ht-line">Chemist's Eyes</span>
-    </h1>
-    <p class="hero-sub">Bryson spent six years talking to scientists to write this book. This site traces that same path, from the first seconds of the universe to the molecules that make up everything around us.</p>
-
-    <div class="hero-cta-row">
-      <button class="btn-primary" data-page="bigbang">
-        Begin the Journey
-        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10h12M12 5l5 5-5 5"/></svg>
-      </button>
-      <button class="btn-ghost" data-page="atomic">
-        Jump to Atomic Models
-      </button>
+    <div class="hero-inner">
+      <h1 class="hero-title">
+        <span class="ht-line">The Universe</span>
+        <span class="ht-line accent">Through a</span>
+        <span class="ht-line">Chemist's Eyes</span>
+      </h1>
+      <p class="hero-sub">Bryson spent six years talking to scientists to write this book. This site follows that same arc, from the first moments after the Big Bang to the molecules that hold everything together, and connects each step to AP Chemistry.</p>
+      <div class="hero-cta-row">
+        <button class="btn-primary" data-page="bigbang">
+          Begin the Journey
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 10h12M12 5l5 5-5 5"/></svg>
+        </button>
+        <button class="btn-ghost" data-page="atomic">Jump to Atomic Models</button>
+      </div>
     </div>
   </div>
 
@@ -111,27 +111,30 @@
     <div class="stat">
       <span class="stat-num">E=mc²</span>
       <span class="stat-unit">mass-energy</span>
-      <span class="stat-label">Equivalence (Einstein, 1905)</span>
+      <span class="stat-label">Equivalence · Einstein, 1905</span>
     </div>
     <div class="stat-div"></div>
     <div class="stat">
       <span class="stat-num">5</span>
       <span class="stat-unit">atomic models</span>
-      <span class="stat-label">Dalton to Quantum (1803-1926)</span>
+      <span class="stat-label">Dalton to Quantum · 1803–1926</span>
     </div>
   </div>
 </section>
 
-
-<!-- BIG BANG -->
+<!-- ═══════════════════════════════════════════════════════
+     THE BIG BANG
+═══════════════════════════════════════════════════════ -->
 <section class="page" id="page-bigbang">
   <div class="page-wrap">
     <div class="page-header">
-      <div class="ph-num">01</div>
       <div class="ph-text">
-        <div class="ph-eyebrow">Chapter 1 · Origin</div>
+        <div class="page-meta">
+  <span>Topic: Atomic Structure and Electron Configuration</span>
+  <span>Topic: Nuclear Chemistry and Radioactive Decay</span>
+</div>
         <h1 class="ph-title">The Big Bang &amp; Matter Formation</h1>
-        <p class="ph-sub">How pure energy became the building blocks of chemistry. Unit 1: Atomic Structure · Big Idea: Energy</p>
+        <p class="ph-sub">How pure energy became the building blocks of chemistry in the first 380,000 years. The Big Bang wasn't an explosion in space. It was an expansion of space itself, from a point too small to meaningfully describe.</p>
       </div>
     </div>
 
@@ -140,125 +143,177 @@
         <div class="tlh-node">
           <div class="tlh-dot gold"></div>
           <div class="tlh-time">T = 0</div>
-          <div class="tlh-event">The Singularity<br><small>Infinite density, infinite temperature, pure energy</small></div>
+          <div class="tlh-event">The Singularity<br><small>Infinite density &amp; temperature; pure energy; space itself begins</small></div>
         </div>
         <div class="tlh-line"></div>
         <div class="tlh-node">
           <div class="tlh-dot cyan"></div>
-          <div class="tlh-time">10⁻³² s</div>
-          <div class="tlh-event">Inflation<br><small>Universe expands by a factor of 10²⁶</small></div>
+          <div class="tlh-time">10<sup>−43</sup> s</div>
+          <div class="tlh-event">Planck Epoch Ends<br><small>Gravity separates from other forces; quantum gravity required</small></div>
         </div>
         <div class="tlh-line"></div>
         <div class="tlh-node">
           <div class="tlh-dot cyan"></div>
-          <div class="tlh-time">10⁻⁶ s</div>
-          <div class="tlh-event">Quarks to Hadrons<br><small>Quarks combine into protons and neutrons</small></div>
+          <div class="tlh-time">10<sup>−32</sup> s</div>
+          <div class="tlh-event">Cosmic Inflation<br><small>Universe expands by a factor of 10<sup>26</sup> in 10<sup>−32</sup> seconds</small></div>
+        </div>
+        <div class="tlh-line"></div>
+        <div class="tlh-node">
+          <div class="tlh-dot gold"></div>
+          <div class="tlh-time">10<sup>−6</sup> s</div>
+          <div class="tlh-event">Quarks to Hadrons<br><small>Quarks combine: three quarks form each proton and neutron</small></div>
         </div>
         <div class="tlh-line"></div>
         <div class="tlh-node">
           <div class="tlh-dot gold"></div>
           <div class="tlh-time">3 min</div>
-          <div class="tlh-event">Nucleosynthesis<br><small>H and He nuclei form: ¹H, ²H, ³He, ⁴He, ⁷Li</small></div>
+          <div class="tlh-event">Nucleosynthesis<br><small>H and He nuclei form: ¹H, ²H, ³He, ⁴He, trace ⁷Li</small></div>
         </div>
         <div class="tlh-line"></div>
         <div class="tlh-node">
           <div class="tlh-dot gold"></div>
           <div class="tlh-time">380,000 yr</div>
-          <div class="tlh-event">Recombination<br><small>Electrons bind to nuclei; neutral atoms appear</small></div>
+          <div class="tlh-event">Recombination<br><small>Electrons bind to nuclei; first atoms; universe becomes transparent</small></div>
         </div>
         <div class="tlh-line"></div>
         <div class="tlh-node">
           <div class="tlh-dot cyan"></div>
-          <div class="tlh-time">200M yr</div>
-          <div class="tlh-event">First Stars<br><small>Gravity collapses hydrogen clouds</small></div>
+          <div class="tlh-time">200 M yr</div>
+          <div class="tlh-event">First Stars<br><small>Gravity collapses hydrogen clouds; stellar nucleosynthesis begins</small></div>
         </div>
       </div>
     </div>
 
     <div class="card-grid cg-3">
       <div class="card card-gold">
-        <h3>Energy to Matter</h3>
-        <p>In the first fractions of a second, the universe was hot enough that energy condensed directly into matter. Einstein's equation E = mc² describes this: mass and energy are two forms of the same thing, and the relationship runs both ways.</p>
+        <h3>Energy to Matter: E = mc²</h3>
+        <p>In the first fractions of a second, the universe was hot enough that pure energy condensed into matter. Einstein's equation describes this conversion: mass and energy are the same thing expressed differently. The relationship runs in both directions.</p>
         <div class="formula-block">E = mc²</div>
-        <p class="card-note">One kilogram of matter contains roughly 9×10¹⁶ joules. That number is why nuclear reactions release so much energy from so little mass.</p>
+        <p>One kilogram of matter stores roughly 9 × 10<sup>16</sup> joules. That figure, the speed of light squared, is why nuclear reactions release so much energy from so little mass. The same conversion ran in reverse in the first second of the universe, turning pure radiation into the first protons and neutrons.</p>
+        <p class="card-note">The mass of a proton is 1.673 × 10<sup>−27</sup> kg. Its rest energy is 938 MeV. Every time a nuclear reaction releases energy, that mass difference is accounted for by Einstein's equation.</p>
       </div>
 
       <div class="card">
         <h3>The Plasma State</h3>
-        <p>For the first 380,000 years, the universe was too hot for atoms to exist. Thermal energy exceeded the ionization energies of hydrogen and helium, so electrons couldn't stay bound to nuclei. Matter was a fog of charged particles, and the universe was completely opaque because free electrons scattered light in every direction.</p>
-        <p>In plasma, kT is much greater than IE, so electrons roam freely.</p>
-        <div class="plasma-vis">
+        <p>For the first 380,000 years, the universe was too hot for atoms to exist. Thermal energy far exceeded the ionization energies of hydrogen (13.6 eV) and helium (24.6 eV), so electrons could never stay bound to nuclei. The universe was a fog of charged particles: protons, neutrons, and free electrons. Light scattered off every electron, making the cosmos completely opaque.</p>
+        <div class="plasma-vis" aria-hidden="true">
           <div class="pv-particle pv-p"></div>
           <div class="pv-particle pv-e"></div>
           <div class="pv-particle pv-p"></div>
           <div class="pv-particle pv-e"></div>
           <div class="pv-particle pv-p"></div>
           <div class="pv-particle pv-e"></div>
-          <div class="pv-label">Free protons and electrons in plasma</div>
+          <div class="pv-particle pv-p"></div>
+          <div class="pv-particle pv-e"></div>
+          <div class="pv-label">Free protons (<span style="color:var(--gold)">●</span>) and electrons (<span style="color:var(--blue-lt)">●</span>) in plasma</div>
         </div>
+        <p class="card-note">kT ≫ IE means thermal energy far exceeds ionization energy. The same condition applies inside stars today, where core temperatures exceed 10 million Kelvin and all matter is fully ionized plasma.</p>
       </div>
 
       <div class="card">
         <h3>Big Bang Nucleosynthesis</h3>
-        <p>The Big Bang produced hydrogen, helium, and a trace of lithium. That is it. Every other element on the periodic table was made later, inside stars. When Bryson writes that we are made of stardust, he means it literally.</p>
+        <p>The Big Bang produced exactly three stable elements: hydrogen, helium, and a trace of lithium. That is everything. Every other element on the periodic table was assembled later, inside stars. When Bryson says we are made of stardust, he means it with complete chemical precision.</p>
         <div class="abundance-chart">
           <div class="ab-row">
             <span class="ab-el">¹H</span>
-            <div class="ab-bar"><div class="ab-fill" style="width:75%" data-color="cyan"></div></div>
+            <div class="ab-bar"><div class="ab-fill" data-color="cyan" style="width:75%"></div></div>
             <span class="ab-pct">~75%</span>
           </div>
           <div class="ab-row">
             <span class="ab-el">⁴He</span>
-            <div class="ab-bar"><div class="ab-fill" style="width:25%" data-color="gold"></div></div>
+            <div class="ab-bar"><div class="ab-fill" data-color="gold" style="width:25%"></div></div>
             <span class="ab-pct">~25%</span>
           </div>
           <div class="ab-row">
             <span class="ab-el">²H</span>
-            <div class="ab-bar"><div class="ab-fill" style="width:0.5%" data-color="dim"></div></div>
+            <div class="ab-bar"><div class="ab-fill" data-color="dim" style="width:1%"></div></div>
             <span class="ab-pct">0.01%</span>
           </div>
           <div class="ab-row">
             <span class="ab-el">⁷Li</span>
-            <div class="ab-bar"><div class="ab-fill" style="width:0.1%" data-color="dim"></div></div>
+            <div class="ab-bar"><div class="ab-fill" data-color="dim" style="width:0.3%"></div></div>
             <span class="ab-pct">trace</span>
           </div>
         </div>
-        <p class="card-note">All elements heavier than lithium were forged in stars. We are, in a very real sense, made of stellar ash.</p>
+        <p class="card-note">These ratios match predictions from Big Bang theory to within 1%. Measuring the cosmic microwave background and distant galaxy compositions confirms that nucleosynthesis happened exactly this way, about 13.8 billion years ago.</p>
       </div>
     </div>
 
-    <div class="ap-box">
-      <div class="apb-header">AP Chemistry Connection · Unit 1: Atomic Structure</div>
-      <p>The Recombination event is ionization energy in reverse. As the universe cooled past roughly 3,000 K, thermal energy dropped below the ionization energies of hydrogen (13.6 eV) and helium (24.6 eV). Electrons settled into ground-state orbitals for the first time. Those were the first electron configurations in history, and the universe became transparent the moment they formed.</p>
+    <div class="temp-timeline-section">
+      <div class="tt-header">
+        <h3>Temperature of the Universe Through Time</h3>
+        <p>As the universe expanded, it cooled. Each temperature threshold crossed unlocked new physics, and with it, new chemistry.</p>
+      </div>
+      <div class="tt-rows">
+        <div class="tt-row">
+          <span class="tt-time">T = 0 s</span>
+          <div class="tt-bar-wrap"><div class="tt-bar" style="width:100%;background:var(--crimson)"></div></div>
+          <span class="tt-temp">~10<sup>32</sup> K</span>
+          <span class="tt-event">Planck temperature, all forces unified</span>
+        </div>
+        <div class="tt-row">
+          <span class="tt-time">10<sup>−6</sup> s</span>
+          <div class="tt-bar-wrap"><div class="tt-bar" style="width:82%;background:#e85c2e"></div></div>
+          <span class="tt-temp">~10<sup>13</sup> K</span>
+          <span class="tt-event">Quarks condense into protons and neutrons</span>
+        </div>
+        <div class="tt-row">
+          <span class="tt-time">3 min</span>
+          <div class="tt-bar-wrap"><div class="tt-bar" style="width:64%;background:var(--gold)"></div></div>
+          <span class="tt-temp">~10<sup>9</sup> K</span>
+          <span class="tt-event">Nucleosynthesis: H and He nuclei form</span>
+        </div>
+        <div class="tt-row">
+          <span class="tt-time">380,000 yr</span>
+          <div class="tt-bar-wrap"><div class="tt-bar" style="width:42%;background:var(--blue)"></div></div>
+          <span class="tt-temp">~3,000 K</span>
+          <span class="tt-event">Recombination: first atoms; universe becomes transparent</span>
+        </div>
+        <div class="tt-row">
+          <span class="tt-time">200 M yr</span>
+          <div class="tt-bar-wrap"><div class="tt-bar" style="width:24%;background:var(--emerald)"></div></div>
+          <span class="tt-temp">~60 K</span>
+          <span class="tt-event">First stars ignite: stellar nucleosynthesis begins</span>
+        </div>
+        <div class="tt-row">
+          <span class="tt-time">Today</span>
+          <div class="tt-bar-wrap"><div class="tt-bar" style="width:6%;background:var(--violet)"></div></div>
+          <span class="tt-temp">2.725 K</span>
+          <span class="tt-event">CMB background temperature, the echo of recombination</span>
+        </div>
+      </div>
     </div>
+
   </div>
 </section>
 
-
-<!-- STARS -->
+<!-- ═══════════════════════════════════════════════════════
+     STARS AS REACTORS
+═══════════════════════════════════════════════════════ -->
 <section class="page" id="page-stars">
   <div class="page-wrap">
     <div class="page-header">
-      <div class="ph-num">02</div>
       <div class="ph-text">
-        <div class="ph-eyebrow">Chapter 2 · Stellar Nucleosynthesis</div>
+        <div class="page-meta">
+  <span>Topic: Nuclear Chemistry and Radioactive Decay</span>
+</div>
         <h1 class="ph-title">Stars as Nuclear Reactors</h1>
-        <p class="ph-sub">How stellar fusion creates every element heavier than lithium. Unit 1: Nuclear Chemistry · Big Idea: Energy and Transformations</p>
+        <p class="ph-sub">Every element heavier than helium was built inside a star. The silicon in your phone, the oxygen in the air, the iron in your blood: all of it was forged in stellar cores and scattered across the galaxy when those stars died.</p>
       </div>
     </div>
 
     <div class="card-grid cg-2">
       <div class="card card-featured">
         <h3>The Proton-Proton Chain</h3>
-        <p>In stars like the Sun, hydrogen fuses into helium through the proton-proton chain. It requires temperatures above about 10 million K because protons must get close enough for the strong nuclear force to overcome their electrostatic repulsion.</p>
+        <p>In stars like the Sun, hydrogen fuses into helium through the proton-proton chain. Temperatures must exceed ~10 million K so protons can overcome their electrostatic repulsion and get close enough for the strong nuclear force to bind them.</p>
         <div class="fusion-chain">
           <div class="fc-step">
             <div class="fc-eq">
               <span class="nuc">¹H</span><span class="op">+</span><span class="nuc">¹H</span>
               <span class="op">→</span><span class="nuc">²H</span><span class="op">+</span>
-              <span class="nuc nuc-e">e⁺</span><span class="op">+</span><span class="nuc nuc-n">ν</span>
+              <span class="nuc nuc-e">e⁺</span><span class="op">+</span><span class="nuc nuc-n">ν<sub>e</sub></span>
             </div>
-            <span class="fc-label">Step 1: Deuterium forms</span>
+            <span class="fc-label">Step 1 · Deuterium forms; positron and neutrino emitted</span>
           </div>
           <div class="fc-arrow">↓</div>
           <div class="fc-step">
@@ -266,7 +321,7 @@
               <span class="nuc">²H</span><span class="op">+</span><span class="nuc">¹H</span>
               <span class="op">→</span><span class="nuc">³He</span><span class="op">+</span><span class="nuc nuc-g">γ</span>
             </div>
-            <span class="fc-label">Step 2: Helium-3 forms</span>
+            <span class="fc-label">Step 2 · Helium-3 forms; gamma ray photon emitted</span>
           </div>
           <div class="fc-arrow">↓</div>
           <div class="fc-step">
@@ -274,24 +329,24 @@
               <span class="nuc">³He</span><span class="op">+</span><span class="nuc">³He</span>
               <span class="op">→</span><span class="nuc nuc-gold">⁴He</span><span class="op">+</span><span class="nuc">2¹H</span>
             </div>
-            <span class="fc-label">Step 3: Helium-4 plus energy released</span>
+            <span class="fc-label">Step 3 · Helium-4 forms; two protons returned; energy released</span>
           </div>
         </div>
-        <p class="card-note">Net: 4 protons become one helium-4 nucleus plus 2 positrons, 2 neutrinos, 2 gamma rays, and 26.7 MeV of energy.</p>
+        <p class="card-note">Net reaction: 4 ¹H → ¹ ⁴He + 2e⁺ + 2ν<sub>e</sub> + 2γ + 26.73 MeV. The 26.73 MeV comes entirely from the mass difference: four proton masses minus one helium-4 mass, converted to energy via E = mc².</p>
       </div>
 
       <div class="card">
         <h3>Binding Energy &amp; the Iron Peak</h3>
-        <p>Each fusion step releases energy because the product nucleus is slightly lighter than its reactants. That missing mass becomes energy through E = mc². Binding energy per nucleon peaks at iron-56, which is why iron is the most stable nucleus in the universe. Past iron, fusion no longer releases energy, it requires it.</p>
+        <p>Every fusion reaction releases energy because the product nucleus is slightly lighter than its ingredients. That missing mass becomes energy through ΔE = Δmc². Binding energy per nucleon peaks at iron-56. Below iron, fusion releases energy; above iron, it requires it. That's why iron marks the endpoint of stellar fusion, and why iron cores trigger supernovae.</p>
         <div class="binding-chart" id="bindingChart">
-          <canvas id="bindingCanvas" width="340" height="200"></canvas>
-          <p class="chart-label">Binding energy per nucleon (MeV) vs. mass number. Iron-56 sits at the top of the curve.</p>
+          <canvas id="bindingCanvas" width="340" height="200" aria-label="Binding energy per nucleon versus mass number, showing the iron-56 peak"></canvas>
+          <p class="chart-label">Binding energy per nucleon (MeV) vs. mass number A. Iron-56 sits at the global maximum of 8.79 MeV/nucleon. Hover to explore any nucleus.</p>
         </div>
       </div>
     </div>
 
     <div class="synthesis-grid">
-      <div class="syn-header">How stars produce different elements</div>
+      <div class="syn-header">Element production by stellar type</div>
       <div class="syn-row">
         <div class="syn-type">
           <span class="st-label st-low">Low-mass</span>
@@ -301,7 +356,7 @@
         <div class="syn-elements">
           <span class="el-badge el-h">H</span><span class="el-badge el-he">He</span><span class="el-badge el-c">C</span><span class="el-badge el-o">O</span><span class="el-badge el-n">N</span>
         </div>
-        <div class="syn-note">Produce C and O through the triple-alpha process. Leave behind a white dwarf.</div>
+        <div class="syn-note">H and He burning; triple-alpha process makes carbon and oxygen. Leave behind a white dwarf of carbon and oxygen.</div>
       </div>
       <div class="syn-row">
         <div class="syn-type">
@@ -312,7 +367,7 @@
         <div class="syn-elements">
           <span class="el-badge el-c">C</span><span class="el-badge el-ne">Ne</span><span class="el-badge el-si">Si</span><span class="el-badge el-fe">Fe</span><span class="el-badge el-ni">Ni</span>
         </div>
-        <div class="syn-note">Run through shell-burning stages up to iron. End as neutron stars or black holes.</div>
+        <div class="syn-note">Shell-burning stages run to silicon burning; iron core collapses. End as neutron stars or black holes.</div>
       </div>
       <div class="syn-row">
         <div class="syn-type">
@@ -323,18 +378,18 @@
         <div class="syn-elements">
           <span class="el-badge el-au">Au</span><span class="el-badge el-pt">Pt</span><span class="el-badge el-u">U</span><span class="el-badge el-pb">Pb</span><span class="el-badge el-sr">Sr</span>
         </div>
-        <div class="syn-note">Rapid neutron capture during stellar explosions and mergers builds all elements heavier than iron. Gold comes from these events.</div>
+        <div class="syn-note">Rapid neutron capture (r-process) during stellar explosions and neutron-star mergers builds every element heavier than iron. All gold on Earth came from these events.</div>
       </div>
     </div>
 
     <div class="stellar-calc">
       <div class="stc-header">
         <h3>Stellar Lifecycle Calculator</h3>
-        <p>A star's mass determines everything: its spectral class, lifespan, which elements it can fuse, and how it dies. Drag the slider to explore.</p>
+        <p>A star's mass determines everything: spectral class, core temperature, lifespan, which elements it can fuse, and how it dies. Drag the slider or type a value to explore the full range from brown dwarfs to blue hypergiants.</p>
       </div>
       <div class="stc-body">
         <div class="stc-left">
-          <canvas id="stellarCanvas" class="stc-star-canvas"></canvas>
+          <canvas id="stellarCanvas" class="stc-star-canvas" aria-label="Animated star visualization"></canvas>
           <div class="stc-mass-wrap">
             <div class="stc-mass-row">
               <span class="stc-mass-label">Stellar Mass</span>
@@ -343,7 +398,7 @@
                 <span class="stc-msun">M<sub>☉</sub></span>
               </div>
             </div>
-            <input type="range" id="stellarMass" min="0.08" max="60" step="0.01" value="1" class="stc-slider">
+            <input type="range" id="stellarMass" min="0.08" max="60" step="0.01" value="1" class="stc-slider" aria-label="Stellar mass slider">
             <div class="stc-slider-ends">
               <span>0.08 M<sub>☉</sub></span>
               <span>60 M<sub>☉</sub></span>
@@ -354,50 +409,49 @@
       </div>
     </div>
 
-    <div class="ap-box">
-      <div class="apb-header">AP Chemistry Connection · Nuclear Chemistry</div>
-      <p>Fusion below iron and fission above iron both release energy for the same reason: both sides of the iron-56 peak slide toward higher binding energy per nucleon. In both cases, mass disappears, and that mass becomes energy through ΔE = Δmc².</p>
-    </div>
   </div>
 </section>
 
-
-<!-- ATOMIC MODELS -->
+<!-- ═══════════════════════════════════════════════════════
+     ATOMIC MODELS
+═══════════════════════════════════════════════════════ -->
 <section class="page" id="page-atomic">
   <div class="page-wrap">
     <div class="page-header">
-      <div class="ph-num">03</div>
       <div class="ph-text">
-        <div class="ph-eyebrow">Scientific Practice 1 · Models and Representations</div>
+        <div class="page-meta">
+  <span>Scientific Practice: SP-1 · Models and Representations</span>
+  <span>Topic: Atomic Structure and Electron Configuration</span>
+</div>
         <h1 class="ph-title">The Atomic Model Timeline</h1>
-        <p class="ph-sub">How experimental evidence forced five revisions of the atomic model across 123 years</p>
+        <p class="ph-sub">How five experiments over 123 years forced five revisions of our most fundamental model of matter. Each model was replaced not by a better idea but by data that broke the previous one.</p>
       </div>
     </div>
 
     <div class="model-timeline">
-      <div class="mt-timeline-nav">
-        <div class="mtn-track"></div>
-        <button class="mt-btn active" data-model="dalton">
+      <div class="mt-timeline-nav" role="tablist" aria-label="Atomic model timeline">
+        <div class="mtn-track" aria-hidden="true"></div>
+        <button class="mt-btn active" data-model="dalton" role="tab" aria-selected="true" aria-controls="model-dalton">
           <span class="mtn-year">1803</span>
           <span class="mtn-dot"></span>
           <span class="mtn-name">Dalton</span>
         </button>
-        <button class="mt-btn" data-model="thomson">
+        <button class="mt-btn" data-model="thomson" role="tab" aria-selected="false" aria-controls="model-thomson">
           <span class="mtn-year">1897</span>
           <span class="mtn-dot"></span>
           <span class="mtn-name">Thomson</span>
         </button>
-        <button class="mt-btn" data-model="rutherford">
+        <button class="mt-btn" data-model="rutherford" role="tab" aria-selected="false" aria-controls="model-rutherford">
           <span class="mtn-year">1911</span>
           <span class="mtn-dot"></span>
           <span class="mtn-name">Rutherford</span>
         </button>
-        <button class="mt-btn" data-model="bohr">
+        <button class="mt-btn" data-model="bohr" role="tab" aria-selected="false" aria-controls="model-bohr">
           <span class="mtn-year">1913</span>
           <span class="mtn-dot"></span>
           <span class="mtn-name">Bohr</span>
         </button>
-        <button class="mt-btn" data-model="quantum">
+        <button class="mt-btn" data-model="quantum" role="tab" aria-selected="false" aria-controls="model-quantum">
           <span class="mtn-year">1926</span>
           <span class="mtn-dot"></span>
           <span class="mtn-name">Quantum</span>
@@ -405,74 +459,208 @@
       </div>
 
       <div class="mt-display">
-        <div class="mt-panel active" id="model-dalton">
-          <div class="mt-visual mv-dalton"><div class="mv-dalton-sphere"><div class="mv-dalton-shine"></div></div><div class="mv-label">Solid Sphere</div></div>
+        <!-- DALTON -->
+        <div class="mt-panel active" id="model-dalton" role="tabpanel" aria-label="Dalton's atomic model">
+          <div class="mt-visual mv-dalton">
+            <div class="mv-dalton-sphere"><div class="mv-dalton-shine"></div></div>
+            <div class="mv-label">Indivisible Solid Sphere</div>
+          </div>
           <div class="mt-info">
-            <div class="mt-info-header"><span class="mt-model-name">Dalton's Atomic Theory</span><span class="mt-model-year">1803</span></div>
-            <p class="mt-desc">Dalton built his model from patterns in chemical reactions, not from any observation of atoms directly. He noticed that elements always combine in fixed mass ratios, which makes mathematical sense if each element has its own type of particle with a fixed mass. It was more an accounting framework than a physical description.</p>
-            <div class="mt-evidence"><h4>Key Evidence</h4><ul><li>Law of Conservation of Mass (Lavoisier, 1774)</li><li>Law of Definite Proportions (Proust, 1799)</li><li>Law of Multiple Proportions</li></ul></div>
-            <div class="mt-limitation"><h4>Limitation</h4><p>The model had no mechanism for electrical phenomena, like why dissolved salts conduct electricity. The atom being truly indivisible turned out to be wrong, though it was a reasonable assumption for 1803.</p></div>
+            <div class="mt-info-header">
+              <span class="mt-model-name">Dalton's Atomic Theory</span>
+              <span class="mt-model-year">1803</span>
+            </div>
+            <p class="mt-desc">Dalton built his model entirely from patterns in chemical reactions, never having seen an atom. He observed that elements always combine in fixed mass ratios (water is always 1 part hydrogen to 8 parts oxygen by mass) and concluded that the simplest explanation was discrete particles with fixed masses. Each element had its own type of atom; compounds were fixed combinations.</p>
+            <div class="mt-evidence">
+              <h4>Key Evidence</h4>
+              <ul>
+                <li>Law of Conservation of Mass (Lavoisier, 1774): mass is neither created nor destroyed</li>
+                <li>Law of Definite Proportions (Proust, 1799): compounds always have fixed elemental ratios</li>
+                <li>Law of Multiple Proportions: when elements form multiple compounds, mass ratios are simple integers</li>
+              </ul>
+            </div>
+            <div class="mt-limitation">
+              <h4>Why It Was Replaced</h4>
+              <p>The solid-sphere model had no mechanism for electrical phenomena, like why dissolved salts conduct electricity. It also implied atoms were truly indivisible. When Thomson ran electricity through sealed tubes and found particles 1/1837 the mass of hydrogen emerging regardless of electrode material, the indivisible atom was finished.</p>
+            </div>
           </div>
         </div>
 
-        <div class="mt-panel" id="model-thomson">
-          <div class="mt-visual mv-thomson"><div class="mv-thomson-pudding"><div class="mv-thomson-pos"></div><div class="mv-e te1"></div><div class="mv-e te2"></div><div class="mv-e te3"></div><div class="mv-e te4"></div><div class="mv-e te5"></div></div><div class="mv-label">Plum Pudding</div></div>
+        <!-- THOMSON -->
+        <div class="mt-panel" id="model-thomson" role="tabpanel" aria-label="Thomson's plum pudding model">
+          <div class="mt-visual mv-thomson">
+            <div class="mv-thomson-pudding">
+              <div class="mv-thomson-pos"></div>
+              <div class="mv-e te1"></div><div class="mv-e te2"></div>
+              <div class="mv-e te3"></div><div class="mv-e te4"></div><div class="mv-e te5"></div>
+            </div>
+            <div class="mv-label">Plum Pudding Model</div>
+          </div>
           <div class="mt-info">
-            <div class="mt-info-header"><span class="mt-model-name">Thomson's Plum Pudding Model</span><span class="mt-model-year">1897</span></div>
-            <p class="mt-desc">Thomson ran electricity through sealed glass tubes and found something odd: a beam that deflected identically regardless of what gas was inside or what the electrodes were made from. Whatever was in that beam came from the atoms themselves. The particles were far lighter than hydrogen, so atoms had to contain smaller pieces.</p>
-            <div class="mt-evidence"><h4>Key Evidence</h4><ul><li>Cathode rays deflected identically regardless of electrode material or gas used</li><li>e/m ratio: these particles have mass roughly 1/1837 that of hydrogen</li><li>Since atoms are electrically neutral, positive charge had to be somewhere</li></ul></div>
-            <div class="mt-limitation"><h4>Limitation</h4><p>Thomson assumed positive charge was spread thinly throughout the atom. That predicted heavy particles should drift through with barely any deflection. Rutherford fired those particles at gold foil and found out how wrong that was.</p></div>
+            <div class="mt-info-header">
+              <span class="mt-model-name">Thomson's Plum Pudding Model</span>
+              <span class="mt-model-year">1897</span>
+            </div>
+            <p class="mt-desc">Thomson connected a high-voltage source to sealed glass tubes and found a ray coming from the negative electrode. The key observation was that the ray deflected identically regardless of what gas filled the tube or what metal the cathode was made from. Whatever was in that beam came from matter itself, not from any particular material. Thomson measured the charge-to-mass ratio and found these particles were roughly 1,837 times lighter than hydrogen. The atom had internal structure.</p>
+            <div class="mt-evidence">
+              <h4>Key Evidence</h4>
+              <ul>
+                <li>Cathode rays deflect in electric and magnetic fields identically regardless of electrode material</li>
+                <li>e/m ratio measurements: these particles are ~1/1837 the mass of hydrogen atoms</li>
+                <li>Since atoms are electrically neutral, the positive charge had to be distributed somewhere in the atom</li>
+                <li>Millikan (1909) later measured the electron's actual charge: 1.602 × 10<sup>−19</sup> C</li>
+              </ul>
+            </div>
+            <div class="mt-limitation">
+              <h4>Why It Was Replaced</h4>
+              <p>If positive charge is spread uniformly through the atom, heavy alpha particles should drift through gold foil with barely any deflection, like cannonballs through a fog. Rutherford fired those particles and watched one in 8,000 bounce straight back. A diffuse sphere can't do that.</p>
+            </div>
           </div>
         </div>
 
-        <div class="mt-panel" id="model-rutherford">
-          <div class="mt-visual mv-rutherford"><div class="mv-nucleus gold-nuc"></div><div class="mv-orbit mvo1"><div class="mv-e"></div></div><div class="mv-orbit mvo2"><div class="mv-e"></div></div><div class="mv-orbit mvo3"><div class="mv-e"></div></div><div class="mv-label">Nuclear Model</div></div>
+        <!-- RUTHERFORD -->
+        <div class="mt-panel" id="model-rutherford" role="tabpanel" aria-label="Rutherford's nuclear model">
+          <div class="mt-visual mv-rutherford">
+            <div class="mv-nucleus gold-nuc"></div>
+            <div class="mv-orbit mvo1"><div class="mv-e"></div></div>
+            <div class="mv-orbit mvo2"><div class="mv-e"></div></div>
+            <div class="mv-orbit mvo3"><div class="mv-e"></div></div>
+            <div class="mv-label">Nuclear Model</div>
+          </div>
           <div class="mt-info">
-            <div class="mt-info-header"><span class="mt-model-name">Rutherford's Nuclear Model</span><span class="mt-model-year">1911</span></div>
-            <p class="mt-desc">Geiger and Marsden fired alpha particles at gold foil in 1909. About 99.98% went straight through. But roughly one in 8,000 bounced back at steep angles. Rutherford later wrote that it was like firing artillery shells at tissue paper and having them come back at you. The only explanation was that most of the atom's mass was packed into a tiny, dense, positively charged core.</p>
-            <div class="mt-evidence"><h4>Key Evidence</h4><ul><li>~99.98% of alpha particles passed through without significant deflection</li><li>~1 in 8,000 bounced back at large angles, requiring a dense positive core</li><li>Nuclear radius ~10⁻¹⁵ m vs. atomic radius ~10⁻¹⁰ m (100,000 times smaller)</li></ul></div>
-            <div class="mt-limitation"><h4>Limitation</h4><p>Classical electromagnetism says any accelerating charge radiates energy continuously. An orbiting electron is always accelerating, so it should lose energy and spiral into the nucleus in roughly 10⁻⁸ seconds. Rutherford's model had no explanation for why atoms are stable.</p></div>
+            <div class="mt-info-header">
+              <span class="mt-model-name">Rutherford's Nuclear Model</span>
+              <span class="mt-model-year">1911</span>
+            </div>
+            <p class="mt-desc">Geiger and Marsden directed a beam of alpha particles at a gold foil 400 atoms thick. About 99.98% passed straight through. But roughly 1 in 8,000 bounced back at angles greater than 90 degrees. Rutherford later said it was like firing artillery shells at tissue paper and having them return at you. The only explanation: nearly all the atom's mass is concentrated in a tiny, dense, positively charged nucleus, and the rest is empty space.</p>
+            <div class="mt-evidence">
+              <h4>Key Evidence</h4>
+              <ul>
+                <li>~99.98% of alpha particles pass straight through with barely any deflection, meaning the atom is mostly empty</li>
+                <li>~1 in 8,000 bounce back at large angles, which only makes sense if positive charge is concentrated in a tiny, dense core</li>
+                <li>Nuclear radius ~10<sup>−15</sup> m vs. atomic radius ~10<sup>−10</sup> m: the nucleus occupies 10<sup>−15</sup> of the atom's volume</li>
+                <li>Chadwick (1932) later discovered neutrons complete the nuclear picture</li>
+              </ul>
+            </div>
+            <div class="mt-limitation">
+              <h4>Why It Was Replaced</h4>
+              <p>Classical electromagnetism states that any accelerating charge radiates energy continuously. An orbiting electron is constantly accelerating toward the nucleus. It should lose energy and spiral inward, crashing into the nucleus in roughly 10<sup>−8</sup> seconds. Rutherford's model predicted atoms should be spectacularly unstable. They are not.</p>
+            </div>
           </div>
         </div>
 
-        <div class="mt-panel" id="model-bohr">
-          <div class="mt-visual mv-bohr"><div class="mv-nucleus gold-nuc"></div><div class="mv-bohr-orbit bvo1"><div class="mv-e bohr-e1"></div></div><div class="mv-bohr-orbit bvo2"><div class="mv-e bohr-e2"></div></div><div class="mv-bohr-orbit bvo3"><div class="mv-e bohr-e3"></div></div><div class="mv-energy-label el1">n=1</div><div class="mv-energy-label el2">n=2</div><div class="mv-energy-label el3">n=3</div><div class="mv-label">Planetary / Bohr Model</div></div>
+        <!-- BOHR -->
+        <div class="mt-panel" id="model-bohr" role="tabpanel" aria-label="Bohr's planetary model">
+          <div class="mt-visual mv-bohr">
+            <div class="mv-nucleus gold-nuc"></div>
+            <div class="mv-bohr-orbit bvo1"><div class="mv-e bohr-e1"></div></div>
+            <div class="mv-bohr-orbit bvo2"><div class="mv-e bohr-e2"></div></div>
+            <div class="mv-bohr-orbit bvo3"><div class="mv-e bohr-e3"></div></div>
+            <div class="mv-energy-label el1">n=1</div>
+            <div class="mv-energy-label el2">n=2</div>
+            <div class="mv-energy-label el3">n=3</div>
+            <div class="mv-label">Quantized Planetary Model</div>
+          </div>
           <div class="mt-info">
-            <div class="mt-info-header"><span class="mt-model-name">Bohr's Planetary Model</span><span class="mt-model-year">1913</span></div>
-            <p class="mt-desc">Bohr took Planck's idea that energy comes in discrete chunks and applied it to atomic structure. He proposed that electrons can only orbit at specific allowed distances from the nucleus, and only radiate when jumping between those levels. This gave ΔE = hν a physical interpretation, and it matched hydrogen's emission spectrum exactly.</p>
-            <div class="mt-evidence"><h4>Key Evidence</h4><ul><li>Hydrogen's emission spectrum: four visible lines at 656, 486, 434, and 410 nm</li><li>Bohr's formula predicted all four frequencies with high accuracy</li><li>The model finally explained why atoms don't collapse</li></ul></div>
-            <div class="mt-limitation"><h4>Limitation</h4><p>The formula worked perfectly for hydrogen and failed immediately for helium. For a model of atomic structure, failing with two electrons was a serious problem.</p></div>
+            <div class="mt-info-header">
+              <span class="mt-model-name">Bohr's Planetary Model</span>
+              <span class="mt-model-year">1913</span>
+            </div>
+            <p class="mt-desc">Bohr took Planck's idea that energy only comes in discrete packets and applied it to the structure of atoms. He proposed that electrons can only occupy specific allowed orbits and can only emit or absorb radiation when jumping between them. Each jump has a fixed energy, giving a fixed frequency: ΔE = hν. This explained precisely why hydrogen emits only four specific wavelengths of visible light rather than a continuous spectrum.</p>
+            <div class="emission-spectrum-wrap">
+              <div class="emission-label">Hydrogen Balmer Series · The Evidence for Quantized Energy</div>
+              <canvas id="emissionCanvas" height="56" aria-label="Hydrogen Balmer emission spectrum with four visible lines at 656, 486, 434, and 410 nm"></canvas>
+              <div class="emission-lines-table">
+                <div class="elt-item"><span class="elt-swatch" style="background:#c02020"></span><span>Hα 656 nm · n=3→2</span></div>
+                <div class="elt-item"><span class="elt-swatch" style="background:#2090c0"></span><span>Hβ 486 nm · n=4→2</span></div>
+                <div class="elt-item"><span class="elt-swatch" style="background:#6030a0"></span><span>Hγ 434 nm · n=5→2</span></div>
+                <div class="elt-item"><span class="elt-swatch" style="background:#4020a0"></span><span>Hδ 410 nm · n=6→2</span></div>
+              </div>
+            </div>
+            <div class="mt-evidence">
+              <h4>Key Evidence</h4>
+              <ul>
+                <li>Hydrogen's emission spectrum: exactly four visible lines at 656, 486, 434, and 410 nm (Balmer series)</li>
+                <li>Bohr's formula E<sub>n</sub> = −13.6/n² eV predicted all four frequencies with &lt;1% error</li>
+                <li>The model explained atomic stability: no orbit has lower energy than n=1, so electrons cannot spiral further</li>
+              </ul>
+            </div>
+            <div class="mt-limitation">
+              <h4>Why It Was Replaced</h4>
+              <p>Bohr's formula worked perfectly for hydrogen, one electron and one proton. It failed immediately for helium, which has two electrons. A model of atomic structure that only works for one out of 92 naturally occurring elements has a pretty serious problem.</p>
+            </div>
           </div>
         </div>
 
-        <div class="mt-panel" id="model-quantum">
-          <div class="mt-visual mv-quantum"><div class="mv-nucleus gold-nuc"></div><div class="mv-cloud qc1"></div><div class="mv-cloud qc2"></div><div class="mv-cloud qc3"></div><div class="mv-cloud qc4"></div><div class="mv-label">Quantum Mechanical Model</div></div>
+        <!-- QUANTUM MECHANICAL -->
+        <div class="mt-panel" id="model-quantum" role="tabpanel" aria-label="Quantum mechanical model">
+          <div class="mt-visual mv-quantum">
+            <div class="mv-nucleus gold-nuc"></div>
+            <div class="mv-cloud qc1"></div><div class="mv-cloud qc2"></div>
+            <div class="mv-cloud qc3"></div><div class="mv-cloud qc4"></div>
+            <div class="mv-label">Quantum Mechanical Model</div>
+          </div>
           <div class="mt-info">
-            <div class="mt-info-header"><span class="mt-model-name">Quantum Mechanical Model</span><span class="mt-model-year">1926</span></div>
-            <p class="mt-desc">Schrodinger's wave equation treats electrons not as particles in defined orbits but as probability distributions spread through space. The wave function squared gives the probability of finding an electron at a given point. Heisenberg's Uncertainty Principle sets a hard limit: you cannot simultaneously know a particle's exact position and momentum. The more precisely you pin down one, the less you can know about the other.</p>
-            <div class="mt-evidence"><h4>Key Evidence</h4><ul><li>De Broglie (1924) predicted electrons have wavelength; electron diffraction confirmed this</li><li>Heisenberg Uncertainty Principle: Δx·Δp ≥ ℏ/2</li><li>Quantum numbers (n, l, mₗ, mₛ) account for all observable electron properties</li></ul></div>
-            <div class="mt-limitation"><h4>Current Understanding</h4><p>This is still the model we use. It accounts for all atomic spectra, chemical bonding, and periodic trends. There is no experimental result at atomic scales that breaks it.</p></div>
+            <div class="mt-info-header">
+              <span class="mt-model-name">Quantum Mechanical Model</span>
+              <span class="mt-model-year">1926</span>
+            </div>
+            <p class="mt-desc">Schrödinger's wave equation treats electrons not as particles in fixed orbits but as probability distributions spread through space. The square of the wave function |ψ|² gives the probability of finding an electron at any given point. Heisenberg's uncertainty principle sets a hard limit: Δx · Δp ≥ ℏ/2. The more precisely you pin down position, the less you can know about momentum. This isn't a measurement limitation. It's a fundamental feature of how nature works at small scales.</p>
+            <div class="orbital-viz-wrap">
+              <div class="emission-label">Electron Probability Density · 1s, 2s, and 2p Orbitals</div>
+              <canvas id="orbitalCanvas" height="110" aria-label="Quantum mechanical orbital probability density clouds for 1s, 2s, and 2p orbitals"></canvas>
+              <div class="orbital-labels">
+                <span class="orb-label">1s</span>
+                <span class="orb-label">2s</span>
+                <span class="orb-label">2p<sub>x</sub></span>
+              </div>
+            </div>
+            <div class="mt-evidence">
+              <h4>Key Evidence</h4>
+              <ul>
+                <li>de Broglie (1924): electrons have wavelength λ = h/mv; electron diffraction confirmed this experimentally</li>
+                <li>Heisenberg Uncertainty Principle: Δx · Δp ≥ ℏ/2 (position and momentum cannot both be precisely known simultaneously)</li>
+                <li>Four quantum numbers (n, ℓ, m<sub>ℓ</sub>, m<sub>s</sub>) completely specify every electron's state and forbid two electrons from sharing the same set (Pauli exclusion)</li>
+              </ul>
+            </div>
+            <div class="mt-limitation">
+              <h4>Current Status</h4>
+              <p>This model is still correct. It accounts for every atomic spectrum, all chemical bonding, every periodic trend, and every electron configuration. No experimental observation at atomic scales conflicts with it. Quantum field theory extends it to relativistic speeds and particle creation, but for chemistry, Schrödinger's equation is exact.</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="ap-box">
-      <div class="apb-header">AP Chemistry Connection · Scientific Practice 1</div>
-      <p>None of these models got replaced because a better idea came along philosophically. Dalton's broke when cathode rays showed atoms had internal structure. Thomson's broke when Rutherford's gold foil found concentrated charge. Rutherford's broke because classical physics predicted atoms should collapse in nanoseconds. Bohr's broke because it only worked for one element. SP-1 in practice means models change when the data forces them to, not before.</p>
+    <div class="manim-section">
+      <div class="manim-header">
+        <h3>Hydrogen Emission Spectrum</h3>
+        <p>This animation shows what actually happens when an electron drops to a lower energy level in a hydrogen atom. Each colored line in the spectrum is a specific transition, and each one lands at a wavelength Bohr's formula predicts exactly. This animation was built with Manim, the math animation engine.</p>
+      </div>
+      <div class="manim-body">
+        <video controls preload="metadata" class="manim-video" aria-label="Hydrogen emission spectrum animation showing Balmer series transitions">
+          <source src="HydrogenSpectrum.mp4" type="video/mp4">
+          Your browser does not support HTML5 video.
+        </video>
+      </div>
     </div>
+
   </div>
 </section>
 
-<!-- DECAY -->
+<!-- ═══════════════════════════════════════════════════════
+     RADIOACTIVE DECAY
+═══════════════════════════════════════════════════════ -->
 <section class="page" id="page-decay">
   <div class="page-wrap">
     <div class="page-header">
-      <div class="ph-num">04</div>
       <div class="ph-text">
-        <div class="ph-eyebrow">Scientific Practice 3 · Representing Data</div>
+        <div class="page-meta">
+  <span>Scientific Practice: SP-3 · Representing Data and Phenomena</span>
+  <span>Topic: Nuclear Chemistry and Radioactive Decay</span>
+</div>
         <h1 class="ph-title">Radioactive Decay</h1>
-        <p class="ph-sub">Nuclear instability, exponential decay, and the mathematics of half-life. Unit 1: Nuclear Chemistry</p>
+        <p class="ph-sub">Nuclear instability, exponential mathematics, and the clockwork reliability that makes half-life the basis of geological dating. Every decay follows the same first-order kinetics regardless of temperature, pressure, or chemical environment.</p>
       </div>
     </div>
 
@@ -481,67 +669,71 @@
         <div class="dt-badge">α</div>
         <h3>Alpha Decay</h3>
         <div class="dt-eq">
-          <span class="dt-iso">²³⁸₉₂U</span><span class="dt-arr">→</span>
-          <span class="dt-iso">²³⁴₉₀Th</span><span class="dt-plus">+</span><span class="dt-particle dt-a">⁴₂He</span>
+          <span class="dt-iso">²³⁸<sub>92</sub>U</span><span class="dt-arr">→</span>
+          <span class="dt-iso">²³⁴<sub>90</sub>Th</span><span class="dt-plus">+</span>
+          <span class="dt-particle dt-a">⁴<sub>2</sub>He</span>
         </div>
         <ul>
-          <li>Emitted: helium-4 nucleus (2 protons, 2 neutrons)</li>
-          <li>Mass number drops by 4</li>
-          <li>Atomic number drops by 2</li>
-          <li>Penetrating power: low (stopped by paper)</li>
-          <li>Ionizing power: very high</li>
+          <li>Emitted particle: helium-4 nucleus (2p + 2n)</li>
+          <li>Mass number A decreases by 4</li>
+          <li>Atomic number Z decreases by 2</li>
+          <li>Penetrating power: very low (stopped by a sheet of paper or dead skin)</li>
+          <li>Ionizing power: very high, particularly dangerous if ingested or inhaled</li>
         </ul>
-        <p class="dt-note">The main decay mode for heavy nuclei above bismuth. Uranium and radium both decay this way.</p>
+        <p class="dt-note">Primary decay mode for heavy nuclei above bismuth (Z &gt; 83). Uranium-238 and radium-226 both undergo alpha decay. The alpha particle is the helium-4 nucleus: one of the most tightly bound nuclear configurations, which is why it's emitted intact rather than as individual nucleons.</p>
       </div>
 
       <div class="dt-card dt-beta">
         <div class="dt-badge">β</div>
         <h3>Beta Decay (β⁻)</h3>
         <div class="dt-eq">
-          <span class="dt-iso">¹⁴₆C</span><span class="dt-arr">→</span>
-          <span class="dt-iso">¹⁴₇N</span><span class="dt-plus">+</span>
-          <span class="dt-particle dt-b">e⁻</span><span class="dt-plus">+</span><span class="dt-particle dt-n">v̄ₑ</span>
+          <span class="dt-iso">¹⁴<sub>6</sub>C</span><span class="dt-arr">→</span>
+          <span class="dt-iso">¹⁴<sub>7</sub>N</span><span class="dt-plus">+</span>
+          <span class="dt-particle dt-b">e⁻</span><span class="dt-plus">+</span>
+          <span class="dt-particle dt-n">v̄<sub>e</sub></span>
         </div>
         <ul>
-          <li>A neutron converts to a proton, emitting an electron and antineutrino</li>
-          <li>Mass number unchanged</li>
-          <li>Atomic number increases by 1</li>
-          <li>Penetrating power: medium (stopped by aluminum foil)</li>
+          <li>A neutron converts to a proton: n → p + e⁻ + v̄<sub>e</sub></li>
+          <li>Mass number A unchanged</li>
+          <li>Atomic number Z increases by 1</li>
+          <li>Penetrating power: medium (stopped by a few mm of aluminum)</li>
           <li>Ionizing power: moderate</li>
         </ul>
-        <p class="dt-note">Carbon-14 decays this way. The predictable rate is what makes radiocarbon dating work for samples up to about 50,000 years old.</p>
+        <p class="dt-note">Carbon-14 undergoes β⁻ decay with a half-life of 5,730 years, becoming nitrogen-14. Cosmic rays continuously produce C-14 in the upper atmosphere, maintaining a steady atmospheric ratio. When an organism dies it stops exchanging carbon, and the C-14 clock starts. This is radiocarbon dating, reliable to about 50,000 years.</p>
       </div>
 
       <div class="dt-card dt-gamma">
         <div class="dt-badge">γ</div>
         <h3>Gamma Emission</h3>
         <div class="dt-eq">
-          <span class="dt-iso">⁶⁰₂₇Co*</span><span class="dt-arr">→</span>
-          <span class="dt-iso">⁶⁰₂₇Co</span><span class="dt-plus">+</span><span class="dt-particle dt-g">γ</span>
+          <span class="dt-iso">⁶⁰<sub>27</sub>Co*</span><span class="dt-arr">→</span>
+          <span class="dt-iso">⁶⁰<sub>27</sub>Co</span><span class="dt-plus">+</span>
+          <span class="dt-particle dt-g">γ</span>
         </div>
         <ul>
-          <li>Emitted: high-energy photon</li>
-          <li>Mass and atomic number both unchanged</li>
-          <li>Penetrating power: extreme (needs lead or concrete)</li>
-          <li>Ionizing power: low (indirect)</li>
+          <li>Emitted: high-energy electromagnetic photon</li>
+          <li>Mass number A: unchanged</li>
+          <li>Atomic number Z: unchanged</li>
+          <li>Penetrating power: extreme, needs centimeters of lead or meters of concrete to stop</li>
+          <li>Ionizing power: low per interaction, but deeply penetrating</li>
         </ul>
-        <p class="dt-note">Often accompanies alpha or beta decay when the daughter nucleus is left in an excited state. Used in medical imaging and cancer treatment.</p>
+        <p class="dt-note">Gamma emission typically follows alpha or beta decay when the daughter nucleus is left in an excited nuclear state (denoted with *). The nucleus de-excites by emitting a photon, just as an electron emits a photon when dropping to a lower energy level. Cobalt-60's gamma rays are used in radiation therapy for cancer treatment.</p>
       </div>
     </div>
 
     <div class="calc-section">
       <div class="calc-header">
         <h3>Half-Life Decay Calculator</h3>
-        <p>Enter any radioactive isotope's parameters to calculate the remaining quantity and plot the decay curve</p>
+        <p>Enter any isotope's parameters to compute the remaining quantity and visualize the decay curve. Use the presets to explore real isotopes from carbon dating to uranium-238.</p>
       </div>
       <div class="calc-body">
         <div class="calc-inputs">
           <div class="calc-presets">
-            <span class="presets-label">Quick presets:</span>
-            <button class="preset-btn" data-n="100" data-h="5730" data-t="11460">¹⁴C Dating</button>
+            <span class="presets-label">Quick presets</span>
+            <button class="preset-btn" data-n="100" data-h="5730" data-t="11460">¹⁴C · Dating</button>
             <button class="preset-btn" data-n="1000" data-h="1600" data-t="4800">²²⁶Ra</button>
             <button class="preset-btn" data-n="500" data-h="4.5e9" data-t="9e9">²³⁸U</button>
-            <button class="preset-btn" data-n="200" data-h="8.02" data-t="24.06">¹³¹I (medical)</button>
+            <button class="preset-btn" data-n="200" data-h="8.02" data-t="24.06">¹³¹I · Medical</button>
           </div>
           <div class="ci-grid">
             <div class="ci-field">
@@ -565,11 +757,11 @@
               <div class="cr-stat"><span class="cr-val" id="cr-halflives">--</span><span class="cr-label">Half-Lives Elapsed</span></div>
               <div class="cr-stat"><span class="cr-val" id="cr-decayed">--</span><span class="cr-label">Amount Decayed (g)</span></div>
             </div>
-            <div class="cr-formula">N(t) = N₀ × (½)^(t/t½)</div>
+            <div class="cr-formula">N(t) = N₀ × (½)<sup>t / t½</sup></div>
           </div>
         </div>
         <div class="calc-chart">
-          <canvas id="decayCanvas" width="580" height="300"></canvas>
+          <canvas id="decayCanvas" width="580" height="300" aria-label="Exponential decay curve showing remaining quantity versus time"></canvas>
           <div class="chart-axis-x">Time (years)</div>
           <div class="chart-axis-y">Amount (g)</div>
         </div>
@@ -580,187 +772,348 @@
       </div>
     </div>
 
-    <div class="ap-box">
-      <div class="apb-header">AP Chemistry Connection · Scientific Practice 3</div>
-      <p>The half-life equation has one property worth noting: the rate of decay depends only on how much material you have right now, not on how old it is. A freshly formed carbon-14 atom and one that has been around for a thousand years decay with the same probability per unit time. That is first-order kinetics, which comes back in Unit 5 when you study reaction rates.</p>
+    <!-- U-238 DECAY CHAIN -->
+    <div class="chain-section">
+      <div class="chain-header">
+        <h3>Uranium-238 Decay Chain (simplified)</h3>
+        <p>U-238 undergoes 14 sequential decays over billions of years before reaching stable Pb-206. This is why uranium ore naturally contains radium, radon, and polonium as intermediate daughters in the same chain. Each step is independent; the rate of each isotope's decay depends only on its own half-life.</p>
+      </div>
+      <div class="chain-scroll">
+        <div class="chain-body" id="decayChain">
+          <div class="chain-node chain-start">
+            <div class="chain-iso cn-u">²³⁸<sub>92</sub>U</div>
+            <div class="chain-hl">4.47 × 10⁹ yr</div>
+          </div>
+          <div class="chain-arrow ca-alpha"><span class="ca-label">α</span></div>
+          <div class="chain-node">
+            <div class="chain-iso cn-th">²³⁴<sub>90</sub>Th</div>
+            <div class="chain-hl">24.1 days</div>
+          </div>
+          <div class="chain-arrow ca-beta"><span class="ca-label">β⁻</span></div>
+          <div class="chain-node">
+            <div class="chain-iso cn-u">²³⁴<sub>92</sub>U</div>
+            <div class="chain-hl">245,500 yr</div>
+          </div>
+          <div class="chain-arrow ca-alpha"><span class="ca-label">α</span></div>
+          <div class="chain-node">
+            <div class="chain-iso cn-th">²³⁰<sub>90</sub>Th</div>
+            <div class="chain-hl">75,400 yr</div>
+          </div>
+          <div class="chain-arrow ca-alpha"><span class="ca-label">α</span></div>
+          <div class="chain-node cn-highlight">
+            <div class="chain-iso cn-ra">²²⁶<sub>88</sub>Ra</div>
+            <div class="chain-hl">1,600 yr</div>
+          </div>
+          <div class="chain-arrow ca-alpha"><span class="ca-label">α</span></div>
+          <div class="chain-node cn-highlight">
+            <div class="chain-iso cn-rn">²²²<sub>86</sub>Rn</div>
+            <div class="chain-hl">3.82 days</div>
+          </div>
+          <div class="chain-arrow ca-alpha"><span class="ca-label">α</span></div>
+          <div class="chain-node">
+            <div class="chain-iso cn-pb">²¹⁰<sub>82</sub>Pb</div>
+            <div class="chain-hl">22.3 yr</div>
+          </div>
+          <div class="chain-arrow ca-beta"><span class="ca-label">β⁻ ×2</span></div>
+          <div class="chain-node cn-highlight">
+            <div class="chain-iso cn-po">²¹⁰<sub>84</sub>Po</div>
+            <div class="chain-hl">138 days</div>
+          </div>
+          <div class="chain-arrow ca-alpha"><span class="ca-label">α</span></div>
+          <div class="chain-node chain-end">
+            <div class="chain-iso cn-pb">²⁰⁶<sub>82</sub>Pb</div>
+            <div class="chain-hl">Stable</div>
+          </div>
+        </div>
+      </div>
+      <div class="chain-note">
+        <span class="chain-note-badge chain-note-alpha">α</span> Alpha decay: Z −2, A −4 &nbsp;·&nbsp;
+        <span class="chain-note-badge chain-note-beta">β⁻</span> Beta decay: Z +1, A unchanged &nbsp;·&nbsp;
+        Highlighted: radium, radon, and polonium (the daughters Curie studied)
+      </div>
     </div>
+
   </div>
 </section>
 
-
-<!-- MATTER -->
+<!-- ═══════════════════════════════════════════════════════
+     MATTER AT SCALE
+═══════════════════════════════════════════════════════ -->
 <section class="page" id="page-matter">
   <div class="page-wrap">
     <div class="page-header">
-      <div class="ph-num">05</div>
       <div class="ph-text">
-        <div class="ph-eyebrow">Chapter 5 · Structure and Properties</div>
+        <div class="page-meta">
+  <span>Topic: Intermolecular Forces and Properties of Matter</span>
+</div>
         <h1 class="ph-title">Matter at Every Scale</h1>
-        <p class="ph-sub">Intermolecular forces, states of matter, and phase transitions from cosmic to molecular scale. Units 3 and 5</p>
+        <p class="ph-sub">Intermolecular forces, states of matter, and phase transitions from cosmic plasma to molecular liquids. The quantum mechanics that governs electron orbitals also determines why water boils where it does, and that connection turns out to matter a great deal for life in the solar system.</p>
       </div>
     </div>
 
     <div class="card-grid cg-3">
       <div class="card">
         <h3>States of Matter in Space</h3>
-        <p>Space has matter in all four states of aggregation, depending on local temperature and pressure.</p>
+        <p>Space contains matter in all four states of aggregation, determined by local temperature and pressure.</p>
         <div class="matter-states">
-          <div class="ms-row"><span class="ms-badge ms-plasma">PLASMA</span><div class="ms-info"><strong>Stellar interiors, solar wind</strong><br><small>Temperatures above ~10⁶ K strip electrons from nuclei</small></div></div>
-          <div class="ms-row"><span class="ms-badge ms-gas">GAS</span><div class="ms-info"><strong>Nebulae, planetary atmospheres</strong><br><small>H, He, and molecules like CO and H₂O exist as gases in interstellar space</small></div></div>
-          <div class="ms-row"><span class="ms-badge ms-liquid">LIQUID</span><div class="ms-info"><strong>Subsurface oceans (Europa, Enceladus)</strong><br><small>Liquid water may persist under ice shells where tidal heating provides energy</small></div></div>
-          <div class="ms-row"><span class="ms-badge ms-solid">SOLID</span><div class="ms-info"><strong>Planets, asteroids, neutron stars</strong><br><small>Silicate and metallic solids at lower temperatures</small></div></div>
+          <div class="ms-row">
+            <span class="ms-badge ms-plasma">PLASMA</span>
+            <div class="ms-info"><strong>Stellar interiors, solar wind, nebulae</strong><br><small>Temperatures above ~10<sup>4</sup> K strip electrons from nuclei; matter is fully ionized</small></div>
+          </div>
+          <div class="ms-row">
+            <span class="ms-badge ms-gas">GAS</span>
+            <div class="ms-info"><strong>Nebulae, planetary atmospheres</strong><br><small>H, He, CO, H₂O as gases in interstellar medium; molecules separated by vast distances</small></div>
+          </div>
+          <div class="ms-row">
+            <span class="ms-badge ms-liquid">LIQUID</span>
+            <div class="ms-info"><strong>Europa, Enceladus, Titan</strong><br><small>Liquid water under ice shells (tidal heating); liquid methane seas on Titan at −179°C</small></div>
+          </div>
+          <div class="ms-row">
+            <span class="ms-badge ms-solid">SOLID</span>
+            <div class="ms-info"><strong>Rocky planets, asteroids, neutron star crust</strong><br><small>Silicate and metallic solids; neutron star crusts may be the densest solid matter in the universe</small></div>
+          </div>
         </div>
       </div>
 
       <div class="card card-gold">
         <h3>Intermolecular Forces</h3>
-        <p>Molecular structure determines bulk physical properties through the forces molecules exert on each other.</p>
+        <p>Molecular structure determines bulk physical properties through the forces molecules exert on each other. IMF strength sets boiling point, melting point, vapor pressure, viscosity, and solubility.</p>
         <div class="imf-list">
-          <div class="imf-item imf-ld"><div class="imf-header"><span class="imf-name">London Dispersion</span><span class="imf-strength">Weakest</span></div><p>Instantaneous dipoles from electron fluctuations. Present in all substances. Strength increases with molecular size and polarizability.</p><div class="imf-formula">All molecules; strength increases with molar mass</div></div>
-          <div class="imf-item imf-dd"><div class="imf-header"><span class="imf-name">Dipole-Dipole</span><span class="imf-strength">Moderate</span></div><p>Permanent partial charges on polar molecules attract each other. Added to London dispersion in polar substances like HCl and SO₂.</p><div class="imf-formula">Polar molecules (e.g., HCl, SO₂)</div></div>
-          <div class="imf-item imf-hb"><div class="imf-header"><span class="imf-name">Hydrogen Bonding</span><span class="imf-strength">Strongest IMF</span></div><p>Hydrogen bonded to N, O, or F forms an unusually strong interaction, roughly 10 times stronger than typical dipole-dipole. Responsible for water's anomalously high boiling point and for DNA base pairing.</p><div class="imf-formula">H-N, H-O, H-F bonds</div></div>
+          <div class="imf-item imf-ld">
+            <div class="imf-header">
+              <span class="imf-name">London Dispersion</span>
+              <span class="imf-strength imf-weak">Weakest</span>
+            </div>
+            <p>Instantaneous dipoles from electron fluctuations. Present in all substances, polar or not. Strength increases with molar mass and molecular surface area, which explains why iodine (I₂, MW 254) is solid while fluorine (F₂, MW 38) is a gas at room temperature.</p>
+            <div class="imf-formula">All molecules · strength ∝ polarizability · molar mass</div>
+          </div>
+          <div class="imf-item imf-dd">
+            <div class="imf-header">
+              <span class="imf-name">Dipole-Dipole</span>
+              <span class="imf-strength imf-med">Moderate</span>
+            </div>
+            <p>Permanent partial charges on polar molecules attract each other. Present in addition to London dispersion in all polar substances. HCl boils 50°C higher than the nonpolar HBr of similar mass because of this.</p>
+            <div class="imf-formula">Polar molecules: HCl, SO₂, acetone, CHCl₃</div>
+          </div>
+          <div class="imf-item imf-hb">
+            <div class="imf-header">
+              <span class="imf-name">Hydrogen Bonding</span>
+              <span class="imf-strength imf-strong">Strongest IMF</span>
+            </div>
+            <p>Hydrogen covalently bonded to N, O, or F forms an unusually strong electrostatic interaction, roughly 5–40 kJ/mol compared to 0.1–1 kJ/mol for London dispersion. DNA base pairing, protein secondary structure, and the anomalous properties of water all depend on H-bonds.</p>
+            <div class="imf-formula">H covalently bonded to N, O, or F atoms</div>
+          </div>
         </div>
       </div>
 
       <div class="card">
         <h3>Phase Changes &amp; Energy</h3>
-        <p>Phase transitions require energy to break IMFs.</p>
+        <p>Phase transitions require energy to break or form IMFs. The energy input doesn't change temperature during the transition. It goes entirely into structural reorganization.</p>
         <div class="phase-diagram">
-          <div class="pd-state pd-solid"><span class="pd-label">SOLID</span><p>Ordered lattice; particles vibrate in place</p></div>
-          <div class="pd-transition"><span class="pd-arrow">↑</span><span class="pd-energy">+ΔH_fus (endothermic)</span></div>
-          <div class="pd-state pd-liquid"><span class="pd-label">LIQUID</span><p>Particles flow; IMFs partially overcome</p></div>
-          <div class="pd-transition"><span class="pd-arrow">↑</span><span class="pd-energy">+ΔH_vap (endothermic)</span></div>
-          <div class="pd-state pd-gas"><span class="pd-label">GAS</span><p>IMFs largely overcome; random kinetic motion</p></div>
-          <div class="pd-transition"><span class="pd-arrow">↑</span><span class="pd-energy">+IE (ionization energy)</span></div>
-          <div class="pd-state pd-plasma"><span class="pd-label">PLASMA</span><p>Electrons completely stripped from nuclei</p></div>
+          <div class="pd-state pd-plasma"><span class="pd-label">PLASMA</span><p>kT ≫ IE; electrons completely stripped from nuclei; requires &gt;10<sup>4</sup> K</p></div>
+          <div class="pd-transition"><span class="pd-arrow">↕</span><span class="pd-energy">+IE (ionization) / −IE (recombination)</span></div>
+          <div class="pd-state pd-gas"><span class="pd-label">GAS</span><p>IMFs fully overcome; random kinetic motion; pressure from molecular collisions</p></div>
+          <div class="pd-transition"><span class="pd-arrow">↕</span><span class="pd-energy">+ΔH<sub>vap</sub> (vaporization) / −ΔH<sub>vap</sub> (condensation)</span></div>
+          <div class="pd-state pd-liquid"><span class="pd-label">LIQUID</span><p>Particles mobile; IMFs partially overcome; definite volume, no definite shape</p></div>
+          <div class="pd-transition"><span class="pd-arrow">↕</span><span class="pd-energy">+ΔH<sub>fus</sub> (melting) / −ΔH<sub>fus</sub> (freezing)</span></div>
+          <div class="pd-state pd-solid"><span class="pd-label">SOLID</span><p>Ordered lattice; particles vibrate about fixed positions; definite shape and volume</p></div>
         </div>
       </div>
     </div>
 
-    <div class="water-callout">
-      <div class="wc-text">
-        <h3>Why Water is Strange</h3>
-        <p>Based on molar mass alone, water should boil around -80°C. H₂S, the next compound in the same group, boils at -60°C. Water boils 160 degrees higher than the trend predicts. Every organism on Earth exists partly because of that gap, which comes entirely from the O-H hydrogen bonds water forms with itself. It also explains why ice floats, which turns out to matter a great deal for aquatic life.</p>
+    <div class="compare-section">
+      <h3 class="compare-title">Why IMFs Determine Where Liquids Exist</h3>
+      <p class="compare-intro">The same forces you calculate in class determine which moons have oceans. Water's hydrogen bonds push its boiling point to 100°C. Methane's London dispersion only keeps it liquid below −161°C, which is why Titan's surface seas are methane, not water.</p>
+      <div class="compare-table">
+        <div class="ct-head">
+          <span></span>
+          <span class="ct-h2o">Water (H₂O)</span>
+          <span class="ct-ch4">Methane (CH₄)</span>
+        </div>
+        <div class="ct-row">
+          <span class="ct-prop">Primary IMF</span>
+          <span>Hydrogen bonding (O–H)</span>
+          <span>London dispersion only</span>
+        </div>
+        <div class="ct-row">
+          <span class="ct-prop">Boiling point</span>
+          <span class="ct-hi">100°C</span>
+          <span>−161°C</span>
+        </div>
+        <div class="ct-row">
+          <span class="ct-prop">Melting point</span>
+          <span>0°C</span>
+          <span>−182°C</span>
+        </div>
+        <div class="ct-row">
+          <span class="ct-prop">Liquid in solar system</span>
+          <span>Earth, Europa (subsurface)</span>
+          <span>Titan (surface seas)</span>
+        </div>
+        <div class="ct-row">
+          <span class="ct-prop">Surface temperature there</span>
+          <span>Earth: avg 15°C</span>
+          <span>Titan: −179°C avg</span>
+        </div>
       </div>
     </div>
 
-    <div class="ap-box">
-      <div class="apb-header">AP Chemistry Connection · Units 3 and 5</div>
-      <p>Europa might have a liquid water ocean under its ice because water's IMFs allow it to stay liquid at temperatures where other compounds would freeze. Titan has liquid methane oceans because methane's weaker London forces give it a much lower boiling point. The same equations from your phase change unit end up determining which moons are geologically active.</p>
-    </div>
   </div>
 </section>
 
-
-<!-- HUB -->
+<!-- ═══════════════════════════════════════════════════════
+     AP CHEMISTRY HUB
+═══════════════════════════════════════════════════════ -->
 <section class="page" id="page-hub">
   <div class="page-wrap">
     <div class="page-header">
-      <div class="ph-num">06</div>
       <div class="ph-text">
-        <div class="ph-eyebrow">Curriculum Synthesis</div>
+        <div class="page-meta">
+  <span>Scientific Practice: SP-1 · Models and Representations</span>
+  <span>Scientific Practice: SP-3 · Representing Data and Phenomena</span>
+  <span>Topic: Atomic Structure and Electron Configuration</span>
+  <span>Topic: Nuclear Chemistry and Radioactive Decay</span>
+  <span>Topic: Intermolecular Forces and Properties of Matter</span>
+</div>
         <h1 class="ph-title">AP Chemistry Connections Hub</h1>
-        <p class="ph-sub">Every section of this site mapped back to AP Chemistry CED units, Big Ideas, and Scientific Practices</p>
+        <p class="ph-sub">Every topic in this project mapped back to AP Chemistry CED units, Big Ideas, and Scientific Practices. Bryson's cosmic narrative and the College Board curriculum cover the same terrain from different directions.</p>
+      </div>
+    </div>
+
+    <!-- ELEMENT ORIGIN TABLE -->
+    <div class="origin-section">
+      <div class="os-header">
+        <h3>Where Elements Come From</h3>
+        <p>Every atom of every element was produced by one of three processes. Bryson's "stardust" claim is precise chemistry: elements heavier than helium were made in stellar interiors and scattered by stellar deaths. The periodic table is a map of cosmic history.</p>
+      </div>
+      <div class="origin-grid">
+        <div class="og-col og-bigbang">
+          <div class="og-title">Big Bang Nucleosynthesis</div>
+          <div class="og-subtitle">First 20 minutes after T = 0</div>
+          <div class="og-elements">
+            <span class="og-badge">¹H</span>
+            <span class="og-badge">⁴He</span>
+            <span class="og-badge">⁷Li</span>
+          </div>
+          <div class="og-fraction">~75% H · ~25% He by mass</div>
+          <p class="og-note">Only proton temperatures above 10⁹ K allow nuclear fusion. Cooling below that temperature in the first 20 minutes locked in these ratios permanently. All heavier elements required stars.</p>
+        </div>
+        <div class="og-col og-stellar">
+          <div class="og-title">Stellar Nucleosynthesis</div>
+          <div class="og-subtitle">Billions of years of stellar evolution</div>
+          <div class="og-elements">
+            <span class="og-badge">C</span><span class="og-badge">N</span><span class="og-badge">O</span>
+            <span class="og-badge">Ne</span><span class="og-badge">Mg</span><span class="og-badge">Si</span>
+            <span class="og-badge">S</span><span class="og-badge">Ca</span><span class="og-badge">Fe</span>
+          </div>
+          <div class="og-fraction">Elements up to iron (Z ≤ 26)</div>
+          <p class="og-note">Shell burning in low- and high-mass stars builds elements from helium-burning (C, O) through silicon-burning (Fe, Ni). The iron peak on the binding energy curve marks the endpoint: no further energy can be extracted by fusion.</p>
+        </div>
+        <div class="og-col og-supernova">
+          <div class="og-title">Supernovae &amp; Neutron Star Mergers</div>
+          <div class="og-subtitle">Explosive r-process nucleosynthesis</div>
+          <div class="og-elements">
+            <span class="og-badge">Sr</span><span class="og-badge">Ba</span>
+            <span class="og-badge">Au</span><span class="og-badge">Pt</span>
+            <span class="og-badge">Pb</span><span class="og-badge">U</span>
+          </div>
+          <div class="og-fraction">Elements heavier than iron (Z &gt; 26)</div>
+          <p class="og-note">Rapid neutron capture during supernovae and neutron-star mergers builds elements heavier than iron in seconds. Every gold atom on Earth was produced in one of these events and scattered through the galaxy over billions of years.</p>
+        </div>
       </div>
     </div>
 
     <div class="hub-grid">
       <div class="hub-card hc-energy">
-        <div class="hc-tag">Big Idea: Energy</div>
         <h3>Energy as the Cosmic Thread</h3>
-        <p>Energy connects every section of this project:</p>
+        <p>Energy connects every section of this project into a single narrative:</p>
         <ul>
-          <li>At the Big Bang, E = mc² converts pure energy to matter</li>
-          <li>Stellar fusion: mass defect releases binding energy as stars burn</li>
-          <li>Nuclear decay: unstable nuclei shed energy as radiation</li>
-          <li>Phase changes: ΔH_fus and ΔH_vap are the energy cost of breaking IMFs</li>
-          <li>Emission spectra: ΔE = hν when electrons move between energy levels</li>
+          <li>Big Bang: E = mc² converts pure energy to matter in the first second</li>
+          <li>Stellar fusion: mass defect releases binding energy as stars burn for billions of years</li>
+          <li>Nuclear decay: unstable nuclei shed energy as radiation, following ΔE = Δmc²</li>
+          <li>Phase changes: ΔH<sub>fus</sub> and ΔH<sub>vap</sub> are the energy cost of breaking IMFs</li>
+          <li>Emission spectra: ΔE = hν when electrons move between Bohr energy levels</li>
         </ul>
         <div class="hc-ced">CED: Big Idea 4 · Energy can be transferred and transformed</div>
       </div>
 
       <div class="hub-card hc-structure">
-        <div class="hc-tag">Big Idea: Structure &amp; Properties</div>
         <h3>Structure Determines Properties</h3>
-        <p>From atomic scale to bulk matter:</p>
+        <p>From nuclear scale to bulk matter, structure is predictive:</p>
         <ul>
+          <li>Neutron-to-proton ratio determines nuclear stability and decay mode</li>
           <li>Electron configuration shapes periodic trends and reactivity</li>
           <li>Molecular polarity and H-bonding capability set physical properties</li>
-          <li>Neutron-to-proton ratio determines nuclear stability and decay mode</li>
-          <li>Stellar mass sets the fusion pathway and which elements get made</li>
+          <li>Stellar mass sets the fusion pathway, core temperature, and which elements get made</li>
         </ul>
         <div class="hc-ced">CED: Big Idea 2 · Chemical and physical properties of materials</div>
       </div>
 
       <div class="hub-card hc-sp1">
-        <div class="hc-tag">Scientific Practice 1</div>
-        <h3>Models &amp; Representations</h3>
-        <p>The Atomic Model Timeline shows SP-1 in action:</p>
+        <h3>How Atomic Models Were Revised</h3>
+        <p>The atomic model timeline is SP-1 made tangible. Each model revision was forced by a specific experiment:</p>
         <ul>
-          <li>Dalton's solid sphere: fine for reactions, useless for electricity</li>
-          <li>Thomson's pudding: gold foil ended it in 1909</li>
-          <li>Rutherford's nucleus: classical physics said atoms should collapse</li>
-          <li>Bohr's orbits: worked for hydrogen, failed for helium</li>
-          <li>Quantum model: still standing, accounts for everything at atomic scale</li>
+          <li>Dalton → Thomson: cathode rays proved atoms have internal structure</li>
+          <li>Thomson → Rutherford: gold foil backscattering proved charge is concentrated</li>
+          <li>Rutherford → Bohr: classical physics predicted atoms should collapse in nanoseconds</li>
+          <li>Bohr → Quantum: worked only for hydrogen; failed for every multi-electron atom</li>
+          <li>Quantum model: no experiment at atomic scales has contradicted it since 1926</li>
         </ul>
         <div class="hc-ced">CED: SP-1 · Represent chemical phenomena with models</div>
       </div>
 
       <div class="hub-card hc-sp3">
-        <div class="hc-tag">Scientific Practice 3</div>
-        <h3>Representing Data &amp; Phenomena</h3>
+        <h3>Quantitative Representations in This Project</h3>
         <ul>
-          <li>Decay calculator plots N(t) = N₀(1/2)^(t/t½) for any isotope</li>
-          <li>Binding energy curve shows MeV per nucleon vs. mass number, iron peak at top</li>
+          <li>Decay calculator: N(t) = N₀(1/2)^(t/t½) for any isotope, plotted in real time</li>
+          <li>Binding energy curve: MeV/nucleon vs. mass number, with interactive hover to read any point</li>
           <li>Element abundance chart: 75% H, 25% He, trace Li from Big Bang nucleosynthesis</li>
+          <li>H-R diagram: luminosity vs. surface temperature, placing stars in context</li>
+          <li>Hydrogen emission spectrum: four exact Balmer wavelengths that validated Bohr's model</li>
         </ul>
         <div class="hc-ced">CED: SP-3 · Represent and analyze data and phenomena</div>
       </div>
 
       <div class="hub-card hc-unit1">
-        <div class="hc-tag">Unit 1: Atomic Structure</div>
         <h3>From Cosmic Discovery to Electron Configuration</h3>
         <ul>
           <li>Thomson, Rutherford, and Chadwick established subatomic particle structure</li>
-          <li>Quantum numbers (n, l, mₗ, mₛ) come from Schrodinger's equation</li>
-          <li>Electron configurations follow from the quantum model</li>
-          <li>Periodic trends (atomic radius, ionization energy, electronegativity) all follow from electron configuration</li>
+          <li>Quantum numbers (n, ℓ, m<sub>ℓ</sub>, m<sub>s</sub>) emerge from Schrödinger's equation</li>
+          <li>Aufbau, Pauli exclusion, Hund's rules determine electron configurations</li>
+          <li>Periodic trends (atomic radius, IE, electronegativity, electron affinity) follow from configuration</li>
         </ul>
-        <div class="hc-ced">CED: Unit 1, Topics 1.1-1.9</div>
+        <div class="hc-ced">CED: Unit 1 Topics 1.1–1.9 · Atomic Structure and Electron Configuration</div>
       </div>
 
       <div class="hub-card hc-nuclear">
-        <div class="hc-tag">Unit 1: Nuclear Chemistry</div>
         <h3>Decay, Half-Life, and Stellar Fusion</h3>
         <ul>
-          <li>Alpha, beta, and gamma decay: types, equations, nuclear notation</li>
-          <li>Half-life equation: N(t) = N₀(1/2)^(t/t½)</li>
-          <li>Binding energy and mass defect: ΔE = Δmc²</li>
-          <li>Fusion vs. fission both explained by the same binding energy curve</li>
+          <li>Alpha, beta, and gamma decay: types, balanced equations, nuclear notation</li>
+          <li>Half-life equation: N(t) = N₀(1/2)^(t/t½) and first-order kinetics connection</li>
+          <li>Mass defect and binding energy: ΔE = Δmc² quantifies nuclear stability</li>
+          <li>Fusion vs. fission both governed by the binding energy per nucleon curve</li>
         </ul>
-        <div class="hc-ced">CED: Unit 1, Topics 1.10-1.12 + Big Idea 4</div>
+        <div class="hc-ced">CED: Unit 1 Topics 1.10–1.12 + Big Idea 4</div>
       </div>
 
       <div class="hub-card hc-imf">
-        <div class="hc-tag">Units 3 &amp; 5: IMFs</div>
-        <h3>Intermolecular Forces &amp; Phase Changes</h3>
+        <h3>Intermolecular Forces and Phase Behavior</h3>
         <ul>
-          <li>London dispersion, dipole-dipole, and hydrogen bonding ranked by strength</li>
-          <li>IMF type and strength set boiling and melting points, vapor pressure, solubility</li>
-          <li>Phase transitions: ΔH_fus, ΔH_vap, Clausius-Clapeyron equation</li>
-          <li>Water's anomalous properties come from O-H hydrogen bonding</li>
+          <li>London dispersion, dipole-dipole, and hydrogen bonding: sources, relative strengths, molecular requirements</li>
+          <li>IMF strength sets boiling point, melting point, vapor pressure, surface tension, and solubility</li>
+          <li>Phase transitions: ΔH<sub>fus</sub>, ΔH<sub>vap</sub>, and the Clausius-Clapeyron equation</li>
+          <li>Water's anomalies (high bp, ice less dense than liquid water) both from O–H hydrogen bonding</li>
         </ul>
-        <div class="hc-ced">CED: Unit 3 Topics 3.1-3.4, Unit 5 Topics 5.1-5.5</div>
+        <div class="hc-ced">CED: Unit 3 Topics 3.1–3.4 · Unit 5 Topics 5.1–5.5</div>
       </div>
 
       <div class="hub-card hc-scale">
-        <div class="hc-tag">Big Idea: Scale, Proportion &amp; Quantity</div>
-        <h3>Orders of Magnitude in Chemistry</h3>
+        <h3>Orders of Magnitude Across Chemistry</h3>
         <ul>
-          <li>Nuclear radius ~10⁻¹⁵ m vs. atomic radius ~10⁻¹⁰ m (a factor of 100,000)</li>
-          <li>Age of universe: 13.8 billion years vs. carbon-14 half-life: 5,730 years</li>
-          <li>Avogadro's number: 6.022 × 10²³ atoms per mole</li>
-          <li>Fusion releases 26.7 MeV per helium-4 formed; a chemical bond stores about 4 eV</li>
+          <li>Nuclear radius ~10<sup>−15</sup> m vs. atomic radius ~10<sup>−10</sup> m: the nucleus is 10<sup>5</sup>× smaller</li>
+          <li>Age of universe (13.8 × 10⁹ yr) vs. C-14 half-life (5,730 yr): 2.4 million half-lives in cosmic history</li>
+          <li>Avogadro's number: 6.022 × 10²³ atoms per mole, a number too large to meaningfully visualize</li>
+          <li>Fusion energy: 26.73 MeV per ⁴He formed vs. a typical chemical bond at ~4 eV: nuclear reactions are about 10⁷× more energetic</li>
         </ul>
         <div class="hc-ced">CED: Big Idea 3 · Changes in matter involve breaking and forming bonds</div>
       </div>
@@ -768,16 +1121,15 @@
   </div>
 </section>
 
-
-<!-- CITATIONS -->
+<!-- ═══════════════════════════════════════════════════════
+     CITATIONS
+═══════════════════════════════════════════════════════ -->
 <section class="page" id="page-citations">
   <div class="page-wrap">
     <div class="page-header">
-      <div class="ph-num">07</div>
       <div class="ph-text">
-        <div class="ph-eyebrow">Sources &amp; References</div>
         <h1 class="ph-title">Citations</h1>
-        <p class="ph-sub">All sources used in this project, formatted in MLA style</p>
+        <p class="ph-sub">All sources used in this project, formatted in MLA 9th edition style. Every factual claim, data value, and historical detail is traceable to one of these sources.</p>
       </div>
     </div>
 
@@ -787,7 +1139,7 @@
         <div class="cit-num">1</div>
         <div class="cit-body">
           <p>Bryson, Bill. <em>A Short History of Nearly Everything.</em> Broadway Books, 2003. ISBN 978-0-7679-0817-7.</p>
-          <p class="cit-note">The primary source for all narrative content, historical context, and scientific anecdotes in this project. Bryson spent six years interviewing scientists and reading primary literature to write it.</p>
+          <p class="cit-note">The primary source for all narrative content, historical context, scientific anecdotes, and scale analogies in this project. Bryson spent six years interviewing scientists across multiple disciplines and reading primary literature to write it. His approach of explaining science through the stories of the people who built it shapes the structure of this site.</p>
         </div>
       </div>
     </div>
@@ -797,8 +1149,8 @@
       <div class="cit-card">
         <div class="cit-num">2</div>
         <div class="cit-body">
-          <p>College Board. <em>AP Chemistry Course and Exam Description (CED), Effective Fall 2019.</em> College Board, 2023. collegeboard.org/ap/chemistry.</p>
-          <p class="cit-note">Source for all AP Chemistry units, Big Ideas, Scientific Practices, and Learning Objectives referenced in this site.</p>
+          <p>College Board. <em>AP Chemistry Course and Exam Description, Effective Fall 2019.</em> College Board, 2023, collegeboard.org/ap/chemistry.</p>
+          <p class="cit-note">Source for all AP Chemistry units (1–9), Big Ideas (1–6), Scientific Practices (SP-1 through SP-6), and Learning Objectives referenced throughout this site. All unit numbers, topic designations, and CED references match this document.</p>
         </div>
       </div>
     </div>
@@ -807,52 +1159,77 @@
       <div class="cit-group-label">Scientific Papers &amp; Primary Literature</div>
       <div class="cit-card">
         <div class="cit-num">3</div>
-        <div class="cit-body"><p>Einstein, Albert. "Ist die Tragheit eines Korpers von seinem Energieinhalt abhangig?" <em>Annalen der Physik,</em> vol. 18, 1905, pp. 639-641.</p></div>
+        <div class="cit-body">
+          <p>Einstein, Albert. "Ist die Trägheit eines Körpers von seinem Energieinhalt abhängig?" <em>Annalen der Physik,</em> vol. 18, 1905, pp. 639–641.</p>
+          <p class="cit-note">Original paper establishing the mass-energy equivalence E = mc². Source for the derivation and numerical application of this formula throughout the Big Bang and Stars sections.</p>
+        </div>
       </div>
       <div class="cit-card">
         <div class="cit-num">4</div>
-        <div class="cit-body"><p>Rutherford, Ernest. "The Scattering of Alpha and Beta Particles by Matter and the Structure of the Atom." <em>Philosophical Magazine,</em> Series 6, vol. 21, no. 125, 1911, pp. 669-688.</p></div>
+        <div class="cit-body">
+          <p>Rutherford, Ernest. "The Scattering of Alpha and Beta Particles by Matter and the Structure of the Atom." <em>Philosophical Magazine,</em> Series 6, vol. 21, no. 125, 1911, pp. 669–688.</p>
+          <p class="cit-note">The paper announcing the nuclear model of the atom based on Geiger and Marsden's gold foil experiment. Source for all numerical data in the Rutherford panel of the Atomic Models section.</p>
+        </div>
       </div>
       <div class="cit-card">
         <div class="cit-num">5</div>
-        <div class="cit-body"><p>Bohr, Niels. "On the Constitution of Atoms and Molecules." <em>Philosophical Magazine,</em> Series 6, vol. 26, no. 151, 1913, pp. 1-25.</p></div>
+        <div class="cit-body">
+          <p>Bohr, Niels. "On the Constitution of Atoms and Molecules." <em>Philosophical Magazine,</em> Series 6, vol. 26, no. 151, 1913, pp. 1–25.</p>
+          <p class="cit-note">Source for the quantized orbital model, the formula E<sub>n</sub> = −13.6/n² eV, and the Balmer series wavelengths used in the emission spectrum visualization.</p>
+        </div>
       </div>
       <div class="cit-card">
         <div class="cit-num">6</div>
-        <div class="cit-body"><p>Schrodinger, Erwin. "Quantisierung als Eigenwertproblem." <em>Annalen der Physik,</em> vol. 384, no. 4, 1926, pp. 361-376.</p></div>
+        <div class="cit-body">
+          <p>Schrödinger, Erwin. "Quantisierung als Eigenwertproblem." <em>Annalen der Physik,</em> vol. 384, no. 4, 1926, pp. 361–376.</p>
+          <p class="cit-note">Original wave equation paper. Basis for the quantum mechanical model panel and the orbital probability density visualization.</p>
+        </div>
+      </div>
+      <div class="cit-card">
+        <div class="cit-num">7</div>
+        <div class="cit-body">
+          <p>Burbidge, E. M., et al. "Synthesis of the Elements in Stars." <em>Reviews of Modern Physics,</em> vol. 29, no. 4, 1957, pp. 547–650.</p>
+          <p class="cit-note">The B²FH paper establishing stellar nucleosynthesis as the origin of elements heavier than helium. Foundational source for the element origin table and synthesis grid in the Stars and Hub sections.</p>
+        </div>
       </div>
     </div>
 
     <div class="cit-section">
       <div class="cit-group-label">Supplementary Reference Works</div>
       <div class="cit-card">
-        <div class="cit-num">7</div>
-        <div class="cit-body">
-          <p>Atkins, Peter, and Loretta Jones. <em>Chemical Principles: The Quest for Insight.</em> 7th ed., W.H. Freeman, 2016.</p>
-          <p class="cit-note">Used for binding energy values, decay chain data, and IMF explanations in the visualizations.</p>
-        </div>
-      </div>
-      <div class="cit-card">
         <div class="cit-num">8</div>
         <div class="cit-body">
-          <p>National Nuclear Data Center. <em>Chart of Nuclides.</em> Brookhaven National Laboratory, 2023. nndc.bnl.gov/nudat3/.</p>
-          <p class="cit-note">Source for all half-life values and decay mode data used in the calculator presets.</p>
+          <p>Atkins, Peter, and Loretta Jones. <em>Chemical Principles: The Quest for Insight.</em> 7th ed., W.H. Freeman, 2016.</p>
+          <p class="cit-note">Source for binding energy values, nuclear decay chain data, IMF explanations, and phase diagram data used in the interactive visualizations throughout this site.</p>
         </div>
       </div>
       <div class="cit-card">
         <div class="cit-num">9</div>
         <div class="cit-body">
+          <p>National Nuclear Data Center. <em>Chart of Nuclides.</em> Brookhaven National Laboratory, 2023, nndc.bnl.gov/nudat3.</p>
+          <p class="cit-note">Source for all half-life values, decay mode data, and branching ratios used in the calculator presets and U-238 decay chain visualization.</p>
+        </div>
+      </div>
+      <div class="cit-card">
+        <div class="cit-num">10</div>
+        <div class="cit-body">
           <p>Audi, G., et al. "The AME2020 Atomic Mass Evaluation." <em>Chinese Physics C,</em> vol. 45, no. 3, 2021, art. 030001.</p>
-          <p class="cit-note">Source for binding energy per nucleon values used in the stellar nucleosynthesis chart.</p>
+          <p class="cit-note">Source for binding energy per nucleon values plotted in the stellar nucleosynthesis chart, including the iron-56 maximum at 8.79 MeV/nucleon.</p>
+        </div>
+      </div>
+      <div class="cit-card">
+        <div class="cit-num">11</div>
+        <div class="cit-body">
+          <p>Planck Collaboration. "Planck 2018 Results. VI. Cosmological Parameters." <em>Astronomy &amp; Astrophysics,</em> vol. 641, 2020, A6.</p>
+          <p class="cit-note">Source for the age of the universe (13.787 ± 0.020 billion years), the CMB temperature (2.7255 K), and the primordial helium abundance used in the Big Bang nucleosynthesis section.</p>
         </div>
       </div>
     </div>
 
     <div class="cit-footer">
-      <p><strong>AP Chemistry</strong> · Artifact of Learning</p>
-      <p>Based on Bill Bryson's <em>A Short History of Nearly Everything</em> (2003)</p>
-      <p>HTML, CSS, and JavaScript. No external libraries.</p>
-      <p>May 2026</p>
+      <p><strong>AP Chemistry</strong> · Artifact of Learning · May 2026</p>
+      <p>Based on Bill Bryson's <em>A Short History of Nearly Everything</em> (Broadway Books, 2003)</p>
+      <p>Built with plain HTML, CSS, and JavaScript (no external libraries or frameworks)</p>
     </div>
   </div>
 </section>
