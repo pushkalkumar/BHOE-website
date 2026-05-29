@@ -1,0 +1,9 @@
+# PowerPoint files
+*.pptx
+~$*.pptx
+
+# Slide images
+slide-*.png
+
+# Slide generation scripts
+make_pptx*.py
