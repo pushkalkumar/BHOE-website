@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ChemCosmos Presentation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,300;1,8..60,400;1,8..60,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+
+/* ─────────────────────────────────────────────
+   TOKENS
+───────────────────────────────────────────── */
+:root {
+  --bg:      #07090f;
+  --surface: #0d1020;
+  --rule:    rgba(255,255,255,0.08);
+  --rule-hi: rgba(255,255,255,0.16);
+
+  --t1: #edf0fc;
+  --t2: #8d94b8;
+  --t3: #444a68;
+
+  --blue:    #5b8df5;
+  --blue-d:  rgba(91,141,245,0.12);
+  --gold:    #c8923a;
+  --gold-d:  rgba(200,146,58,0.12);
+
+  --fh: 'Source Serif 4', Georgia, serif;
+  --fu: 'Inter', system-ui, sans-serif;
+  --fm: 'JetBrains Mono', monospace;
+
+  --W: 1280px;
+  --H: 720px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  width: 100%; height: 100%;
+  background: #000;
+  overflow: hidden;
+  font-family: var(--fu);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─────────────────────────────────────────────
+   DECK / SLIDES
+───────────────────────────────────────────── */
+.deck {
+  width: 100vw; height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute; inset: 0;
+  background: var(--bg);
+  display: flex; flex-direction: column;
+  padding: 64px 80px;
+  opacity: 0; pointer-events: none;
+  transform: translateX(32px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.slide.active  { opacity: 1; pointer-events: all; transform: translateX(0); }
+.slide.exiting { opacity: 0; transform: translateX(-32px); }
+
+/* ─────────────────────────────────────────────
+   NAV
+───────────────────────────────────────────── */
+.nav {
+  position: fixed;
+  bottom: 28px; right: 40px;
+  display: flex; align-items: center; gap: 14px;
+  z-index: 100;
+}
+.nav-btn {
+  width: 36px; height: 36px;
+  border: 1px solid var(--rule-hi);
+  border-radius: 4px;
+  background: rgba(13,16,32,0.9);
+  backdrop-filter: blur(10px);
+  color: var(--t2); font-size: 0.9rem;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: border-color 0.15s, color 0.15s;
+  font-family: var(--fu);
+}
+.nav-btn:hover:not(:disabled) { border-color: var(--blue); color: var(--t1); }
+.nav-btn:disabled { opacity: 0.25; cursor: default; }
+.nav-counter {
+  font-family: var(--fm); font-size: 0.62rem; color: var(--t3); letter-spacing: 0.06em;
+}
+
+/* ─────────────────────────────────────────────
+   SHARED COMPONENTS
+───────────────────────────────────────────── */
+.slide-label {
+  font-family: var(--fm);
+  font-size: 0.62rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--t3);
+  margin-bottom: 32px;
+  display: flex; align-items: center; gap: 12px;
+}
+.slide-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+}
+
+.slide-title {
+  font-family: var(--fh);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  color: var(--t1);
+  line-height: 1.08;
+}
+
+hr.rule {
+  border: none;
+  border-top: 1px solid var(--rule);
+  margin: 0;
+}
+
+/* ─────────────────────────────────────────────
+   SLIDE 1 — OPENING
+───────────────────────────────────────────── */
+#s1 { padding: 0; }
+
+#s1 canvas {
+  position: absolute; inset: 0;
+  pointer-events: none; z-index: 0;
+}
+
+.s1-body {
+  position: relative; z-index: 1;
+  flex: 1;
+  display: flex; flex-direction: column;
+  justify-content: flex-end;
+  padding: 64px 80px 56px;
+  max-width: 860px;
+}
+
+.s1-kicker {
+  font-family: var(--fm);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--t3);
+  margin-bottom: 24px;
+}
+
+.s1-title {
+  font-family: var(--fh);
+  font-size: clamp(3.4rem, 6.5vw, 5.8rem);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 0.92;
+  color: var(--t1);
+  margin-bottom: 32px;
+}
+.s1-title em {
+  font-weight: 300;
+  font-style: italic;
+  color: var(--t2);
+}
+
+.s1-book {
+  border-top: 1px solid var(--rule);
+  padding-top: 22px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+.s1-book-name {
+  font-family: var(--fh);
+  font-size: 0.92rem;
+  font-style: italic;
+  color: var(--t2);
+}
+.s1-book-name strong {
+  font-style: normal;
+  font-weight: 400;
+  color: var(--t1);
+}
+.s1-url {
+  font-family: var(--fm);
+  font-size: 0.62rem;
+  color: var(--blue);
+  letter-spacing: 0.03em;
+  opacity: 0.7;
+}
+
+/* ─────────────────────────────────────────────
+   SLIDE 2 — SITE OVERVIEW
+───────────────────────────────────────────── */
+.s2-table {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-top: 8px;
+}
+
+.s2-row {
+  display: grid;
+  grid-template-columns: 36px 1fr 1fr;
+  align-items: baseline;
+  gap: 0 32px;
+  padding: 18px 0;
+  border-top: 1px solid var(--rule);
+  transition: background 0.15s;
+}
+.s2-row:last-child { border-bottom: 1px solid var(--rule); }
+
+.s2-num {
+  font-family: var(--fm);
+  font-size: 0.65rem;
+  color: var(--t3);
+  letter-spacing: 0.04em;
+}
+.s2-section {
+  font-family: var(--fh);
+  font-size: clamp(0.95rem, 1.4vw, 1.12rem);
+  font-weight: 400;
+  color: var(--t1);
+  letter-spacing: -0.01em;
+}
+.s2-ap {
+  font-family: var(--fu);
+  font-size: 0.76rem;
+  color: var(--t2);
+  line-height: 1.5;
+}
+.s2-sp-mark {
+  font-family: var(--fm);
+  font-size: 0.62rem;
+  color: var(--blue);
+  display: block;
+  margin-top: 3px;
+}
+
+.s2-footer {
+  padding-top: 20px;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+.s2-footer-label {
+  font-family: var(--fm);
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--t3);
+}
+.s2-footer-val {
+  font-family: var(--fh);
+  font-size: 0.88rem;
+  font-style: italic;
+  color: var(--gold);
+}
+
+/* ─────────────────────────────────────────────
+   SLIDE 3 — SP + TOPICS
+───────────────────────────────────────────── */
+.s3-cols {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+  gap: 0 48px;
+  margin-top: 8px;
+  min-height: 0;
+}
+.s3-divider { background: var(--rule); }
+
+.s3-col { display: flex; flex-direction: column; gap: 0; }
+
+.s3-section {
+  padding-bottom: 24px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--rule);
+}
+.s3-section:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+.s3-tag {
+  font-family: var(--fm);
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.s3-tag.sp    { color: var(--blue); }
+.s3-tag.topic { color: var(--gold); }
+
+.s3-heading {
+  font-family: var(--fh);
+  font-size: clamp(0.9rem, 1.3vw, 1.05rem);
+  font-weight: 600;
+  color: var(--t1);
+  letter-spacing: -0.015em;
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+.s3-body {
+  font-family: var(--fu);
+  font-size: 0.76rem;
+  color: var(--t2);
+  line-height: 1.72;
+  margin-bottom: 10px;
+}
+.s3-evidence {
+  display: flex; flex-direction: column; gap: 4px;
+}
+.s3-ev {
+  font-family: var(--fm);
+  font-size: 0.6rem;
+  color: var(--t3);
+  padding-left: 10px;
+  border-left: 1px solid var(--rule-hi);
+  line-height: 1.5;
+}
+.s3-ev.hi { color: var(--t2); border-left-color: var(--blue); }
+
+/* ─────────────────────────────────────────────
+   SLIDE 4 — WORK LOG
+───────────────────────────────────────────── */
+.s4-scroll {
+  flex: 1;
+  overflow-y: auto;
+  margin-top: 4px;
+}
+.s4-scroll::-webkit-scrollbar { width: 3px; }
+.s4-scroll::-webkit-scrollbar-thumb { background: var(--rule-hi); border-radius: 2px; }
+
+.wlog {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.73rem;
+}
+.wlog thead th {
+  text-align: left;
+  padding: 0 12px 10px;
+  font-family: var(--fm);
+  font-size: 0.58rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--t3);
+  border-bottom: 1px solid var(--rule-hi);
+  font-weight: 400;
+}
+.wlog thead th:last-child { text-align: right; }
+
+.wlog tbody td {
+  padding: 9px 12px;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+}
+.wlog tbody tr:last-child td { border-bottom: none; }
+
+.wl-date {
+  font-family: var(--fm);
+  font-size: 0.65rem;
+  color: var(--t3);
+  white-space: nowrap;
+}
+.wl-io {
+  font-family: var(--fu);
+  font-size: 0.65rem;
+  color: var(--t3);
+  white-space: nowrap;
+}
+.wl-desc {
+  font-family: var(--fu);
+  font-size: 0.72rem;
+  color: var(--t2);
+  line-height: 1.55;
+}
+.wl-artifact {
+  font-size: 0.62rem;
+  color: var(--t3);
+  margin-top: 3px;
+  font-family: var(--fu);
+}
+.wl-hrs {
+  font-family: var(--fm);
+  font-size: 0.72rem;
+  color: var(--t1);
+  text-align: right;
+  white-space: nowrap;
+}
+.wlog tfoot td {
+  border-top: 1px solid var(--rule-hi);
+  padding: 11px 12px;
+  background: rgba(200,146,58,0.05);
+}
+.wlog tfoot .wl-desc {
+  font-family: var(--fh);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--t1);
+}
+.wlog tfoot .wl-hrs {
+  color: var(--gold);
+  font-size: 0.88rem;
+}
+
+/* ─────────────────────────────────────────────
+   PRINT / EXPORT
+───────────────────────────────────────────── */
+@media print {
+  @page { size: 1280px 720px; margin: 0; }
+  html, body { width: 1280px; height: 720px; overflow: visible; background: none; }
+  .deck { width: 1280px; height: auto; overflow: visible; position: static; }
+  .slide {
+    position: relative !important;
+    opacity: 1 !important;
+    transform: none !important;
+    pointer-events: auto !important;
+    width: 1280px; height: 720px;
+    display: flex !important;
+    page-break-after: always;
+    break-after: page;
+  }
+  .nav { display: none; }
+  .s4-scroll { overflow: visible; }
+}
+
+</style>
+</head>
+<body>
+
+<div class="deck" id="deck">
+
+<!-- ─────────────────────────────────────────────
+     SLIDE 1
+───────────────────────────────────────────── -->
+<div class="slide" id="s1">
+  <canvas id="starCanvas" aria-hidden="true"></canvas>
+  <div class="s1-body">
+    <div class="s1-kicker">AP Chemistry · Artifact of Learning · 2026</div>
+    <h1 class="s1-title">
+      The Universe<br>
+      <em>Through a</em><br>
+      Chemist's Eyes
+    </h1>
+    <div class="s1-book">
+      <span class="s1-book-name">
+        Based on <strong>A Short History of Nearly Everything</strong> by Bill Bryson
+      </span>
+      <span class="s1-url">pushkalkumar.github.io/BHOE-website</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ─────────────────────────────────────────────
+     SLIDE 2
+───────────────────────────────────────────── -->
+<div class="slide" id="s2">
+  <div class="slide-label">Site overview</div>
+
+  <div class="s2-table">
+    <div class="s2-row">
+      <span class="s2-num">01</span>
+      <span class="s2-section">The Big Bang</span>
+      <span class="s2-ap">
+        Atomic Structure and Electron Configuration
+        <span style="color:var(--t3)">·</span>
+        Nuclear Chemistry
+      </span>
+    </div>
+    <div class="s2-row">
+      <span class="s2-num">02</span>
+      <span class="s2-section">Stars as Reactors</span>
+      <span class="s2-ap">Nuclear Chemistry and Radioactive Decay</span>
+    </div>
+    <div class="s2-row">
+      <span class="s2-num">03</span>
+      <span class="s2-section">The Atomic Model Timeline</span>
+      <span class="s2-ap">
+        Atomic Structure and Electron Configuration
+        <span class="s2-sp-mark">SP-1 · Models and Representations</span>
+      </span>
+    </div>
+    <div class="s2-row">
+      <span class="s2-num">04</span>
+      <span class="s2-section">Radioactive Decay</span>
+      <span class="s2-ap">
+        Nuclear Chemistry and Radioactive Decay
+        <span class="s2-sp-mark">SP-3 · Representing Data and Phenomena</span>
+      </span>
+    </div>
+    <div class="s2-row">
+      <span class="s2-num">05</span>
+      <span class="s2-section">Matter at Every Scale</span>
+      <span class="s2-ap">Intermolecular Forces and Properties of Matter</span>
+    </div>
+  </div>
+
+  <div class="s2-footer">
+    <span class="s2-footer-label">Big Idea</span>
+    <span class="s2-footer-val">Energy — connecting every section from the Big Bang to phase changes</span>
+  </div>
+</div>
+
+
+<!-- ─────────────────────────────────────────────
+     SLIDE 3
+───────────────────────────────────────────── -->
+<div class="slide" id="s3">
+  <div class="slide-label">AP Chemistry connections</div>
+
+  <div class="s3-cols">
+    <!-- LEFT: Scientific Practices -->
+    <div class="s3-col">
+      <div class="s3-section">
+        <div class="s3-tag sp">Scientific Practice 1</div>
+        <h3 class="s3-heading">Models and Representations</h3>
+        <p class="s3-body">The Atomic Models page walks through five models across 123 years. Each was replaced by a specific measurement, not a philosophical shift. The page shows what evidence broke each previous model.</p>
+        <div class="s3-evidence">
+          <div class="s3-ev hi">Dalton → Thomson → Rutherford → Bohr → Quantum</div>
+          <div class="s3-ev">Gold foil backscatter (1 in 8,000) disproved Thomson</div>
+          <div class="s3-ev">Hydrogen Balmer spectrum validates Bohr's formula exactly</div>
+          <div class="s3-ev">Orbital probability density canvas (1s, 2s, 2p)</div>
+        </div>
+      </div>
+      <div class="s3-section">
+        <div class="s3-tag sp">Scientific Practice 3</div>
+        <h3 class="s3-heading">Representing Data and Phenomena</h3>
+        <p class="s3-body">Live half-life calculator and decay curve for any isotope. Interactive binding energy chart. U-238 decay chain.</p>
+        <div class="s3-evidence">
+          <div class="s3-ev hi">N(t) = N₀ · (½)^(t/t½) — live curve with real-time input</div>
+          <div class="s3-ev">Binding energy hover reads MeV at any mass number A</div>
+          <div class="s3-ev">U-238 → Pb-206 across 9 sequential decay steps shown</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="s3-divider"></div>
+
+    <!-- RIGHT: Topics -->
+    <div class="s3-col">
+      <div class="s3-section">
+        <div class="s3-tag topic">Topic</div>
+        <h3 class="s3-heading">Atomic Structure and Electron Configuration</h3>
+        <p class="s3-body">Recombination at 380,000 years — when the universe cooled below hydrogen's ionization energy of 13.6 eV — produced the first electron configurations in history. The five-model timeline traces how the quantum model behind electron configurations was built.</p>
+        <div class="s3-evidence">
+          <div class="s3-ev hi">Recombination: universe's first electron configurations</div>
+          <div class="s3-ev">Quantum numbers (n, l, m, s) from Schrödinger's equation</div>
+        </div>
+      </div>
+      <div class="s3-section">
+        <div class="s3-tag topic">Topic</div>
+        <h3 class="s3-heading">Nuclear Chemistry and Radioactive Decay</h3>
+        <p class="s3-body">Stellar fusion, mass defect, binding energy peak at Fe-56, alpha/beta/gamma decay types, half-life equation, and first-order kinetics. The calculator accepts any isotope.</p>
+        <div class="s3-evidence">
+          <div class="s3-ev hi">ΔE = Δmc² · balanced decay equations · half-life calc</div>
+          <div class="s3-ev">C-14, Ra-226, U-238, I-131 presets with real data</div>
+        </div>
+      </div>
+      <div class="s3-section">
+        <div class="s3-tag topic">Topic</div>
+        <h3 class="s3-heading">Intermolecular Forces and Properties of Matter</h3>
+        <p class="s3-body">London dispersion, dipole-dipole, and H-bonding explained and ranked. Water boils 180°C above the trend — entirely from O-H bonds. IMF strength explains which moons have liquid surfaces.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ─────────────────────────────────────────────
+     SLIDE 4
+───────────────────────────────────────────── -->
+<div class="slide" id="s4">
+  <div class="slide-label">Work log · 5/7 – 5/28</div>
+
+  <div class="s4-scroll">
+  <table class="wlog">
+    <thead>
+      <tr>
+        <th style="width:88px">Date</th>
+        <th style="width:70px">In/Out</th>
+        <th>Activity</th>
+        <th style="width:44px">Hrs</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="wl-date">5/7 Wed</td>
+        <td class="wl-io">In class</td>
+        <td class="wl-desc">Library visit. Chose Bryson's book. Read chapters 1–2. Notes on the Big Bang and first electron configurations as AP Chem connections.
+          <div class="wl-artifact">Reading notes, initial AP connection list</div></td>
+        <td class="wl-hrs">0.75</td>
+      </tr>
+      <tr>
+        <td class="wl-date">5/7 Wed</td>
+        <td class="wl-io">Home</td>
+        <td class="wl-desc">Read chapter 3 (atoms). Mapped each of the five atomic models in the book to SP-1. Handwritten notes comparing Bryson's descriptions to AP Unit 1 content.
+          <div class="wl-artifact">1.5-page notes, model comparison chart</div></td>
+        <td class="wl-hrs">1.0</td>
+      </tr>
+      <tr>
+        <td class="wl-date">5/8 Thu</td>
+        <td class="wl-io">Home</td>
+        <td class="wl-desc">Read chapters 5–6. Cross-referenced periodic table history with Unit 1 notes. Drafted content outline for all 8 website sections with AP connections.
+          <div class="wl-artifact">2-page section outline, AP topic list</div></td>
+        <td class="wl-hrs">1.5</td>
+      </tr>
+      <tr>
+        <td class="wl-date">5/9 Fri</td>
+        <td class="wl-io">Home</td>
+        <td class="wl-desc">Read chapter 17 on radioactivity and Curie. Connected the Curie notebook story to nuclear decay and ΔE = Δmc². Finalized the 8-section content outline.
+          <div class="wl-artifact">Chapter 17 notes, completed outline</div></td>
+        <td class="wl-hrs">1.0</td>
+      </tr>
+      <tr>
+        <td class="wl-date">5/12 Mon</td>
+        <td class="wl-io">Home</td>
+        <td class="wl-desc">Decided to build an interactive website. Researched HTML Canvas API for data visualizations. Drew wireframe sketches of the sidebar nav layout and page transition system.
+          <div class="wl-artifact">Wireframe sketches, Canvas API reference</div></td>
+        <td class="wl-hrs">1.25</td>
+      </tr>
+      <tr>
+        <td class="wl-date">5/13 Tue</td>
+        <td class="wl-io">In class</td>
+        <td class="wl-desc">Built HTML skeleton: sidebar navigation, JavaScript page router, dark CSS theme with custom color variables. All 8 nav links routing to page sections.
+          <div class="wl-artifact">v0.1 site skeleton, first git commit</div></td>
+        <td class="wl-hrs">0.75</td>
+      </tr>
+      <tr>
+        <td class="wl-date">5/14 Wed</td>
+        <td class="wl-io">Home</td>
+        <td class="wl-desc">Built Big Bang page. Fact-checked nucleosynthesis abundances against Planck 2018 paper. Wrote the 7-node timeline and temperature-through-time section.
+          <div class="wl-artifact">Big Bang page complete, sources noted</div></td>
+        <td class="wl-hrs">1.5</td>
+      </tr>
+      <tr>
+        <td class="wl-date">5/15 Thu</td>
+        <td class="wl-io">In class</td>
+        <td class="wl-desc">Submitted project proposal. Confirmed three AP topics with teacher: Atomic Structure, Nuclear Chemistry, Intermolecular Forces.
+          <div class="wl-artifact">Signed proposal form</div></td>
+        <td class="wl-hrs">0.5</td>
+      </tr>
+      <tr>
+        <td class="wl-date">5/15 Thu</td>
+        <td class="wl-io">Home</td>
+        <td class="wl-desc">Built Stars page: proton-proton chain diagram, element synthesis grid. Looked up binding energy values from AME2020 atomic mass evaluation.
+          <div class="wl-artifact">Stars page v1, AME2020 source cited</div></td>
+        <td class="wl-hrs">1.25</td>
+      </tr>
+      <tr>
+        <td class="wl-date">5/16 Fri</td>
+        <td class="wl-io">Home</td>
+        <td class="wl-desc">Wrote r-process section (neutron star mergers produce heavy elements). Outlined Atomic Models page: evidence for each model and why each one was replaced.
+          <div class="wl-artifact">Stars page complete, atomic models outline</div></td>
+        <td class="wl-hrs">1.5</td>
+      </tr>
+      <tr>
+        <td class="wl-date">5/19 Mon</td>
+        <td class="wl-io">In class</td>
+        <td class="wl-desc">Built 5-panel Atomic Models timeline. Click and arrow-key navigation working. Wrote Dalton and Thomson panel content, verified the e/m ratio numbers.
+          <div class="wl-artifact">Atomic Models page, 2 panels complete</div></td>
+        <td class="wl-hrs">1.0</td>
+      </tr>
+      <tr>
+        <td class="wl-date">5/19 Mon</td>
+        <td class="wl-io">Home</td>
+        <td class="wl-desc">Wrote Rutherford, Bohr, and Quantum panels. Verified gold foil backscatter fraction (1 in 8,000) and the four Balmer wavelengths (656, 486, 434, 410 nm).
+          <div class="wl-artifact">All 5 model panels written and sourced</div></td>
+        <td class="wl-hrs">1.0</td>
+      </tr>
+      <tr>
+        <td class="wl-date">5/20 Tue</td>
+        <td class="wl-io">Home</td>
+        <td class="wl-desc">Built binding energy chart in Canvas API. Most time spent on devicePixelRatio scaling for retina displays and the hover interaction showing MeV at each mass number.
+          <div class="wl-artifact">Interactive binding energy chart working</div></td>
+        <td class="wl-hrs">2.0</td>
+      </tr>
+      <tr>
+        <td class="wl-date">5/21 Wed</td>
+        <td class="wl-io">In class</td>
+        <td class="wl-desc">Built Radioactive Decay page: alpha, beta, gamma decay cards with balanced nuclear equations. Half-life values from NNDC Chart of Nuclides.
+          <div class="wl-artifact">Decay cards complete, NNDC cited</div></td>
+        <td class="wl-hrs">0.75</td>
+      </tr>
+      <tr>
+        <td class="wl-date">5/21 Wed</td>
+        <td class="wl-io">Home</td>
+        <td class="wl-desc">Built half-life calculator with live exponential decay curve. Added presets for C-14, Ra-226, U-238, and I-131. Built U-238 decay chain showing 9 steps to Pb-206.
+          <div class="wl-artifact">Calculator and decay chain working</div></td>
+        <td class="wl-hrs">1.5</td>
+      </tr>
+      <tr>
+        <td class="wl-date">5/22 Thu</td>
+        <td class="wl-io">Home</td>
+        <td class="wl-desc">Built Matter at Scale page: IMF section, phase changes, states of matter. Researched the water boiling point anomaly — should be −80°C based on periodic trends, is 100°C from H-bonds.
+          <div class="wl-artifact">Matter page complete</div></td>
+        <td class="wl-hrs">1.25</td>
+      </tr>
+      <tr>
+        <td class="wl-date">5/23 Fri</td>
+        <td class="wl-io">Home</td>
+        <td class="wl-desc">CSS polish across all pages: typography scale, card hover states, scroll-in animations, reading progress bar. Fixed responsive layout, tested on phone.
+          <div class="wl-artifact">Responsive site, improved visual design</div></td>
+        <td class="wl-hrs">1.5</td>
+      </tr>
+      <tr>
+        <td class="wl-date">5/26 Mon</td>
+        <td class="wl-io">Home</td>
+        <td class="wl-desc">Memorial Day. Embedded Manim hydrogen emission spectrum video. Built AP Chemistry Hub page with element origin table categorizing elements by Big Bang, stellar, and supernova origin.
+          <div class="wl-artifact">Manim video embedded, Hub page complete</div></td>
+        <td class="wl-hrs">1.5</td>
+      </tr>
+      <tr>
+        <td class="wl-date">5/27 Tue</td>
+        <td class="wl-io">In class</td>
+        <td class="wl-desc">Fixed responsive layout on smaller screens. Added Scientific Practice and Topic labels to each page header. Full content review for accuracy.
+          <div class="wl-artifact">Layout fixes committed to git</div></td>
+        <td class="wl-hrs">0.75</td>
+      </tr>
+      <tr>
+        <td class="wl-date">5/27 Tue</td>
+        <td class="wl-io">Home</td>
+        <td class="wl-desc">Rewrote body copy throughout: more natural language, updated all Bryson summaries, improved descriptions throughout. Full citations page with all 11 sources.
+          <div class="wl-artifact">Revised content, complete citation list</div></td>
+        <td class="wl-hrs">1.0</td>
+      </tr>
+      <tr>
+        <td class="wl-date">5/28 Wed</td>
+        <td class="wl-io">Home</td>
+        <td class="wl-desc">Collapsible sidebar with dim overlay. Final deploy to GitHub Pages. Built presentation slides and script.
+          <div class="wl-artifact">Live at pushkalkumar.github.io/BHOE-website</div></td>
+        <td class="wl-hrs">1.0</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="3" class="wl-desc">Total — 21 sessions across 22 days</td>
+        <td class="wl-hrs">24.25</td>
+      </tr>
+    </tfoot>
+  </table>
+  </div>
+</div>
+
+</div><!-- /deck -->
+
+<div class="nav">
+  <button class="nav-btn" id="prevBtn" disabled>←</button>
+  <span class="nav-counter" id="counter">1 / 4</span>
+  <button class="nav-btn" id="nextBtn">→</button>
+</div>
+
+<script>
+const slides = Array.from(document.querySelectorAll('.slide'));
+const initSlide = Math.max(0, Math.min(slides.length - 1, (parseInt(new URLSearchParams(location.search).get('s')) || 1) - 1));
+slides.forEach(s => s.classList.remove('active'));
+slides[initSlide].classList.add('active');
+let cur = initSlide;
+
+function goTo(n) {
+  slides[cur].classList.remove('active');
+  slides[cur].classList.add('exiting');
+  const old = cur;
+  setTimeout(() => slides[old].classList.remove('exiting'), 420);
+  cur = n;
+  slides[cur].classList.add('active');
+  document.getElementById('counter').textContent = `${cur + 1} / ${slides.length}`;
+  document.getElementById('prevBtn').disabled = cur === 0;
+  document.getElementById('nextBtn').disabled = cur === slides.length - 1;
+}
+
+document.getElementById('prevBtn').addEventListener('click', () => cur > 0 && goTo(cur - 1));
+document.getElementById('nextBtn').addEventListener('click', () => cur < slides.length - 1 && goTo(cur + 1));
+document.addEventListener('keydown', e => {
+  if (['ArrowRight','ArrowDown',' '].includes(e.key)) { e.preventDefault(); cur < slides.length - 1 && goTo(cur + 1); }
+  if (['ArrowLeft','ArrowUp'].includes(e.key)) { e.preventDefault(); cur > 0 && goTo(cur - 1); }
+});
+
+/* star field */
+(function(){
+  const c = document.getElementById('starCanvas');
+  if (!c) return;
+  const ctx = c.getContext('2d');
+  let W, H, stars = [];
+  function resize(){
+    const dpr = window.devicePixelRatio||1;
+    W = window.innerWidth; H = window.innerHeight;
+    c.width=W*dpr; c.height=H*dpr;
+    c.style.width=W+'px'; c.style.height=H+'px';
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    stars = Array.from({length:180},()=>({
+      x:Math.random()*W, y:Math.random()*H,
+      r:Math.random()*1.0+0.1,
+      base:Math.random()*0.35+0.05,
+      phase:Math.random()*Math.PI*2,
+      speed:Math.random()*0.006+0.002,
+    }));
+  }
+  function tick(){
+    ctx.clearRect(0,0,W,H);
+    stars.forEach(s=>{
+      s.phase+=s.speed;
+      const a=s.base*(0.5+0.5*Math.sin(s.phase));
+      ctx.beginPath(); ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(200,212,255,${a.toFixed(3)})`; ctx.fill();
+    });
+    requestAnimationFrame(tick);
+  }
+  window.addEventListener('resize',resize);
+  resize(); tick();
+})();
+</script>
+</body>
+</html>
