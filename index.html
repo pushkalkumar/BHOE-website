@@ -7,7 +7,7 @@
 <meta name="description" content="An interactive AP Chemistry companion to Bill Bryson's A Short History of Nearly Everything, tracing the universe from the Big Bang to quantum mechanics.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,300;1,8..60,400;1,8..60,600;1,8..60,700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,600&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -207,7 +207,6 @@
           <div class="pv-particle pv-e"></div>
           <div class="pv-label">Free protons (<span style="color:var(--gold)">●</span>) and electrons (<span style="color:var(--blue-lt)">●</span>) in plasma</div>
         </div>
-        <p class="card-note">kT ≫ IE means thermal energy far exceeds ionization energy. The same condition applies inside stars today, where core temperatures exceed 10 million Kelvin and all matter is fully ionized plasma.</p>
       </div>
 
       <div class="card">
@@ -345,42 +344,6 @@
       </div>
     </div>
 
-    <div class="synthesis-grid">
-      <div class="syn-header">Element production by stellar type</div>
-      <div class="syn-row">
-        <div class="syn-type">
-          <span class="st-label st-low">Low-mass</span>
-          <span class="st-range">0.1–8 M☉</span>
-        </div>
-        <div class="syn-arrow">→</div>
-        <div class="syn-elements">
-          <span class="el-badge el-h">H</span><span class="el-badge el-he">He</span><span class="el-badge el-c">C</span><span class="el-badge el-o">O</span><span class="el-badge el-n">N</span>
-        </div>
-        <div class="syn-note">H and He burning; triple-alpha process makes carbon and oxygen. Leave behind a white dwarf of carbon and oxygen.</div>
-      </div>
-      <div class="syn-row">
-        <div class="syn-type">
-          <span class="st-label st-mass">Massive</span>
-          <span class="st-range">&gt;8 M☉</span>
-        </div>
-        <div class="syn-arrow">→</div>
-        <div class="syn-elements">
-          <span class="el-badge el-c">C</span><span class="el-badge el-ne">Ne</span><span class="el-badge el-si">Si</span><span class="el-badge el-fe">Fe</span><span class="el-badge el-ni">Ni</span>
-        </div>
-        <div class="syn-note">Shell-burning stages run to silicon burning; iron core collapses. End as neutron stars or black holes.</div>
-      </div>
-      <div class="syn-row">
-        <div class="syn-type">
-          <span class="st-label st-sn">Supernovae</span>
-          <span class="st-range">+ Neutron Star Mergers</span>
-        </div>
-        <div class="syn-arrow">→</div>
-        <div class="syn-elements">
-          <span class="el-badge el-au">Au</span><span class="el-badge el-pt">Pt</span><span class="el-badge el-u">U</span><span class="el-badge el-pb">Pb</span><span class="el-badge el-sr">Sr</span>
-        </div>
-        <div class="syn-note">Rapid neutron capture (r-process) during stellar explosions and neutron-star mergers builds every element heavier than iron. All gold on Earth came from these events.</div>
-      </div>
-    </div>
 
     <div class="stellar-calc">
       <div class="stc-header">
@@ -772,66 +735,6 @@
       </div>
     </div>
 
-    <!-- U-238 DECAY CHAIN -->
-    <div class="chain-section">
-      <div class="chain-header">
-        <h3>Uranium-238 Decay Chain (simplified)</h3>
-        <p>U-238 undergoes 14 sequential decays over billions of years before reaching stable Pb-206. This is why uranium ore naturally contains radium, radon, and polonium as intermediate daughters in the same chain. Each step is independent; the rate of each isotope's decay depends only on its own half-life.</p>
-      </div>
-      <div class="chain-scroll">
-        <div class="chain-body" id="decayChain">
-          <div class="chain-node chain-start">
-            <div class="chain-iso cn-u">²³⁸<sub>92</sub>U</div>
-            <div class="chain-hl">4.47 × 10⁹ yr</div>
-          </div>
-          <div class="chain-arrow ca-alpha"><span class="ca-label">α</span></div>
-          <div class="chain-node">
-            <div class="chain-iso cn-th">²³⁴<sub>90</sub>Th</div>
-            <div class="chain-hl">24.1 days</div>
-          </div>
-          <div class="chain-arrow ca-beta"><span class="ca-label">β⁻</span></div>
-          <div class="chain-node">
-            <div class="chain-iso cn-u">²³⁴<sub>92</sub>U</div>
-            <div class="chain-hl">245,500 yr</div>
-          </div>
-          <div class="chain-arrow ca-alpha"><span class="ca-label">α</span></div>
-          <div class="chain-node">
-            <div class="chain-iso cn-th">²³⁰<sub>90</sub>Th</div>
-            <div class="chain-hl">75,400 yr</div>
-          </div>
-          <div class="chain-arrow ca-alpha"><span class="ca-label">α</span></div>
-          <div class="chain-node cn-highlight">
-            <div class="chain-iso cn-ra">²²⁶<sub>88</sub>Ra</div>
-            <div class="chain-hl">1,600 yr</div>
-          </div>
-          <div class="chain-arrow ca-alpha"><span class="ca-label">α</span></div>
-          <div class="chain-node cn-highlight">
-            <div class="chain-iso cn-rn">²²²<sub>86</sub>Rn</div>
-            <div class="chain-hl">3.82 days</div>
-          </div>
-          <div class="chain-arrow ca-alpha"><span class="ca-label">α</span></div>
-          <div class="chain-node">
-            <div class="chain-iso cn-pb">²¹⁰<sub>82</sub>Pb</div>
-            <div class="chain-hl">22.3 yr</div>
-          </div>
-          <div class="chain-arrow ca-beta"><span class="ca-label">β⁻ ×2</span></div>
-          <div class="chain-node cn-highlight">
-            <div class="chain-iso cn-po">²¹⁰<sub>84</sub>Po</div>
-            <div class="chain-hl">138 days</div>
-          </div>
-          <div class="chain-arrow ca-alpha"><span class="ca-label">α</span></div>
-          <div class="chain-node chain-end">
-            <div class="chain-iso cn-pb">²⁰⁶<sub>82</sub>Pb</div>
-            <div class="chain-hl">Stable</div>
-          </div>
-        </div>
-      </div>
-      <div class="chain-note">
-        <span class="chain-note-badge chain-note-alpha">α</span> Alpha decay: Z −2, A −4 &nbsp;·&nbsp;
-        <span class="chain-note-badge chain-note-beta">β⁻</span> Beta decay: Z +1, A unchanged &nbsp;·&nbsp;
-        Highlighted: radium, radon, and polonium (the daughters Curie studied)
-      </div>
-    </div>
 
   </div>
 </section>

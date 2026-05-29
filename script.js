@@ -944,17 +944,14 @@ function buildDecayTable(N0, HL, totalHL) {
       const on    = mass >= s.minM;
       const arrow = i < STAGES.length-1 ? `<span class="stc-chain-arrow">→</span>` : '';
       return `<div class="stc-stage ${on?'active':'inactive'}" title="${s.desc}">
-        <span class="stc-stage-dot" style="${on?`background:${s.color}`:''}"></span>
+        <span class="stc-stage-dot"></span>
         <span class="stc-stage-text">${s.label}</span>
       </div>${arrow}`;
     }).join('');
 
     result.innerHTML = `
       <div class="stc-class-row">
-        <span class="stc-class-badge"
-          style="color:${cls.hex};border-color:rgba(${r},${g},${b},0.35);background:rgba(${r},${g},${b},0.09)">
-          ${cls.type}-type
-        </span>
+        <span class="stc-class-badge">${cls.type}-type</span>
         <span class="stc-class-name">${cls.name}</span>
         ${isSN ? '<span class="stc-supernova-tag">Supernova candidate</span>' : ''}
       </div>
@@ -978,10 +975,7 @@ function buildDecayTable(N0, HL, totalHL) {
       </div>
       <div class="stc-remnant-row">
         <span class="stc-remnant-label">Stellar remnant</span>
-        <span class="stc-remnant-badge"
-          style="color:${remnantHex};border-color:rgba(${rr},${rg},${rb},0.35);background:rgba(${rr},${rg},${rb},0.09)">
-          ${remnant}
-        </span>
+        <span class="stc-remnant-badge">${remnant}</span>
         ${life ? `<span class="stc-lifespan-note">After ~${fmtLife(life)}</span>` : ''}
       </div>`;
   }

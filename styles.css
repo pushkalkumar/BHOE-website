@@ -44,10 +44,10 @@
   --t4: #363a52;
 
   /* Typography */
-  --fh: 'Source Serif 4', Georgia, serif;
-  --fu: 'Inter', system-ui, sans-serif;
-  --fb: 'Source Serif 4', Georgia, serif;
-  --fm: 'JetBrains Mono', 'Courier New', monospace;
+  --fh: 'Fraunces', Georgia, serif;
+  --fu: 'Lora', Georgia, serif;
+  --fb: Georgia, 'Times New Roman', serif;
+  --fm: 'Space Mono', 'Courier New', monospace;
 
   /* Layout */
   --sidebar: 0px;
@@ -1449,7 +1449,8 @@ sub, sup { font-size: 0.7em; }
 }
 .stc-class-badge {
   font-family: var(--fm); font-size: 0.71rem; font-weight: 700;
-  padding: 3px 10px; border-radius: 2px; border: 1px solid; letter-spacing: 0.04em;
+  padding: 3px 10px; border-radius: 2px; border: 1px solid var(--border-md);
+  color: var(--t1); background: var(--elevated); letter-spacing: 0.04em;
 }
 .stc-class-name {
   font-family: var(--fh); font-size: 1.1rem; font-weight: 600;
@@ -1492,7 +1493,8 @@ sub, sup { font-size: 0.7em; }
 }
 .stc-stage.active  { border-color: rgba(255,255,255,0.12); background: rgba(255,255,255,0.04); }
 .stc-stage.inactive { border-color: var(--border); background: transparent; opacity: 0.3; }
-.stc-stage-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--t4); flex-shrink: 0; transition: background 0.3s; }
+.stc-stage-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--t4); flex-shrink: 0; }
+.stc-stage.active .stc-stage-dot { background: var(--t2); }
 .stc-stage-text {
   font-family: var(--fm); font-size: 0.65rem; font-weight: 700;
   color: var(--t2); white-space: nowrap; transition: color 0.3s;
@@ -1509,7 +1511,8 @@ sub, sup { font-size: 0.7em; }
 }
 .stc-remnant-badge {
   font-family: var(--fh); font-size: 0.9rem; font-weight: 600;
-  padding: 4px 14px; border-radius: 2px; border: 1px solid;
+  padding: 4px 14px; border-radius: 2px; border: 1px solid var(--border-md);
+  color: var(--t1); background: var(--elevated);
 }
 .stc-lifespan-note { font-family: var(--fm); font-size: 0.59rem; color: var(--t3); margin-left: auto; }
 
